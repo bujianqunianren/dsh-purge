@@ -55,7 +55,11 @@ test("default tuning registers the inject at the head and the boost at the tail"
       byName["dsh-purge-boost"].order > byName["dsh-purge"].order,
       "boost must sort after the inject",
     );
-    assert.equal(byName["dsh-purge-boost"].text({}), BOOST_TEXT);
+    // [mode-allowlist] 段文本只在白名单预设下有内容；unrestricted 会话必须拿到全文，
+    // 读不出预设的上下文（{}）必须拿到空串（fail-closed）。
+    const unrestricted = { agent: { session: { header: { agentPreset: "unrestricted" } } } };
+    assert.equal(byName["dsh-purge-boost"].text(unrestricted), BOOST_TEXT);
+    assert.equal(byName["dsh-purge-boost"].text({}), "");
   });
 });
 

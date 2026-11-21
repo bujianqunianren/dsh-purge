@@ -19,12 +19,12 @@
 | 层 | 由谁提供 | 生效方式 | 你能怎么查 |
 | --- | --- | --- | --- |
 | **宿主补丁**（86 条） | 本插件写进 DSH 源码 | 点「应用」写入 → **退出重开**才加载 | `selfcheck` 看各层 `applied/required` |
-| **提示词注入** | 插件运行时（每步重贴） | `prompt-inject.md` 作为 `dsh-purge` section | 探针（§4）或 `selfcheck` 的「运行时提示词注入」 |
-| **破甲强化段** | 插件运行时 | 尾部 section（默认开） | `purge-community boost` |
+| **提示词注入** | 插件运行时（每步重贴） | 仅 **unrestricted / redteam** 预设：`prompt-inject.md` 作为 `dsh-purge` section（模式白名单 `injectPresets`，默认不含 standard 等；读不出预设时按不注入处理） | 探针（§4）或 `selfcheck` 的「运行时提示词注入」 |
+| **破甲强化段** | 插件运行时 | 尾部 section（默认开，同受模式白名单限制） | `purge-community boost` |
 | **权限配置** | 宿主 profile 和会话自己的权限选择 | 新装默认沿用宿主策略，旧宿主可能保留先前写入的补丁 | `selfcheck` 的「当前 profile 的权限选择」 |
 | **agent 预设** | `unrestricted` 预设 | 新会话下拉里选 | 面板/预设下拉 |
 
-**关键结论**：宿主补丁与权限配置仍为全局；提示词注入和强化段默认全局，可用 `excludePresets` 按预设排除。排除不等于撤销全局补丁。
+**关键结论**：宿主补丁与权限配置仍为全局；**提示词注入和强化段自 1.7.20 起默认仅在 unrestricted（无限制模式）与 redteam（红队模式）两个预设下生效**（模式白名单 `injectPresets`，可用宿主配置覆盖；`excludePresets` 继续作为叠加排除）。其余预设（standard/minimal/ptc/cordis/梁神/自造）不做任何运行时注入与提示词改写。白名单与排除都不等于撤销全局补丁。
 
 ## 2. 生命周期：装 → 应用 → 重开
 

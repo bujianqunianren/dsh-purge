@@ -38,6 +38,8 @@
       config:
         enabled: true
         excludePresets: []
+        # [mode-allowlist] 运行时提示词注入链只对白名单预设生效（默认：无限制模式 + 红队模式）。
+        injectPresets: ["unrestricted", "redteam"]
         autoApplyOnStart: false
         autoUpdateOnStart: false
         autoRevertOnMissing: false

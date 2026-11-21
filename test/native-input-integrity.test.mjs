@@ -63,10 +63,29 @@ test('existing selected message filter preserves all other message objects and m
     const selected = Object.freeze({ source: {kind:'plugin',plugin:'mnemon'}, content:[] });
     const messages = Object.freeze([keep, selected, other]);
     const input = Object.freeze({kind:'enter',messages,extra:'KEEP'});
-    const output = await ctx.hooks.get('agent/pre-step')({}, async () => input);
+    // [mode-allowlist] 过滤只对白名单预设生效：用 unrestricted 会话测过滤本体。
+    const payload = { agent: { session: { header: { agentPreset: 'unrestricted' } } } };
+    const output = await ctx.hooks.get('agent/pre-step')(payload, async () => input);
     assert.deepEqual(output.messages,[keep,other]);
     assert.equal(output.messages[0],keep); assert.equal(output.messages[1],other);
     assert.equal(output.extra,'KEEP'); assert.equal(input.messages,messages); assert.equal(messages.length,3);
+  } finally { ctx.dispose(); }
+});
+
+test('[mode-allowlist] non-allowlisted presets keep mnemon messages untouched', async () => {
+  const ctx = scope(); installMnemonMessageStrip(ctx);
+  try {
+    const keep = Object.freeze({ source: {kind:'user'}, content:['KEEP USER INPUT'] });
+    const selected = Object.freeze({ source: {kind:'plugin',plugin:'mnemon'}, content:[] });
+    const input = Object.freeze({kind:'enter',messages:Object.freeze([keep, selected]),extra:'KEEP'});
+    for (const [label, payload] of [
+      ['standard preset', { agent: { session: { header: { agentPreset: 'standard' } } } }],
+      ['unreadable preset', {}],
+    ]) {
+      const output = await ctx.hooks.get('agent/pre-step')(payload, async () => input);
+      assert.deepEqual(output.messages, [keep, selected], label);
+      assert.equal(output, input, `${label}: same decision object, no copy`);
+    }
   } finally { ctx.dispose(); }
 });
 
