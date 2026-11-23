@@ -1,6 +1,5 @@
 import { apiUrl } from "../api/client.js";
 // UI derived from YuJunZhiXue/dsh-purge 1.1.71 (MIT). See LICENSE.
-import { incompleteApplyDetail } from "../shared/apply-result.js";
 import { runtimeRepairDetails } from "../shared/runtime-error.js";
 import {
   h,
@@ -20,18 +19,7 @@ import {
   responseNeedsPrompt,
   bothInjectEmpty,
 } from "../api/client.js";
-import {
-  shimKind,
-  patchEvidence,
-  patchGroupCounts,
-  PatchGroups,
-  PatchHealth,
-  PatchGroupSwitches,
-  PatchApplySteps,
-} from "./patch-status.js";
 import { noticeNode, Btn } from "./primitives.js";
-import { HooksDenySection } from "./advanced.js";
-import { RestartAsk, restartDsh, detectHostTheme } from "./restart.js";
 import {
   listedCeiling,
   keepListedVersion,
@@ -697,9 +685,6 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
     !located &&
     desktopLikely &&
     !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
-  const evidence = patchEvidence(s);
-  const counts =
-    evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = (updateInfo && updateInfo.versions) || [];
   const channelNow = (updateInfo && updateInfo.channel) || channel || "stable";
   const localVer =
@@ -808,198 +793,7 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
   return h(
     "section",
     { className: "dshpp-panel", "aria-label": t("purge.title") },
-    h(
-      "div",
-      { hidden: page !== "status" },
-      // 标题行：左侧页面名，右侧操作组 + 扫描时间（对齐样稿，不再用 hero 卡包一层）
-      h(
-        "div",
-        { className: "dshpp-status-head" },
-        h("h3", { className: "dshpp-status-title" }, t("status.title")),
-        h(
-          "div",
-          { className: "dshpp-status-ops" },
-          h(
-            Btn,
-            {
-              kind: "primary",
-              className: "dshpp-btn-apply",
-              disabled: patchBusy || uninstallBusy || !overrideLoaded,
-              onClick: () => doAction("apply", "action.apply"),
-            },
-            patchBusy
-              ? t("btn.apply.busy")
-              : t("btn.apply") + (counts?.pending ? " " + counts.pending : ""),
-          ),
-          h(
-            Btn,
-            {
-              kind: "danger",
-              disabled: patchBusy || uninstallBusy,
-              onClick: () => doAction("revert", "action.revert"),
-            },
-            t("btn.revert"),
-          ),
-          h(
-            Btn,
-            {
-              kind: "solid-danger",
-              disabled: patchBusy || uninstallBusy,
-              onClick: () => setAskUninstall(true),
-            },
-            uninstallBusy ? t("btn.uninstall.busy") : t("btn.uninstall"),
-          ),
-          h(
-            "button",
-            {
-              type: "button",
-              className: "dshpp-scan",
-              onClick: loadAll,
-              disabled: patchBusy || uninstallBusy,
-              title: t("scan.hint"),
-            },
-            scannedAt ? t("scan.recent", { time: scannedAt }) : t("scan.hint"),
-          ),
-        ),
-      ),
-      !located
-        ? h(
-            "p",
-            { className: "dshpp-status-note" },
-            sealedReady ? "宿主还没解开：点「应用」" : t("metric.unlocated"),
-          )
-        : null,
-      noticeNode(notice),
-      h(PatchHealth, { state: s }),
-      h(PatchGroupSwitches, { state: s, onSaved: loadAll }),
-      h(
-        "section",
-        { className: "dshpp-fold is-open" },
-        h(
-          "h4",
-          { className: "dshpp-fold-t" },
-          t("detail.title"),
-          h(
-            "span",
-            { className: "dshpp-fold-n" },
-            !s
-              ? t("detail.reading")
-              : s.ok === false
-                ? t("detail.unknown")
-                : s.ai_base
-                  ? counts
-                    ? `${counts.applied} / ${counts.denom}`
-                    : t("evidence." + evidence.kind)
-                  : t("detail.unlocated"),
-          ),
-        ),
-        h(PatchGroups, { state: s }),
-      ),
-      h(PatchApplySteps, null),
-      h(
-        "details",
-        null,
-        h("summary", null, "高级选项"),
-        h(HooksDenySection, { onSaved: loadAll }),
-      ),
-      askUninstall
-        ? h(
-            "div",
-            {
-              className: "dshpp-modal-bg",
-              role: "dialog",
-              "aria-modal": "true",
-              "aria-labelledby": "dshpp-uninstall-title",
-              onClick: (e) => {
-                if (e.target === e.currentTarget && !uninstallBusy)
-                  setAskUninstall(false);
-              },
-            },
-            h(
-              "div",
-              { className: "dshpp-modal" },
-              h("h4", { id: "dshpp-uninstall-title" }, t("uninstall.title")),
-              h("p", null, t("uninstall.body")),
-              h(
-                "div",
-                { className: "dshpp-modal-ops" },
-                h(
-                  Btn,
-                  {
-                    disabled: uninstallBusy,
-                    onClick: () => setAskUninstall(false),
-                  },
-                  t("uninstall.cancel"),
-                ),
-                h(
-                  Btn,
-                  {
-                    kind: "solid-danger",
-                    disabled: uninstallBusy,
-                    onClick: doUninstall,
-                  },
-                  t("uninstall.confirm"),
-                ),
-              ),
-            ),
-          )
-        : null,
-      h(
-        "p",
-        {
-          className: "dshpp-hint",
-          style: {
-            margin: "8px 0 0",
-            color: "var(--dshpp-mute)",
-            fontSize: 12,
-          },
-        },
-        t("apply.hint"),
-      ),
-      s?.ok === true && !s.ai_base
-        ? h(
-            "p",
-            {
-              className: "dshpp-hint",
-              style: {
-                margin: "8px 0 0",
-                color: "var(--dshpp-danger, #c44)",
-                fontSize: 12,
-              },
-            },
-            hostText(t, "warn.noRoot", hostSurface),
-          )
-        : null,
-      s && s.ai_base && s.override_status === "missing"
-        ? h(
-            "p",
-            {
-              className: "dshpp-hint",
-              style: {
-                margin: "8px 0 0",
-                color: "var(--dshpp-mute)",
-                fontSize: 12,
-              },
-            },
-            t("warn.noInject"),
-          )
-        : null,
-      askRestart
-        ? h(RestartAsk, {
-            t: t,
-            theme: detectHostTheme(),
-            onLater: () => {
-              suppressRestartAsk.current = true;
-              setAskRestart(false);
-            },
-            onRestart: () => {
-              suppressRestartAsk.current = true;
-              setAskRestart(false);
-              restartDsh(setNotice, function () {}, t, hostSurface);
-            },
-          })
-        : null,
-    ),
+    // [v2.1.1] 状态页整体移除。
     h(
       "div",
       { hidden: page !== "prompt" },

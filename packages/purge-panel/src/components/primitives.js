@@ -1,7 +1,9 @@
 // UI derived from YuJunZhiXue/dsh-purge 1.1.71 (MIT). See LICENSE.
 import { h, useState } from "../shared/react.js";
 import { useT } from "../shared/locale.js";
-import { statusKind, statusLabel } from "./patch-status.js";
+// [v2.1.1] patch-status.js removed; status helpers inlined.
+const statusKind = (s) => s === "applied" ? "ok" : s === "pending" ? "info" : s === "broken" ? "danger" : "mute";
+const statusLabel = (s) => s || "—";
 
 export function formatSize(bytes) {
   if (typeof bytes !== "number" || !isFinite(bytes) || bytes < 0) return "0 B";

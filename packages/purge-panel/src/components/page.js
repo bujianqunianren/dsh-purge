@@ -7,7 +7,6 @@ import { compatibilityLevelText, useT } from "../shared/locale.js";
 import { RewindSetting } from "./rewind-setting.js";
 import { apiJson, unavailableStatus } from "../api/client.js";
 import { Btn, HelpTip } from "./primitives.js";
-import { patchEvidence, patchGroupCounts } from "./patch-status.js";
 import { PurgifySection } from "./settings-form.js";
 import { RulesSection } from "./rules.js";
 import { SkillsSection } from "./skills.js";
@@ -16,7 +15,6 @@ import { __dshPurgeDrill } from "../vendor/drill.js";
 import { readDrillAuth, setDock, requestDrill } from "../state/dock.js";
 
 const TABS = [
-  ["status", "状态", "宿主兼容、补丁、破甲自检"],
   ["prompt", "提示词", "注入正文与破甲强化段"],
   ["rules", "规则", "规则集与工作区策略"],
   ["skills", "技能", "DSH 技能目录"],
@@ -43,9 +41,6 @@ function PurgeGlyph({ size = 18 } = {}) {
 
 export function StatusStrip({ info }) {
   const t = useT();
-  const evidence = patchEvidence(info);
-  const counts =
-    evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const compat = info?.compatibility || {};
   const level = compat.level || "";
   const ok = level === "qualified";
@@ -88,10 +83,7 @@ export function StatusStrip({ info }) {
       h(
         "b",
         null,
-        counts
-          ? `${counts.applied}/${counts.denom}`
-          : t("evidence." + evidence.kind),
-        counts?.na > 0 ? ` · ${counts.na} 条本机不适用` : "",
+        "",
       ),
       h(
         HelpTip,
@@ -109,87 +101,8 @@ export function StatusStrip({ info }) {
 }
 
 /** 磁盘归档与进程入口分别呈现；不能从磁盘写入推断运行时已加载。 */
-export function LayoutNotice({ info }) {
-  if (!info || (!info.asar_still_sealed && !info.host_layout)) return null;
-  if (info.host_layout?.family === "tauri") {
-    return h(
-      "p",
-      { className: "dshpp-note", role: "status" },
-      info.host_layout.note,
-    );
-  }
-  const sealed = info.asar_still_sealed === true;
-  const note =
-    info.host_layout?.note ||
-    "目标磁盘仍有 app.asar；当前进程加载来源尚未确认。";
-  const handoff = info.asar_handoff
-    ? ` 换包状态：${{ not_scheduled: "尚未应用：点「应用」后才会安排换包", archive_reappeared: "归档再次出现，旧换包记录不代表当前已完成", backup_missing: "原归档备份缺失，请检查诊断", unknown_target: "目标实例未确定", unreadable: "换包记录不可读，请检查诊断", starting: "助手启动中（尚未确认就绪）", ready: "助手已就绪", waiting_for_quit: "等待完整退出（macOS ⌘Q / Windows 系统托盘）", waiting_for_unlock: "等待归档解锁", moving: "正在保留原归档", complete: "换包完成，请手动打开 DSH", already_unsealed: "归档已移走，请手动打开 DSH", failed: "失败，请查看诊断并按恢复文档操作", expired: "等待超时，请重新应用或按恢复文档操作", helper_stopped: "助手意外结束，请重新应用或按恢复文档操作" }[info.asar_handoff.phase] || info.asar_handoff.phase}。`
-    : "";
-  const failure = info.asar_handoff?.error;
-  const detail = info.asar_handoff?.detail
-    ? ` 详情：${info.asar_handoff.detail}${failure?.win32_code != null ? `（Windows 错误 ${failure.win32_code}）` : ""}`
-    : "";
-  const layout = info.host_layout;
-  if (
-    info.ok !== false &&
-    info.surface === "web" &&
-    layout?.disk?.surface === "web" &&
-    layout.state === "unknown_runtime" &&
-    layout.process?.entry_layout === "unknown" &&
-    layout.process.matches_target === null &&
-    layout.disk.archive_exists === null &&
-    layout.disk.unpacked_exists === null &&
-    !info.desktop_exe &&
-    !info.desktop_install &&
-    !sealed &&
-    !layout.errors?.length &&
-    info.asar_handoff?.phase === "unknown_target" &&
-    !info.asar_handoff.error &&
-    !info.asar_handoff.detail
-  ) {
-    return h(
-      "details",
-      { className: "dshpp-layout-details" },
-      h("summary", null, "换包状态：不适用（Web 宿主）"),
-      h(
-        "p",
-        { className: "dshpp-note" },
-        "Web 服务无需桌面归档换包。原始诊断：",
-        layout.state,
-        " / ",
-        info.asar_handoff.phase,
-      ),
-    );
-  }
-  const confirmed =
-    info.host_layout?.state === "unpacked_entry" &&
-    info.host_layout?.process?.matches_target === true &&
-    info.host_layout?.disk?.archive_exists === false;
-  const diskNote =
-    info.host_layout?.disk?.archive_exists === true
-      ? " 目标磁盘仍有 app.asar。"
-      : "";
-  if (sealed || !confirmed) {
-    return h(
-      "p",
-      { className: "dshpp-warn", role: "status" },
-      note,
-      diskNote,
-      handoff,
-      detail,
-    );
-  }
-  // 换包正常时只留一行确认，说明折进 details：它讲的是"入口不代表已重载"，
-  // 属于常驻解释，不该每次都占一行注意力。
-  return h(
-    "details",
-    { className: "dshpp-layout-details" },
-    h("summary", null, "✓ 已从解包目录启动（换包完成）"),
-    h("p", { className: "dshpp-note" }, note, diskNote, handoff, detail),
-  );
-}
+// [v2.1.1] LayoutNotice（换包状态）随宿主补丁层移除。
 
-/** 界面与后端不是同一份包时，必须显眼提示——否则用户会以为设置没生效。 */
 export function VersionNotice({ info }) {
   if (info && info.ok === false) {
     return h(
@@ -209,7 +122,7 @@ export function VersionNotice({ info }) {
 
 export function PurgePage() {
   const t = useT();
-  const [tab, setTab] = useState("status");
+  const [tab, setTab] = useState("prompt");
   const [visited, setVisited] = useState({ status: true });
   const [info, setInfo] = useState(null);
   const select = (id) => {
@@ -223,23 +136,9 @@ export function PurgePage() {
   // 子组件的 onStatus 在依赖里，必须是稳定引用，否则每次渲染都会再 setInfo 一次。
   const mergeInfo = useCallback((s) => s && setInfo(s), []);
   useEffect(() => {
-    if (tab === "status") loadInfo();
+    if (tab === "prompt") loadInfo();
   }, [tab]);
-  useEffect(() => {
-    const phase = info?.asar_handoff?.phase;
-    if (
-      ![
-        "starting",
-        "ready",
-        "waiting_for_quit",
-        "waiting_for_unlock",
-        "moving",
-      ].includes(phase)
-    )
-      return;
-    const timer = setInterval(loadInfo, 2000);
-    return () => clearInterval(timer);
-  }, [info?.asar_handoff?.phase]);
+  // [v2.1.1] asar 换包轮询随宿主补丁层移除。
   const active = TABS.find((row) => row[0] === tab) || TABS[0];
   return h(
     "div",
@@ -268,7 +167,6 @@ export function PurgePage() {
       ),
     ),
     h(VersionNotice, { info }),
-    h(LayoutNotice, { info }),
     h(
       "nav",
       { className: "dshpp-page-tabs", role: "tablist" },

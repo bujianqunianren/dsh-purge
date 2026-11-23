@@ -9129,24 +9129,11 @@ function compatibilityLevelText(t, level) {
   return hit && hit !== key ? hit : zh[key] || level || t("unknown");
 }
 var zh = {
-  nav: "\u89C4\u5219\u8BBE\u5B9A",
-  "dock.clean": "\u6E05\u6D17",
-  "dock.drill": "\u6F14\u7EC3\u53F0",
-  "dock.toggle": "dsh-purge",
-  "dock.newSession": "dsh-purge",
-  "dock.inSession": "dsh-purge",
-  "dock.redteam": "\u7EA2\u961F\u6A21\u5F0F",
-  "dock.full": "\u5168\u9762\u6D4F\u89C8",
-  "dock.close": "\u6536\u8D77",
-  "dock.unauthorized": "\u672A\u6388\u6743",
   "welcome.title": "\u7528\u6237\u987B\u77E5",
   "welcome.lead": "\u9996\u6B21\u5B89\u88C5\u672C\u63D2\u4EF6\u65F6\u8BF7\u9605\u8BFB\u4EE5\u4E0B\u8BF4\u660E\u3002\u786E\u8BA4\u540E\u672C\u7A97\u4E0D\u518D\u5F39\u51FA\u3002",
   "welcome.warn": "\u672C\u63D2\u4EF6\u514D\u8D39\u5F00\u6E90\u3002\u4EFB\u4F55\u80CC\u7740\u4F5C\u8005\u79C1\u81EA\u552E\u5356\u3001\u4ED8\u8D39\u5012\u5356\u6216\u501F\u672C\u9879\u76EE\u76C8\u5229\u7684\u884C\u4E3A\uFF0C\u4F5C\u8005\u5C06\u4F9D\u6CD5\u8FFD\u7A76\u6CD5\u5F8B\u8D23\u4EFB\u3002",
   "welcome.body": "dsh-purge \u662F DeepSeek Harness \u7684\u672C\u673A\u7F51\u7EDC\u5B89\u5168\u7EA2\u961F\u8BC4\u6D4B\u4E0E\u6E05\u6D17\u63D2\u4EF6\uFF1A\u5728\u53D7\u63A7\u672C\u673A\u73AF\u5883\u4E2D\u8C03\u6574\u63D0\u793A\u8BCD\u4E0E\u8865\u4E01\u3001\u505A\u6388\u6743\u8303\u56F4\u5185\u7684\u6F14\u7EC3\u53F0\u64CD\u4F5C\u3002\u9879\u76EE\u514D\u8D39\u3001\u975E\u8425\u5229\uFF0C\u6E90\u7801\u4ED3\u5E93\uFF1A",
   "welcome.repo": "https://github.com/YuJunZhiXue/dsh-purge",
-  "welcome.ban1": "\u7981\u6B62\u5C06\u672C\u9879\u76EE\u7528\u4E8E\u672A\u6388\u6743\u7684\u7F51\u7EDC\u653B\u51FB\u3001\u5165\u4FB5\u3001\u7A83\u53D6\u6570\u636E\u3001\u7834\u574F\u7CFB\u7EDF\u6216\u4EFB\u4F55\u8FDD\u6CD5\u72AF\u7F6A\u3002",
-  "welcome.ban2": "\u7981\u6B62\u5546\u4E1A\u552E\u5356\u3001\u4ED8\u8D39\u5012\u5356\u3001\u9ED1\u7070\u4EA7\u725F\u5229\uFF0C\u4EE5\u53CA\u9690\u7792\u4F5C\u8005\u7684\u8425\u5229\u6027\u518D\u5206\u53D1\u3002",
-  "welcome.ban3": "\u4F7F\u7528\u8005\u987B\u81EA\u884C\u9075\u5B88\u6240\u5728\u5730\u6CD5\u5F8B\u6CD5\u89C4\u4E0E\u5E73\u53F0\u89C4\u8303\uFF1B\u8FDD\u6CD5\u540E\u679C\u7531\u884C\u4E3A\u4EBA\u81EA\u884C\u627F\u62C5\uFF0C\u4E0E\u4F5C\u8005\u65E0\u5173\u3002",
   "welcome.bans": "\u7981\u6B62\u4E8B\u9879",
   "welcome.check": "\u6211\u5DF2\u9605\u8BFB\u5E76\u7406\u89E3\u4E0A\u8FF0\u7528\u6237\u987B\u77E5\uFF0C\u540C\u610F\u5408\u6CD5\u5408\u89C4\u4F7F\u7528\u3002",
   "welcome.ok": "\u6211\u5DF2\u77E5\u6653\u5E76\u7EE7\u7EED",
@@ -9156,9 +9143,6 @@ var zh = {
   "auth.hint.wait": "\u8BF7\u9605\u8BFB\u58F0\u660E\u3002{n} \u79D2\u540E\u624D\u80FD\u52FE\u9009\u3002",
   "auth.hint.scroll": "\u5012\u8BA1\u65F6\u5DF2\u7ED3\u675F\u3002\u8BF7\u628A\u58F0\u660E\u6EDA\u5230\u6587\u672B\uFF0C\u518D\u52FE\u9009\u3002",
   "auth.hint.check": "\u5012\u8BA1\u65F6\u5DF2\u7ED3\u675F\u3002\u8BF7\u52FE\u9009\u5168\u90E8\u4E09\u9879\u3002",
-  "auth.check.read": "\u6211\u5DF2\u8BFB\u5B8C\u300A\u5B89\u5168\u4E0E\u7981\u6B62\u8FDD\u6CD5\u58F0\u660E\u300B\uFF0C\u5E76\u8BA4\u53EF\u5176\u4E2D\u7684\u5168\u90E8\u6761\u6B3E\u3002",
-  "auth.check.scope": "\u6211\u786E\u8BA4\u53EA\u7528\u5728\u672C\u673A\u5DF2\u6388\u6743\u73AF\u5883\u3001\u79BB\u7EBF\u9776\u6807\u6216\u5408\u89C4\u6F14\u7EC3\u4E2D\u3002",
-  "auth.check.ban": "\u6211\u786E\u8BA4\u7981\u6B62\u4EFB\u4F55\u8FDD\u6CD5\u7528\u9014\u3002\u672A\u5B8C\u6210\u672C\u6388\u6743\uFF0C\u4E0D\u5F97\u4F7F\u7528\u6F14\u7EC3\u53F0\u3002",
   "auth.no": "\u6682\u4E0D\u8FDB\u5165",
   "auth.ok": "\u786E\u8BA4\u6388\u6743",
   "auth.ok.tab": "\u786E\u8BA4\u6388\u6743\u5E76\u8FDB\u5165\u6F14\u7EC3\u53F0",
@@ -9172,20 +9156,6 @@ var zh = {
   "envGate.skipNo": "\u8FD4\u56DE",
   "envGate.skipYes": "\u786E\u8BA4\u6682\u4E0D\u914D\u7F6E",
   "envGate.go": "\u53BB\u73AF\u5883\u9002\u914D",
-  "compat.host": "dsh-purge Community {version} \xB7 \u5BBF\u4E3B DSH {host} \xB7 \u517C\u5BB9\u7EA7\u522B\uFF1A{level}",
-  "compat.loading": "\u6B63\u5728\u8BFB\u53D6\u5BBF\u4E3B\u7248\u672C\u2026",
-  "compat.unavailable": "\u8BFB\u4E0D\u5230\u5BBF\u4E3B\u517C\u5BB9\u4FE1\u606F\uFF1A{error}",
-  "compat.level.qualified": "\u5DF2\u56DE\u5F52\u9A8C\u8BC1",
-  "compat.level.unverified": "\u672A\u9A8C\u8BC1\u7248\u672C",
-  "compat.level.mixed": "\u7EC4\u4EF6\u7248\u672C\u4E0D\u4E00\u81F4",
-  "compat.level.sealed": "\u5DF2\u5B9A\u4F4D\u5F52\u6863\u5BBF\u4E3B",
-  "compat.level.kernel-verified": "\u5185\u6838\u5DF2\u9A8C\u8BC1\uFF0C\u5BBF\u4E3B\u672A\u9A8C\u8BC1",
-  "compat.level.missing": "\u672A\u5B9A\u4F4D\u5BBF\u4E3B",
-  "compat.level.no-host": "\u672A\u5B9A\u4F4D\u5BBF\u4E3B",
-  "compat.level.unknown": "\u672A\u77E5",
-  "theme.aria": "\u5916\u89C2",
-  "theme.white": "\u767D",
-  "theme.ink": "\u58A8",
   "purge.title": "\u8865\u4E01",
   "override.title": "\u63D0\u793A\u8BCD",
   "own.title": "\u81EA\u5DF1\u7684\u670D\u52A1\u5668",
@@ -9193,131 +9163,19 @@ var zh = {
   "own.save": "\u4FDD\u5B58\u540D\u5355",
   "saved.own": "\u5DF2\u4FDD\u5B58\u81EA\u5DF1\u7684\u670D\u52A1\u5668",
   "saved.own.dropped": "\u5DF2\u4FDD\u5B58\u3002\u6709 {n} \u884C\u4E0D\u662F\u5355\u4E2A IP \u6216\u4E3B\u673A\u540D\uFF0C\u5DF2\u4E22\u6389",
-  "metric.purged": "\u5DF2\u5199\u5165",
-  "metric.purged.skip": "\u5DF2\u5199\u5165\u3002\u8DF3\u8FC7 {n} \u9879\uFF0C\u672C\u673A\u6CA1\u6709\u8FD9\u4E9B\u6587\u4EF6",
-  "metric.pendingShort": "\u5F85\u5904\u7406 {n}",
-  "metric.unmatchedShort": "\u6CA1\u5BF9\u4E0A {n}",
-  "metric.partialShort": "\u90E8\u5206\u547D\u4E2D {n}",
-  "metric.driftedShort": "\u951A\u70B9\u6F02\u79FB {n}",
-  "metric.disabledShort": "\u53EF\u9009\u5173\u95ED {n}",
-  "metric.skipShort": "\u8DF3\u8FC7 {n}",
-  "metric.naShort": "\u672C\u7AEF\u4E0D\u9002\u7528 {n}",
-  "metric.unlocated.count": "\u2014",
-  "metric.shim": "shim",
-  "metric.shim.na": "\u672C\u7AEF\u4E0D\u9700\u8981",
-  "metric.bak.yes": "\u6709\u5907\u4EFD",
-  "metric.bak.no": "\u65E0\u5907\u4EFD",
-  "metric.bak.hint": "\u5907\u4EFD",
-  "table.patch": "\u9879\u76EE",
-  "table.status": "\u72B6\u6001",
-  "health.applied": "\u5DF2\u5E94\u7528",
   "status.title": "Purge \u72B6\u6001",
-  "scan.recent": "\u4E0A\u6B21\u626B\u63CF {time} \xB7 \u70B9\u51FB\u5237\u65B0",
-  "scan.hint": "\u70B9\u51FB\u91CD\u65B0\u626B\u63CF\u5BBF\u4E3B",
-  "health.pending": "\u5F85\u5E94\u7528",
-  "health.off": "\u672A\u542F\u7528",
-  "health.na": "\u672C\u7AEF\u4E0D\u9002\u7528",
-  "health.denomUnit": "\u6761\u5DF2\u5199\u5165\u5BBF\u4E3B",
-  "health.hint.applied": "\u951A\u70B9\u5DF2\u66FF\u6362\uFF0C\u91CD\u542F\u540E\u751F\u6548\u3002",
-  "health.hint.pending": "\u5F00\u5173\u5DF2\u5F00\u3001\u8FD8\u6CA1\u5199\u76D8\uFF1B\u70B9\u4E00\u6B21\u300C\u5E94\u7528\u300D\u5199\u5165\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\u3002",
-  "health.hint.off": "\u5BF9\u5E94\u5F00\u5173\u5173\u7740\uFF0C\u6240\u4EE5\u6CA1\u5199\u3002\u4E0D\u662F\u5931\u8D25\uFF0C\u62E8\u5F00\u624D\u4F1A\u8FDB\u5165\u5F85\u5E94\u7528\u3002",
-  "health.hint.na": "\u8FD9\u53F0\u5BBF\u4E3B\u6CA1\u6709\u5BF9\u5E94\u7EC4\u4EF6\u6216\u6587\u4EF6\uFF0C\u8FDB\u4E86\u4E5F\u4E0D\u8FDB\u5206\u6BCD\u3002\u6C38\u8FDC 0 \u5DE5\u4F5C\u91CF\u3002",
-  "health.verdict.pending": "\u6709 {n} \u6761\u5DF2\u542F\u7528\u4F46\u8FD8\u6CA1\u5199\u76D8",
-  "evidence.summary": "\u4EC5\u6709\u5206\u7EC4\u6458\u8981",
-  "evidence.unknown": "\u65E0\u6CD5\u6838\u5B9E",
-  "health.verdict.ok": "\u5BBF\u4E3B\u8865\u4E01\u5168\u90E8\u5C31\u4F4D",
-  "groups.unreadable": "\u8BFB\u53D6\u5931\u8D25\uFF0C\u8865\u4E01\u660E\u7EC6\u6682\u4E0D\u53EF\u7528\uFF1B\u8BF7\u5237\u65B0\u91CD\u8BD5\u3002",
-  "filter.all": "\u5168\u90E8",
-  "filter.pending": "\u5F85\u5E94\u7528",
-  "filter.off": "\u672A\u542F\u7528",
-  "filter.na": "\u672C\u7AEF\u4E0D\u9002\u7528",
-  "filter.hint": "\u70B9\u7EC4\u6807\u9898\u5C55\u5F00\u660E\u7EC6\uFF1B\u60AC\u505C\u72B6\u6001\u770B\u539F\u56E0",
-  "filter.empty": "\u8FD9\u4E2A\u8FC7\u6EE4\u6761\u4EF6\u4E0B\u6CA1\u6709\u8865\u4E01\u3002",
-  "sw.permission": "\u6743\u9650\u8865\u4E01",
-  "sw.permission.desc": "\u8BA9\u5BBF\u4E3B\u4E0D\u518D\u7528\u6C99\u7BB1\u8FB9\u754C\u548C\u5BA1\u6279\u5F39\u7A97\u62E6\u5DE5\u5177\u8C03\u7528\u3002\u9ED8\u8BA4\u5F00\u3002",
-  "sw.permission.hint": "\u6539\u5199\u5BBF\u4E3B\u91CC\u7684\u6C99\u7BB1 / \u5BA1\u6279 / \u81EA\u52A8\u653E\u884C\u4EE3\u7801\uFF0C\u5171 14 \u6761\uFF1A#6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62\u3002\u5F00\u542F\u540E\u5FC5\u987B\u70B9\u300C\u5E94\u7528\u300D\u624D\u5199\u76D8\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\uFF1B\u9700\u8981\u4F60\u624B\u52A8\u9000\u51FA\u91CD\u5F00 DSH \u624D\u751F\u6548\u3002\u5173\u6389\u5B83\u4E0D\u4F1A\u7ACB\u523B\u56DE\u6EDA\u5DF2\u5199\u5165\u7684\u6587\u4EF6\uFF0C\u4E0B\u6B21\u300C\u5E94\u7528\u300D\u624D\u56DE\u6EDA\u3002",
-  "sw.context": "\u4E0A\u4E0B\u6587\u7BA1\u7406",
-  "sw.context.desc": "\u5173\u6389\u91CD\u590D\u8C03\u7528\u63D0\u9192\u4E0E\u5DE5\u5177\u7ED3\u679C\u4FEE\u526A\u3002\u9ED8\u8BA4\u5173\uFF0C\u5F00\u4E86 token \u4F1A\u6DA8\u3002",
-  "sw.context.hint": "\u5BF9\u5E94 #18 \u91CD\u590D\u8C03\u7528\u63D0\u9192\u3001#19 \u5DE5\u5177\u7ED3\u679C\u4FEE\u526A\u3002\u5173\u6389\u540E\u6A21\u578B\u4E0D\u518D\u6536\u5230\u91CD\u590D\u8C03\u7528\u63D0\u9192\uFF0C\u957F\u5DE5\u5177\u8F93\u51FA\u4E5F\u4E0D\u518D\u88AB\u88C1\u526A\u2014\u2014\u4EE3\u4EF7\u662F token \u6301\u7EED\u589E\u957F\uFF0C\u91CD\u5EA6\u4F1A\u8BDD\u66F4\u5BB9\u6613\u649E\u4E0A\u9650\u3002\u9ED8\u8BA4\u5173\u3002",
-  "sw.chip.pending": "{n} \u6761 \xB7 \u5F85\u5199\u5165",
-  "sw.chip.on": "{n} \u6761 \xB7 \u5DF2\u5199\u5165 {written} \xB7 \u5F85\u5199 {pending}",
-  "detail.title": "\u8865\u4E01\u660E\u7EC6",
-  "detail.reading": "\u8BFB\u53D6\u4E2D",
-  "detail.unknown": "\u72B6\u6001\u672A\u77E5",
-  "detail.unlocated": "\u672A\u5B9A\u4F4D\u5BBF\u4E3B",
-  "sw.chip.written": "\u5DF2\u5199\u5165 {n}",
-  "sw.chip.off": "{n} \u6761 \xB7 \u672A\u542F\u7528",
-  "sw.saving": "\u4FDD\u5B58\u4E2D\u2026",
-  "sw.saved": "\u5DF2\u4FDD\u5B58\uFF0C\u70B9\u300C\u5E94\u7528\u300D\u5199\u5165\u5BBF\u4E3B",
-  "sw.fail": "\u4FDD\u5B58\u5931\u8D25\uFF1A{error}",
-  "sw.applyHint": "\u5F00\u5173\u53EA\u6539\u63D2\u4EF6\u8BBE\u7F6E\uFF1B\u8981\u5199\u8FDB\u5BBF\u4E3B\uFF0C\u8FD8\u5F97\u70B9\u4E0A\u9762\u7684\u300C\u5E94\u7528\u300D\u518D\u9000\u51FA\u91CD\u5F00\u3002",
-  "steps.title": "\u5199\u5165\u6D41\u7A0B",
-  "steps.1.t": "\u70B9\u300C\u5E94\u7528\u300D",
-  "steps.1.d": "\u628A\u5F00\u5173\u5BF9\u5E94\u7684\u8865\u4E01\u5199\u8FDB\u5BBF\u4E3B\u6587\u4EF6\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\u3002",
-  "steps.2.t": "\u624B\u52A8\u9000\u51FA DSH",
-  "steps.2.d": "\u7531\u4F60\u81EA\u5DF1\u9000\u51FA\u5E76\u91CD\u65B0\u6253\u5F00\uFF0C\u672C\u63D2\u4EF6\u4E0D\u4F1A\u66FF\u4F60\u91CD\u542F\u3002",
-  "steps.3.t": "\u56DE\u6765\u6838\u5BF9",
-  "steps.3.d": "\u672C\u9875\u6570\u5B57\u5E94\u4E3A\u5168\u7EFF\uFF1B\u53C8\u51FA\u73B0\u5F85\u5E94\u7528\u8BF4\u660E\u5BBF\u4E3B\u5347\u7EA7\u8986\u76D6\u8FC7\uFF0C\u518D\u70B9\u4E00\u6B21\u3002",
-  "steps.foot": "\u300C\u672C\u7AEF\u4E0D\u9002\u7528\u300D\u4E0D\u8FDB\u5206\u6BCD\uFF0C\u4E5F\u4E0D\u8BA1\u5165\u4EFB\u4F55\u5931\u8D25\u8BA1\u6570\u3002",
-  "hint.applied": "\u951A\u70B9\u5DF2\u66FF\u6362\uFF0C\u91CD\u542F\u540E\u751F\u6548\u3002",
-  "hint.pending": "\u951A\u70B9\u8FD8\u5728\u539F\u6587\u91CC\uFF0C\u70B9\u300C\u5E94\u7528\u300D\u5199\u5165\u3002",
-  "hint.disabled": "\u5F52\u5C5E\u5F00\u5173\u5173\u95ED\uFF0C\u672A\u5199\u5165\u3002\u4E0D\u662F\u5931\u8D25\u3002",
-  "hint.na": "\u8FD9\u53F0\u5BBF\u4E3B\u6CA1\u6709\u5BF9\u5E94\u7EC4\u4EF6\u3002",
-  "hint.skipped": "\u76EE\u6807\u6587\u4EF6\u4E0D\u5728\u672C\u5B89\u88C5\u91CC\u3002",
-  "hint.missing_file": "\u76EE\u6807\u6587\u4EF6\u4E0D\u5728\u672C\u5B89\u88C5\u91CC\u3002",
-  "hint.drifted": "\u951A\u70B9\u6F02\u79FB\uFF1A\u5BBF\u4E3B\u6539\u8FC7\u8FD9\u6BB5\u4EE3\u7801\uFF0C\u9700\u8981\u66F4\u65B0\u8865\u4E01\u3002",
-  "hint.unmatched": "\u951A\u70B9\u6CA1\u5BF9\u4E0A\uFF1A\u5BBF\u4E3B\u7248\u672C\u4E0D\u5339\u914D\u3002",
-  "hint.partial": "\u90E8\u5206\u76EE\u6807\u6587\u4EF6\u547D\u4E2D\uFF0C\u53E6\u4E00\u4E2A\u5B58\u5728\u4F46\u6CA1\u5BF9\u4E0A\u3002",
-  "hint.off": "\u5DF2\u5173\u95ED\u3002",
-  "metric.unverifiedShort": "{n} \u9879\u672A\u6838\u5B9E",
-  "file.missing_file": "\u7F3A\u5C11\u9884\u8BBE\u6587\u4EF6",
-  "file.unreadable": "\u65E0\u6CD5\u8BFB\u53D6",
-  "file.unknown": "\u65E0\u6CD5\u9759\u6001\u6838\u5B9E",
-  "hint.unknown": "\u72B6\u6001\u672A\u77E5\u3002",
-  "status.applied": "\u5DF2\u5E94\u7528",
-  "status.off": "\u5DF2\u5173\u95ED",
-  "status.pending": "\u5F85\u5E94\u7528",
-  "status.unmatched": "\u6CA1\u5BF9\u4E0A",
-  "status.partial": "\u90E8\u5206\u547D\u4E2D",
-  "status.partialDetail": "\uFF08{done}/{total} \u76EE\u6807\uFF09",
-  "status.drifted": "\u951A\u70B9\u6F02\u79FB",
-  "status.disabled": "\u53EF\u9009\u5173\u95ED",
-  "status.skipped": "\u8DF3\u8FC7",
-  "apply.hint": "\u70B9\u5E94\u7528\u4F1A\u6253\u8865\u4E01\u5E76\u628A\u5F53\u524D\u9ED8\u8BA4\u63D0\u793A\u8BCD\u6302\u4E0A\uFF0C\u6846\u91CC\u4ECD\u662F\u63D2\u4EF6\u65E7\u9ED8\u8BA4\u65F6\u81EA\u52A8\u5237\u5230\u52A0\u5BC6\u69FD\uFF0C\u4E0D\u5FC5\u518D\u70B9\u4FDD\u5B58\u3002\u53EA\u6709\u4F60\u53E6\u5199\u7684\u7A3F\u624D\u4F1A\u6309\u6846\u843D\u76D8\u3002\u5F85\u5E94\u7528=\u539F\u6587\u8FD8\u5728\u3002\u8DF3\u8FC7=\u5F53\u524D\u7248\u672C\u4E0D\u9700\u8981\u6216\u7EC4\u4EF6\u672A\u5B89\u88C5\u3002",
-  "warn.noRoot": "\u672A\u5B9A\u4F4D\u5230\u5F53\u524D\u5BBF\u4E3B\u7684 @deepseek-ai\uFF0C\u6E05\u6D17\u4E0D\u4F1A\u751F\u6548\u3002\u8BF7\u5B8C\u5168\u9000\u51FA\u540E\u518D\u6253\u5F00\u672C\u5BBF\u4E3B\uFF0C\u5728\u672C\u9875\u70B9\u300C\u5E94\u7528\u300D\u3002\u684C\u9762\u7AEF\u5B89\u88C5\u76EE\u5F55\u53EF\u4EE5\u662F\u4EFB\u610F\u76D8\u7B26\uFF1B\u76EE\u5F55\u540D\u5E26 DeepseekHarness / DeepSeek Harness \u5747\u53EF\u3002",
-  "warn.noRoot.desktop": "\u5B98\u65B9\u5BA2\u6237\u7AEF\u7684\u4EE3\u7801\u5728 app.asar \u91CC\u3002\u70B9\u300C\u5E94\u7528\u300D\u4F1A\u89E3\u5F00\u5E76\u81EA\u52A8\u91CD\u542F\uFF0C\u4E0D\u7528\u53E6\u8DD1\u811A\u672C\u3002\u82E5\u4E00\u76F4\u663E\u793A\u8FD8\u6CA1\u5B9A\u4F4D\uFF0C\u5148\u5B8C\u5168\u9000\u51FA\u5BA2\u6237\u7AEF\u518D\u5F00\uFF0C\u518D\u70B9\u300C\u5E94\u7528\u300D\u3002\u7B2C\u4E09\u65B9 DSH Desktop \u76F4\u63A5\u70B9\u300C\u5E94\u7528\u300D\u3002",
-  "unpack.restarting": "\u8865\u4E01\u5DF2\u5199\u5165\u3002\u70B9\u300C\u91CD\u542F\u300D\u540E\u5BA2\u6237\u7AEF\u4F1A\u81EA\u5DF1\u91CD\u65B0\u6253\u5F00\u3002",
-  "restart.fullQuit": "\u6B63\u5728\u91CD\u542F\uFF0C\u5BA2\u6237\u7AEF\u4F1A\u81EA\u5DF1\u91CD\u65B0\u6253\u5F00\u3002",
-  "warn.noInject": "\u5B98\u65B9\u59CB\u7EC8\u7528\u9ED8\u8BA4\u63D0\u793A\u8BCD\u3002\u7EA2\u961F\u5F00\u4E86\u89C4\u5219\u96C6\u5C31\u53EA\u7528\u89C4\u5219\u96C6\uFF1B\u6CA1\u5F00\u65F6\u7528\u53BB\u6389 CTF \u7684\u9ED8\u8BA4\u63D0\u793A\u8BCD\uFF0C\u518D\u63A5\u7EA2\u961F\u64CD\u4F5C\u3002\u4E24\u8FB9\u90FD\u7A7A\u4F1A\u63D0\u793A\u5FC5\u987B\u6DFB\u52A0\u3002",
   "need.prompt": "\u63D0\u793A\u8BCD\u548C\u89C4\u5219\u96C6\u90FD\u662F\u7A7A\u7684\uFF0C\u5FC5\u987B\u5148\u6DFB\u52A0\u63D0\u793A\u8BCD\uFF0C\u6216\u542F\u7528\u4E00\u6761\u6709\u5185\u5BB9\u7684\u89C4\u5219\u96C6\u3002",
   "btn.restoreInject": "\u6062\u590D\u9ED8\u8BA4",
   "saved.restoreInject": "\u5DF2\u6062\u590D\u9ED8\u8BA4\u63D0\u793A\u8BCD",
-  skip: "\u8DF3\u8FC7",
-  unknown: "\u672A\u77E5",
-  delete: "\u5220\u9664",
-  "btn.apply": "\u5E94\u7528",
-  "btn.apply.busy": "\u5904\u7406\u4E2D\u2026",
-  "btn.revert": "\u8FD8\u539F",
-  "btn.uninstall": "\u5378\u8F7D",
-  "btn.uninstall.busy": "\u5378\u8F7D\u4E2D\u2026",
-  "uninstall.title": "\u5378\u8F7D dsh-purge",
-  "uninstall.body": "\u662F\u5426\u5378\u8F7D\uFF1F\u5378\u8F7D\u5C06\u8FD8\u539F\u56DE\u539F\u7248\uFF0C\u5E76\u6E05\u9664\u672C\u63D2\u4EF6\u7684\u5168\u90E8\u6587\u4EF6\u4E0E\u8865\u4E01\u3002",
-  "uninstall.confirm": "\u786E\u8BA4\u5378\u8F7D",
-  "uninstall.cancel": "\u53D6\u6D88",
+  "delete": "\u5220\u9664",
   "uninstall.applying": "\u6B63\u5728\u5378\u8F7D\u5E76\u8FD8\u539F\u2026",
-  "uninstall.done": "\u5DF2\u5378\u8F7D\u5E76\u8FD8\u539F\uFF0C\u6B63\u5728\u91CD\u542F\u2026",
-  "uninstall.done.desktop": "\u5DF2\u5378\u8F7D\u5E76\u8FD8\u539F\uFF0C\u6B63\u5728\u91CD\u542F\u684C\u9762\u5E94\u7528\u2026",
   "uninstall.fail": "\u5378\u8F7D\u5931\u8D25: {error}",
   "btn.checkUpdate": "\u68C0\u6D4B\u66F4\u65B0",
   "btn.checkUpdate.busy": "\u68C0\u6D4B\u4E2D\u2026",
   "btn.doUpdate": "\u66F4\u65B0",
   "btn.doUpdate.busy": "\u66F4\u65B0\u4E2D\u2026",
-  "channel.title": "\u901A\u9053",
-  "channel.stable": "\u6B63\u5F0F\u7248",
-  "channel.beta": "\u6D4B\u8BD5\u7248",
   "channel.useStable": "\u5207\u6362\u5230\u6B63\u5F0F\u7248",
   "channel.useBeta": "\u5207\u6362\u5230\u6D4B\u8BD5\u7248",
-  "channel.local": "\u672C\u673A",
   "update.checking": "\u6B63\u5728\u68C0\u6D4B\u66F4\u65B0\u2026",
   "update.applying": "\u6B63\u5728\u66F4\u65B0\u2026",
   "update.switching": "\u6B63\u5728\u5207\u6362\u7248\u672C\u2026",
@@ -9326,27 +9184,18 @@ var zh = {
   "update.pinned": "\u5DF2\u56FA\u5B9A\u5728 {version}\uFF0C\u901A\u9053\u6700\u65B0\u662F {remote}",
   "update.done": "\u5DF2\u66F4\u65B0\u5230 {version}",
   "update.restarting": "\u5DF2\u8FD8\u539F\u5E76\u5199\u5165\u65B0\u8865\u4E01\uFF0C\u6B63\u5728\u91CD\u542F\u2026",
-  "update.fullQuit": "\u8865\u4E01\u5DF2\u5199\u5165\u3002\u70B9\u300C\u91CD\u542F\u300D\u540E\u5BA2\u6237\u7AEF\u4F1A\u81EA\u5DF1\u91CD\u65B0\u6253\u5F00\u3002",
-  "restart.official.title": "\u9700\u8981\u91CD\u542F",
   "restart.official.body": "\u8865\u4E01\u5DF2\u5199\u5165\u3002\u70B9\u91CD\u542F\u540E\u5BA2\u6237\u7AEF\u4F1A\u81EA\u5DF1\u91CD\u65B0\u6253\u5F00\u3002",
   "update.switched": "\u5DF2\u5207\u6362\u5230 {version}",
-  "update.autoDone": "\u5DF2\u81EA\u52A8\u66F4\u65B0\u5230 {version}",
   "update.reloading": "\u6B63\u5728\u5237\u65B0\u8BBE\u7F6E\u9875\u2026",
-  "update.dirty": "\u6709\u65B0\u7248\u672C\uFF0C\u672C\u5730\u6709\u6539\u52A8\u672A\u81EA\u52A8\u8986\u76D6",
   "update.fail": "\u66F4\u65B0\u5931\u8D25: {error}",
   "update.timeout": "\u68C0\u6D4B\u8D85\u65F6\uFF0C\u8BF7\u518D\u70B9\u4E00\u6B21\u68C0\u6D4B\u66F4\u65B0",
   "update.needRestart": "\u68C0\u6D4B\u63A5\u53E3\u672A\u52A0\u8F7D\uFF0C\u8BF7\u5148\u91CD\u542F dsh \u518D\u70B9\u68C0\u6D4B\u66F4\u65B0",
   "update.noBeta": "\u8FD8\u6CA1\u6709\u6D4B\u8BD5\u7248",
   "update.switch": "\u5207\u6362\u5230\u6B64\u7248\u672C",
   "update.pick": "\u9009\u62E9\u7248\u672C",
-  "update.tip": "\u6700\u65B0",
   "update.current": "\u5F53\u524D",
   "update.confirmSwitch": "\u5207\u6362\u5230 {version}\uFF1F\u4E4B\u540E\u53EF\u518D\u5207\u56DE\u53E6\u4E00\u901A\u9053\u6216\u5176\u5B83\u7248\u672C\u3002\u672C\u5730\u672A\u63D0\u4EA4\u7684\u63D2\u4EF6\u6539\u52A8\u4E0D\u4F1A\u4FDD\u7559\u3002",
   "update.confirmChannel": "\u5207\u6362\u5230{version}\uFF1F\u4F1A\u6309\u8BE5\u901A\u9053\u91CD\u65B0\u5B89\u88C5\u63D2\u4EF6\uFF0C\u672C\u5730\u672A\u63D0\u4EA4\u7684\u63D2\u4EF6\u6539\u52A8\u4E0D\u4F1A\u4FDD\u7559\u3002",
-  "metric.version": "\u7248\u672C",
-  "action.apply": "\u5E94\u7528",
-  "action.revert": "\u8FD8\u539F",
-  "action.uninstall": "\u5378\u8F7D",
   "ok.done": "\u5DF2\u5B8C\u6210",
   "err.action": "\u5931\u8D25: {error}",
   "err.status": "\u8BFB\u53D6\u5931\u8D25: {error}",
@@ -9357,23 +9206,16 @@ var zh = {
   "btn.saveInject": "\u4FDD\u5B58",
   "saved.override": "\u5DF2\u4FDD\u5B58",
   "rules.title": "\u89C4\u5219\u96C6",
-  "rules.none": "\u65E0",
   "rules.reset": "\u8FD8\u539F",
   "rules.reset.confirm": "\u8FD8\u539F\u5168\u5C40\u6307\u4EE4\u6587\u4EF6\uFF1F\u89C4\u5219\u5E93\u4F1A\u4FDD\u7559\u3002",
   "rules.empty": "\u6682\u65E0\u89C4\u5219",
   "rules.pick": "\u9009\u62E9\u89C4\u5219",
   "policy.title": "\u5DE5\u4F5C\u533A\u7B56\u7565",
-  "policy.strict": "\u4E25\u683C",
-  "policy.fallback": "\u7A7A\u4F4D\u515C\u5E95",
-  "policy.always": "\u603B\u662F\u5141\u8BB8",
   "policy.hint": "\u4E25\u683C\uFF1A\u6C38\u8FDC\u5265 AGENTS.md / CLAUDE.md\uFF1B\u7A7A\u4F4D\u515C\u5E95\uFF1A\u63D0\u793A\u8BCD\u6846\u4E3A\u7A7A\u65F6\u624D\u7528\uFF1B\u603B\u662F\u5141\u8BB8\uFF1A\u4FDD\u7559 DSH \u539F\u751F\u884C\u4E3A",
   "cwd.title": "\u672C\u5730\u89C4\u5219\uFF08\u5F53\u524D\u76EE\u5F55\uFF09",
   "cwd.empty": "\u5F53\u524D\u76EE\u5F55\u6CA1\u6709 AGENTS.md / CLAUDE.md",
   "cwd.rescan": "\u91CD\u65B0\u626B\u63CF",
   "cwd.hint": "\u53EA\u6709\u63D0\u793A\u8BCD\u6846\u4E3A\u7A7A\u65F6\uFF0C\u88AB\u52FE\u9009\u7684\u672C\u5730\u6587\u4EF6\u624D\u4F5C\u4E3A\u515C\u5E95\u6CE8\u5165\uFF1B\u63D0\u793A\u8BCD\u6846\u4E00\u65E6\u975E\u7A7A\u5C31\u4E0D\u4F1A\u7528\u8FD9\u4E9B\u6587\u4EF6\u3002",
-  "cwd.scope.cwd": "\u5F53\u524D\u76EE\u5F55",
-  "cwd.scope.ancestor": "\u4E0A\u7EA7",
-  "cwd.scope.root": "\u9879\u76EE\u6839",
   "cwd.no.workspace": "DSH \u5C1A\u672A\u9009\u8FC7\u5DE5\u4F5C\u76EE\u5F55\uFF0C\u8BF7\u5148\u5728 DSH \u91CC\u5F00\u59CB\u4E00\u6B21\u4EFB\u52A1\u518D\u56DE\u6765\u3002",
   "pill.current": "\u5F53\u524D",
   "btn.use": "\u542F\u7528",
@@ -9384,11 +9226,9 @@ var zh = {
   "ph.alias.short": "\u540D\u79F0",
   "btn.create": "\u65B0\u5EFA",
   "need.id": "\u9700\u8981 id",
-  "ph.content": "",
   "btn.saveRule": "\u4FDD\u5B58",
   "skills.title": "Skill",
   "skills.hint": "\u5BFC\u5165\u5230\u5B98\u65B9\u76EE\u5F55\u540E\uFF0C\u7531 DSH \u8C03\u7528\uFF1A\u804A\u5929\u8F93\u5165 /\u540D\u79F0 \u7ACB\u5373\u52A0\u8F7D\uFF1B\u4EFB\u52A1\u5BF9\u4E0A description \u6216 whenToUse \u65F6\u6A21\u578B\u4F1A\u8C03 skill \u5DE5\u5177\u3002\u6B63\u6587\u5199\u300C\u6FC0\u6D3B\u300D\u4E0D\u4F1A\u89E6\u53D1\u3002",
-  "skills.hint.desktop": "\u5F53\u524D\u684C\u9762\u5BBF\u4E3B\u7684\u5B98\u65B9 Skill \u76EE\u5F55\u3002\u804A\u5929\u8F93\u5165 /\u540D\u79F0 \u7ACB\u5373\u52A0\u8F7D\uFF1B\u4EFB\u52A1\u5BF9\u4E0A description \u65F6\u6A21\u578B\u4F1A\u8C03 skill \u5DE5\u5177\u3002",
   "skills.empty": "\u6682\u65E0\u7528\u6237 Skill",
   "btn.importZip": "\u5BFC\u5165\u538B\u7F29\u5305",
   "btn.importFolder": "\u5BFC\u5165\u6587\u4EF6\u5939",
@@ -9404,167 +9244,19 @@ var zh = {
   "skills.call.userOff": "\u4E0D\u53EF /\u540D\u79F0",
   "ph.skill.desc": "description\uFF08\u4F55\u65F6\u7528\uFF09",
   "btn.saveSkill": "\u4FDD\u5B58",
-  "need.skill.id": "id \u5FC5\u987B\u662F kebab-case\uFF0C\u4F8B\u5982 code-review",
   "confirm.delete.skill": "\u4ECE\u5B98\u65B9 $DSH_HOME/skills \u5220\u9664 {id}\uFF1F\u5BBF\u4E3B\u4F1A\u81EA\u52A8\u4ECE\u76EE\u5F55\u62FF\u6389\u3002",
   "err.skills": "\u8BFB\u53D6\u5931\u8D25: {error}",
   "err.skills.needRestart": "Skill \u63A5\u53E3\u672A\u52A0\u8F7D\uFF0C\u8BF7\u5148\u91CD\u542F\u5F53\u524D\u5BBF\u4E3B",
-  "btn.restart": "\u91CD\u542F",
-  "btn.restart.busy": "\u91CD\u542F\u4E2D\u2026",
-  restarting: "\u91CD\u542F\u4E2D\u2026",
-  "restarting.desktop": "\u6B63\u5728\u91CD\u542F\u684C\u9762\u5E94\u7528\u2026",
   "restart.timeout": "\u8D85\u65F6\uFF0C\u8BF7\u5237\u65B0",
-  "restart.fail": "\u5931\u8D25: {error}",
-  "restart.notStarted": "\u91CD\u542F\u6CA1\u6709\u5F00\u59CB\uFF0C\u5BA2\u6237\u7AEF\u8FD8\u5728\u3002\u4E0D\u4F1A\u81EA\u52A8\u518D\u8BD5\u3002",
-  "restart.already": "\u8FD9\u4E00\u6B21\u91CD\u542F\u5DF2\u7ECF\u5F00\u59CB\uFF0C\u4E0D\u4F1A\u518D\u91CD\u542F\u4E00\u6B21\u3002",
-  "restart.confirm": "\u6E05\u6D17\u5DF2\u5B8C\u6210\uFF0C\u91CD\u542F\u540E\u751F\u6548\u3002",
-  "restart.confirm.desktop": "\u6E05\u6D17\u5DF2\u5B8C\u6210\uFF0C\u91CD\u542F\u684C\u9762\u5E94\u7528\u540E\u751F\u6548\u3002",
-  "restart.ask.title": "\u8981\u73B0\u5728\u91CD\u542F\u5417",
-  "restart.ask.body": "\u5DF2\u7ECF\u5199\u5165\u3002\u91CD\u542F\u540E\u624D\u4F1A\u5728\u5F53\u524D\u5BA2\u6237\u7AEF\u91CC\u751F\u6548\u3002",
-  "restart.now": "\u73B0\u5728\u91CD\u542F",
-  "restart.notNow": "\u7A0D\u540E",
-  "restart.asarSwap": "\u8865\u4E01\u5DF2\u5199\u5165\u78C1\u76D8\u3002\u6B63\u5728\u7ED3\u675F\u684C\u9762\u8FDB\u7A0B\u5E76\u632A\u5F00 app.asar\uFF0C\u5B8C\u6210\u540E\u4F1A\u81EA\u52A8\u91CD\u65B0\u6253\u5F00\uFF1B\u82E5\u4ECD\u65E0\u6548\uFF0C\u8BF7\u5148\u5B8C\u5168\u9000\u51FA Harness\uFF08\u6258\u76D8\u4E5F\u5173\uFF09\uFF0C\u518D\u70B9\u4E00\u6B21\u5E94\u7528\u3002",
-  "surface.web": "Web",
-  "surface.desktop": "\u684C\u9762\u7AEF",
-  "surface.gui": "GUI",
-  "surface.tui": "TUI",
   "restart.incomplete": "\u5E94\u7528\u672A\u5B8C\u6210\u3002{detail}",
-  "restart.incomplete.patches": "\u6709 {failed} \u9879\u5904\u7406\u5931\u8D25\uFF08#{ids}\uFF09\uFF0C\u8BF7\u67E5\u770B\u8865\u4E01\u660E\u7EC6",
-  "restart.incomplete.flash": "\u7EC8\u7AEF\u7A97\u53E3\u6291\u5236\u68C0\u67E5\u672A\u901A\u8FC7\uFF08{entry}\uFF09",
-  "restart.incomplete.host": "\u672A\u786E\u8BA4\u76EE\u6807\u5BBF\u4E3B\u5199\u5165\u5B8C\u6210\uFF0C\u8BF7\u6838\u5BF9\u5BA2\u6237\u7AEF\u3001\u5BBF\u4E3B\u7248\u672C\u548C\u76EE\u6807\u8DEF\u5F84",
-  "restart.incomplete.restore": "\u914D\u7F6E\u6062\u590D\u672A\u5B8C\u6210\uFF0C\u8BF7\u67E5\u770B\u8BCA\u65AD\u8BB0\u5F55",
-  "restart.incomplete.runtime": "CLI \u8FD0\u884C\u65F6\u68C0\u67E5\u6216\u4FEE\u590D\u5931\u8D25\uFF0C\u8BF7\u67E5\u770B\u8BCA\u65AD\u8BB0\u5F55",
-  "restart.incomplete.unknown": "\u5F53\u524D\u540E\u7AEF\u672A\u8FD4\u56DE\u5177\u4F53\u539F\u56E0\uFF0C\u8BF7\u67E5\u770B\u5BBF\u4E3B\u7248\u672C\u3001\u8865\u4E01\u660E\u7EC6\u548C\u8BCA\u65AD\u7ED3\u679C",
-  "restart.later": "\u4EE5\u540E",
-  "group.prompt": "\u63D0\u793A\u8BCD",
-  "group.code": "\u4EE3\u7801",
-  "group.engine": "\u5F15\u64CE",
-  "group.tools": "\u5DE5\u5177",
-  "group.compat": "0.1.5 \u517C\u5BB9",
-  "group.dsh20": "0.2.0",
-  "patch.1": "\u5168\u5C40\u514D\u8D23 \u2192 \u5F3A\u6307\u4EE4",
-  "patch.2": "\u66FF\u6362\u5F0F\u514D\u8D23 \u2192 \u5F3A\u6307\u4EE4",
-  "patch.3": "\u4F5C\u7528\u57DF\u514D\u8D23 \u2192 \u5F3A\u6307\u4EE4",
-  "patch.4": "persona \u4F1A\u8BDD\u5F3A\u6307\u4EE4",
-  "patch.5": "\u5BA1\u6279\u63D0\u793A\u53E5 \u2192 \u5168\u6743\u9650",
-  "patch.6": "\u6C99\u7BB1 deny \u2192 allow \u5199",
-  "patch.7": "\u6C99\u7BB1\u9ED8\u8BA4\u5168\u6743\u9650",
-  "patch.8": "\u5BA1\u6279\u9ED8\u8BA4 never",
-  "patch.9": "\u5BA1\u6279\u95E8\u81EA\u52A8\u653E\u884C",
-  "patch.10": "\u5BA1\u6279\u914D\u7F6E\u9ED8\u8BA4 never",
-  "patch.11": "never \u63D0\u793A\u53E5 \u2192 \u81EA\u52A8\u653E\u884C",
-  "patch.12": "ask \u63D0\u793A\u53E5 \u2192 \u81EA\u52A8\u653E\u884C",
-  "patch.13": "\u8C41\u514D\u5347\u7EA7\u9636\u68AF",
-  "patch.14": "\u5347\u7EA7\u65E0\u6761\u4EF6\u6388\u4FE1",
-  "patch.15": "\u6C99\u7BB1 confine \u76F4\u901A",
-  "patch.16": "\u6587\u4EF6\u7CFB\u7EDF\u56F4\u680F\u53D6\u6D88",
-  "patch.17": "\u89C2\u5BDF\u7B56\u7565\u8BFB\u5199\u653E\u884C",
-  "patch.18": "\u91CD\u590D\u8C03\u7528\u5B88\u536B\u7981\u7528",
-  "patch.19": "\u5DE5\u5177\u7ED3\u679C\u4FEE\u526A\u7981\u7528",
-  "patch.21": "\u6062\u590D\u63D2\u4EF6\u5EF6\u957F\u7684 bash \u7B49\u5F85",
-  "patch.22": "read \u4E0A\u9650\u653E\u5BBD",
-  "patch.23": "\u5B50\u4EE3\u7406\u6DF1\u5EA6 3 \u2192 10",
-  "patch.24": "preset fetch \u542F\u7528",
-  "patch.25": "\u53BB\u6389\u5B98\u65B9\u9ED8\u8BA4\u8EAB\u4EFD\uFF08\u529F\u80FD\u63D0\u793A\u8BCD\u4E0D\u52A8\uFF09",
-  "patch.26": "minimal\uFF1A\u53BB\u6389\u9ED8\u8BA4\u8EAB\u4EFD\u5E76\u6253\u5F00 inject",
-  "patch.28": "dsh-liangshen\uFF08\u6881\u795E\uFF09\uFF1Aphase-1 \u4FDD\u7559 dsh-purge / dshpg \u6BB5",
-  "patch.70": "\u6781\u7B80\u6A21\u5F0F\u7EC8\u7AEF\u4E0D\u518D\u7981\u6B62\u7F51\u7EDC",
-  "patch.71": "\u6881\u795E\u53BB\u6389\u5B98\u65B9\u8EAB\u4EFD\u53E5",
-  "patch.29": "dsh-tool-web\uFF1A\u5916\u90E8 untrusted \u62E6\u622A\u2192\u53EF\u6267\u884C",
-  "patch.30": "dsh-hooks-claude-code\uFF1Adeny\u2192allow",
-  "patch.31": "dsh-hooks-codex\uFF1Adeny\u2192allow",
-  "patch.32": "Web \u8868\u9762\u8EAB\u4EFD\u4E2D\u6027\u5316",
-  "patch.33": "Shell \u62D2\u7EDD\u63D0\u793A \u2192 \u53EF\u6267\u884C",
-  "patch.34": "\u6C99\u7BB1\u63D0\u793A\u4E2D\u6027\u5316",
-  "patch.35": "\u5347\u7EA7 never \u4E0D\u62D2",
-  "patch.36": "\u6587\u4EF6\u7CFB\u7EDF\u5347\u7EA7 schema \u653E\u884C",
-  "patch.37": "\u5B50\u4EE3\u7406 scope lock \u4E2D\u6027\u5316",
-  "patch.38": "persona text\u2192prefix\uFF080.1.2 \u9884\u8BBE\uFF09",
-  "patch.39": "\u4F1A\u8BDD v0 plugin summary\uFF08mnemon\uFF09",
-  "patch.40": "complete \u9884\u8BBE\u4ECD\u4FDD\u7559\u6CE8\u5165",
-  "patch.42": "\u8BBE\u7F6E\u9875\u65E7\u63A5\u53E3",
-  "patch.43": "\u7F51\u9875\u9884\u8BBE\u53BB\u6389\u9ED8\u8BA4\u8EAB\u4EFD",
-  "patch.45": "\u5B98\u65B9\u684C\u9762\u66F4\u65B0\u4EA4\u63A5",
-  "patch.46": "\u5B98\u65B9\u66F4\u65B0\u811A\u672C\u53EA\u7528\u82F1\u6587",
-  "patch.47": "OAuth \u4E0D\u518D\u63D2\u5165 Claude \u8EAB\u4EFD",
-  "patch.48": "shell \u53BB\u6389\u5220\u9664\u524D\u7684\u989D\u5916\u786E\u8BA4",
-  "patch.49": "OAuth \u4E0D\u518D\u4F2A\u88C5 claude-cli",
-  "patch.50": "\u8DE8\u4F1A\u8BDD\u5F15\u7528\u4E0D\u518D\u6807\u4E0D\u53EF\u4FE1",
-  "patch.51": "\u65B0\u4F1A\u8BDD\u4FDD\u6301\u5B8C\u5168\u6743\u9650",
-  "patch.52": "\u4F1A\u8BDD\u65E5\u5FD7\u9ED8\u8BA4\u4E0D\u4E0A\u4F20",
-  "patch.53": "\u7F51\u9875\u63D0\u793A\u53BB\u6389\u7981\u6B62\u53E6\u5F00\u670D\u52A1\u5668",
-  "patch.54": "\u4EA4\u4ED8\u7269\u63D0\u793A\u53BB\u6389\u591A\u4F59\u7981\u6B62",
-  "patch.55": "\u6BCF\u4E00\u6B65\u66FF\u6362\u7B2C\u4E00\u6761\u7CFB\u7EDF\u63D0\u793A",
-  "patch.56": "\u56DE\u9000\u53EA\u85CF\u88AB\u64A4\u6389\u7684\u90A3\u4E00\u8F6E",
-  "patch.57": "developer role \u4EC5\u9650 openai/azure\uFF0C\u7B2C\u4E09\u65B9\u4EE3\u7406\u56DE\u9000 system",
-  "patch.58": "\u56DE\u9000\u7A7A\u6807\u8BB0\u4E0D\u8FDB\u6A21\u578B\u8BF7\u6C42",
-  "patch.59": "\u5B98\u65B9 Auto Review \u4E0D\u518D\u62E6\u5DE5\u5177",
-  "patch.60": "\u5B98\u65B9 run_code \u53BB\u6389\u5BA1\u6279\u6559\u5B66",
-  "patch.61": "\u5B98\u65B9\u6C99\u7BB1\u7B56\u7565\u4E0D\u518D\u6559\u62D2\u7EDD",
-  "patch.62": "\u65E0\u5BA1\u6279\u901A\u9053\u65F6\u653E\u884C\uFF08\u7528\u6237\u62D2\u7EDD\u4ECD\u6709\u6548\uFF09",
-  "patch.63": "\u8BA1\u5212\u6A21\u5F0F\u4E0D\u518D\u8F6F\u62E6\u6267\u884C",
-  "patch.64": "Stop hook \u4E0D\u518D\u6CE8\u5165\u5047\u7528\u6237\u8BDD",
-  "patch.65": "UserPromptSubmit deny \u4E0D\u518D\u6574\u8F6E reject",
-  "patch.66": "\u7A7A\u7684\u7CFB\u7EDF\u6BB5\u4E0D\u518D\u628A\u8FD9\u4E00\u8F6E\u6253\u6210\u5185\u90E8\u9519\u8BEF",
-  "patch.67": "\u7F3A messages \u65F6\u8FD9\u4E00\u8F6E\u4E0D\u4E2D\u65AD",
-  "patch.68": "\u56DE\u9000\u540E\u7F3A content \u4E0D\u4E2D\u65AD",
-  "patch.69": "deepseek-flash \u4FDD\u6301\u5B98\u65B9 in-history",
-  "patch.72": "Messages \u7684 system \u7528\u5F53\u524D\u7CFB\u7EDF\u63D0\u793A",
-  "patch.73": "\u6781\u7B80 bash \u53BB\u6389\u8BEF\u7559\u7684\u955C\u50CF\u8BF4\u660E",
-  "patch.74": "\u9996\u53D1\u524D\u5148\u6302\u9ED8\u8BA4\u63D0\u793A\u8BCD",
-  "patch.75": "\u56DE\u9000\u628A\u5DF2\u5B8C\u6210\u4EFB\u52A1\u6536\u56DE\u6210\u672A\u5F00\u59CB",
-  "patch.76": "unrestricted \u9884\u8BBE\u53BB\u6389\u8EAB\u4EFD\u53E5",
-  "patch.77": "\u56DE\u9000\u6807\u8BB0\u5230\u8FBE\u65F6\u4E22\u5F03\u5DF2\u53D1\u9001\u6D88\u606F",
-  "patch.78": "\u8865\u4E01\u6587\u4EF6\u7F3A\u5931\u65F6\u4ECE .bak \u6062\u590D",
-  "patch.80": "\u6062\u590D\u5B98\u65B9\u6781\u7B80\u5DE5\u5177\u8868",
-  "patch.82": "\u4E3B\u8FDB\u7A0B\u515C\u5E95 DSH_PROFILE=desktop",
-  "patch.83": "host \u4FE1\u53F7\u6740\u65F6\u4E0D\u62A5\u9519\u4E0D\u5F39\u5BF9\u8BDD\u6846",
-  "patch.84": "host code=0 \u6B63\u5E38\u9000\u51FA\u4E0D\u62A5\u9519 (\u6D88\u9664 stopped \u5BF9\u8BDD\u6846)",
-  "status.unlocated": "\u672A\u5B9A\u4F4D",
-  "status.na": "\u672C\u7AEF\u4E0D\u9700\u8981",
-  "metric.unlocated": "\u8FD8\u6CA1\u5B9A\u4F4D\u5230\u672C\u673A Harness",
-  "metric.sealed": "\u5DF2\u627E\u5230\u5B98\u65B9\u5BA2\u6237\u7AEF\uFF0C\u70B9\u5E94\u7528\u89E3\u5F00",
-  "metric.sealed.count": "\u5F85\u89E3\u5F00",
-  "metric.lost": "\u8865\u4E01\u5DF2\u4E22\u5931\uFF0C\u8BF7\u91CD\u65B0\u5E94\u7528",
-  "metric.lost.count": "\u5DF2\u4E22\u5931",
   "rewind.settings": "\u4F1A\u8BDD\u5916\u89C2",
   "rewind.show": "\u663E\u793A\u8F93\u5165\u6846\u56DE\u9000\u6309\u94AE",
   "rewind.readAgain": "\u91CD\u65B0\u8BFB\u53D6",
-  "rewind.label": "\u56DE\u9000",
-  "rewind.aria": "\u56DE\u9000",
-  "rewind.busy": "\u56DE\u9000\u4E2D\u2026",
-  "rewind.empty": "\u6CA1\u6709\u53EF\u56DE\u9000\u7684\u4E0A\u4E00\u53E5",
-  "rewind.fail": "\u56DE\u9000\u5931\u8D25: {error}",
-  "rewind.once": "\u56DE\u9000\u4E00\u6B21",
-  "rewind.once.hint": "\u628A\u8FD9\u4E00\u8F6E\u53D1\u51FA\u53BB\u7684\u90A3\u53E5\u653E\u56DE\u8F93\u5165\u6846\uFF0C\u5E76\u6E05\u6389\u8FD9\u4E00\u8F6E",
-  "rewind.round": "\u56DE\u9000\u4E0A\u4E00\u8F6E",
-  "rewind.round.hint": "\u628A\u8FD9\u4E00\u8F6E\u53D1\u51FA\u53BB\u7684\u90A3\u53E5\u653E\u56DE\u8F93\u5165\u6846\uFF1B\u5B50\u4EE3\u7406\u4E5F\u53EA\u64A4\u8FD9\u4E00\u8F6E",
-  "hooksDeny.title": "Hooks \u62E6\u622A",
-  "hooksDeny.bypass": "\u653E\u884C hooks \u7684 deny / ask\uFF08\u8865\u4E01 30 / 31 / 64 / 65\uFF09",
-  "hooksDeny.hint": "\u5173\u6389\u540E\uFF0C\u7528\u6237\u81EA\u5DF1\u7684 PreToolUse / UserPromptSubmit / Stop hook \u7684 deny \u4F1A\u6309\u5B98\u65B9\u903B\u8F91\u751F\u6548\u3002\u5B98\u65B9 ask \u5206\u652F\u672C\u8EAB\u662F\u7A7A\u64CD\u4F5C\uFF0C\u5173\u5F00\u5173\u4E0D\u4F1A\u5F39\u51FA\u5BA1\u6279\u6846\u3002\u6539\u5B8C\u540E\u70B9\u300C\u5E94\u7528\u300D\u5E76\u91CD\u542F\u624D\u5199\u8FDB\u5BBF\u4E3B\u3002",
-  "saved.hooksDeny": "\u5DF2\u4FDD\u5B58",
-  "continue.title": "\u5931\u8D25\u91CD\u8BD5 / \u7EE7\u7EED",
-  "continue.hint": "\u8BF7\u6C42\u5931\u8D25\u4F1A\u81EA\u52A8\u91CD\u8BD5\uFF1B\u5F02\u5E38\u505C\u6B62\u6216\u4E2D\u65AD\u53EF\u70B9\u300C\u7EE7\u7EED\u300D\u6216\u81EA\u52A8\u7EED\u8DD1\u3002\u81EA\u5DF1\u70B9\u505C\u6B62\u4E0D\u4F1A\u81EA\u52A8\u7EE7\u7EED\u3002\u6B21\u6570\u7528\u5B8C\u540E\u9700\u65B0\u5F00\u4E00\u8F6E\u3002",
-  "continue.autoRetry": "\u5931\u8D25\u81EA\u52A8\u91CD\u8BD5",
-  "continue.retryMax": "\u91CD\u8BD5\u6B21\u6570",
-  "continue.autoContinue": "\u4E2D\u65AD\u540E\u81EA\u52A8\u7EE7\u7EED",
-  "continue.continueMax": "\u7EE7\u7EED\u6B21\u6570",
-  "continue.text": "\u7EE7\u7EED\u7528\u8BED",
-  "saved.continue": "\u5DF2\u4FDD\u5B58",
-  "continue.label": "\u7EE7\u7EED",
-  "continue.aria": "\u5F02\u5E38\u505C\u6B62\u540E\u7EE7\u7EED",
-  "continue.busy": "\u7EE7\u7EED\u4E2D\u2026",
-  "continue.ready": "\u7EE7\u7EED\uFF08\u8FD8\u53EF {left} \u6B21\uFF09",
-  "continue.limit": "\u5DF2\u8FBE\u7EE7\u7EED\u4E0A\u9650",
-  "continue.fail": "\u7EE7\u7EED\u5931\u8D25: {error}",
   "updch.open": "\u66F4\u65B0\u901A\u9053",
   "updch.title": "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5",
-  "updch.scope": "\u8FD9\u91CC\u7684\u4EE3\u7406\u4E0E\u5BC6\u94A5\u53EA\u4F5C\u7528\u4E8E\u672C\u63D2\u4EF6\u7684\u66F4\u65B0\u68C0\u67E5\u4E0E\u4E0B\u8F7D\u901A\u9053\uFF0C\u4E0D\u5F71\u54CD\u5176\u5B83\u6A21\u578B\u5382\u5546\u7684\u8BF7\u6C42\uFF0C\u4E5F\u4E0D\u5199\u5165\u5BBF\u4E3B\u8FDB\u7A0B\u73AF\u5883\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002",
   "updch.proxy": "\u4EE3\u7406\u5730\u5740",
   "updch.proxy.ph": "socks5://127.0.0.1:60808",
-  "updch.proxy.hint": "\u652F\u6301 http:// / https:// / socks5:// \u524D\u7F00\uFF0C\u4F8B\u5982 http://127.0.0.1:7890\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002",
   "updch.token": "GitHub \u5BC6\u94A5",
-  "updch.token.ph": "\u53EF\u9009\uFF1A\u63D0\u9AD8 GitHub API \u989D\u5EA6\uFF0C\u7559\u7A7A\u5219\u4E0D\u4FEE\u6539",
-  "updch.token.set": "\u672C\u673A\u5DF2\u914D\u7F6E\u5BC6\u94A5\u3002\u8F93\u5165\u6846\u59CB\u7EC8\u4E3A\u7A7A\uFF0C\u7559\u7A7A\u4FDD\u5B58\u8868\u793A\u4FDD\u6301\u4E0D\u53D8\u3002",
   "updch.token.unset": "\u672C\u673A\u5C1A\u672A\u914D\u7F6E\u5BC6\u94A5\u3002\u7559\u7A7A\u8868\u793A\u4E0D\u914D\u7F6E\u3002",
   "updch.token.clear": "\u6E05\u9664\u5DF2\u4FDD\u5B58\u7684\u5BC6\u94A5",
   "updch.save": "\u4FDD\u5B58",
@@ -9577,24 +9269,11 @@ var zh = {
   "updch.state.token.off": "\u672A\u914D\u7F6E GitHub \u5BC6\u94A5"
 };
 var en = {
-  nav: "Rules",
-  "dock.clean": "Clean",
-  "dock.drill": "Drill",
-  "dock.toggle": "dsh-purge",
-  "dock.newSession": "dsh-purge",
-  "dock.inSession": "dsh-purge",
-  "dock.redteam": "Red team",
-  "dock.full": "Full view",
-  "dock.close": "Collapse",
-  "dock.unauthorized": "Unauthorized",
   "welcome.title": "User notice",
   "welcome.lead": "Please read this on first install. After you confirm, it will not appear again.",
   "welcome.warn": "This plugin is free and open source. Anyone who sells, resells, or profits from it behind the author's back may face legal action.",
   "welcome.body": "dsh-purge is a local DeepSeek Harness plugin for security evaluation and cleaning: adjust prompts and patches on a machine you control, and use the drill console only within authorized scope. It is free and non-profit. Repository:",
   "welcome.repo": "https://github.com/YuJunZhiXue/dsh-purge",
-  "welcome.ban1": "Do not use this project for unauthorized attacks, intrusion, data theft, sabotage, or any illegal activity.",
-  "welcome.ban2": "Do not commercially sell, resell, or profit from gray-market use, or redistribute for profit without the author.",
-  "welcome.ban3": "You must follow local law and platform rules; illegal use is solely your responsibility.",
   "welcome.bans": "Prohibitions",
   "welcome.check": "I have read and understand this notice and will use the plugin lawfully.",
   "welcome.ok": "I understand \u2014 continue",
@@ -9604,9 +9283,6 @@ var en = {
   "auth.hint.wait": "Read the notice. You can check the boxes in {n}s.",
   "auth.hint.scroll": "Countdown finished. Scroll to the end, then check the boxes.",
   "auth.hint.check": "Countdown finished. Check all three boxes.",
-  "auth.check.read": "I have read the Safety and Anti-Abuse Notice and accept every clause.",
-  "auth.check.scope": "I will only use authorized local hosts, offline targets, or compliant exercises.",
-  "auth.check.ban": "I will not use this for any illegal purpose. Without this authorization the drill console stays closed.",
   "auth.no": "Not now",
   "auth.ok": "Authorize",
   "auth.ok.tab": "Authorize and open Drill",
@@ -9620,20 +9296,6 @@ var en = {
   "envGate.skipNo": "Back",
   "envGate.skipYes": "Continue without tools",
   "envGate.go": "Open Env adapt",
-  "compat.host": "dsh-purge Community {version} \xB7 host DSH {host} \xB7 compatibility: {level}",
-  "compat.loading": "Reading the host version\u2026",
-  "compat.unavailable": "Host compatibility is unavailable: {error}",
-  "compat.level.qualified": "regression verified",
-  "compat.level.unverified": "unverified version",
-  "compat.level.mixed": "mixed component versions",
-  "compat.level.sealed": "host archive located",
-  "compat.level.kernel-verified": "kernel verified, host unverified",
-  "compat.level.missing": "host not located",
-  "compat.level.no-host": "host not located",
-  "compat.level.unknown": "unknown",
-  "theme.aria": "Appearance",
-  "theme.white": "Light",
-  "theme.ink": "Ink",
   "purge.title": "Patches",
   "override.title": "Prompt",
   "own.title": "Own servers",
@@ -9641,131 +9303,19 @@ var en = {
   "own.save": "Save list",
   "saved.own": "Own servers saved",
   "saved.own.dropped": "Saved. {n} lines were not a single IP or hostname and were dropped",
-  "metric.purged": "Written",
-  "metric.purged.skip": "Written. Skipped {n}; those files are not on this install",
-  "metric.pendingShort": "Pending {n}",
-  "metric.unmatchedShort": "No match {n}",
-  "metric.partialShort": "Partial {n}",
-  "metric.driftedShort": "Drifted {n}",
-  "metric.disabledShort": "Opt-in off {n}",
-  "metric.skipShort": "Skipped {n}",
-  "metric.naShort": "Not for this host {n}",
-  "metric.unlocated.count": "\u2014",
-  "metric.shim": "shim",
-  "metric.shim.na": "Not needed here",
-  "metric.bak.yes": "Backup",
-  "metric.bak.no": "No backup",
-  "metric.bak.hint": "Backup",
-  "table.patch": "Item",
-  "table.status": "Status",
-  "health.applied": "Applied",
   "status.title": "Purge status",
-  "scan.recent": "Scanned {time} \xB7 click to refresh",
-  "scan.hint": "Click to rescan the host",
-  "health.pending": "Pending",
-  "health.off": "Not enabled",
-  "health.na": "Not for this host",
-  "health.denomUnit": "patches written to the host",
-  "health.hint.applied": "Anchors replaced; effective after a restart.",
-  "health.hint.pending": "Switch is on but nothing is written yet. Apply to write; a backup is taken first.",
-  "health.hint.off": "Its switch is off, so nothing was written. Not a failure.",
-  "health.hint.na": "This host has no such component or file. Excluded from the denominator; zero work.",
-  "health.verdict.pending": "{n} enabled but not written yet",
-  "evidence.summary": "Group summary only",
-  "evidence.unknown": "Cannot verify",
-  "health.verdict.ok": "All host patches in place",
-  "groups.unreadable": "Read failed; patch detail is unavailable. Refresh to retry.",
-  "filter.all": "All",
-  "filter.pending": "Pending",
-  "filter.off": "Not enabled",
-  "filter.na": "Not for this host",
-  "filter.hint": "Open a group for rows; hover a status for the reason",
-  "filter.empty": "No patches match this filter.",
-  "sw.permission": "Permission patches",
-  "sw.permission.desc": "Stop the host from blocking tool calls behind sandbox and approval gates. On by default.",
-  "sw.permission.hint": "Rewrites the host sandbox / approval / auto-grant code: 14 patches (#6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62). Nothing is written until you press Apply, and a backup is taken first; you must quit and reopen DSH yourself. Turning it off does not roll back what is already written; the next Apply does.",
-  "sw.context": "Context management",
-  "sw.context.desc": "Turn off the repeat-call reminder and tool-result pruning. Off by default; tokens grow when on.",
-  "sw.context.hint": "#18 repeat-tool reminder and #19 tool-result pruner. With them off the model no longer gets repeat-call reminders and long tool output is kept in full; the cost is steady token growth. Off by default.",
-  "sw.chip.pending": "{n} patches \xB7 to write",
-  "sw.chip.on": "{n} patches \xB7 {written} written \xB7 {pending} to write",
-  "detail.title": "Patch detail",
-  "detail.reading": "Reading",
-  "detail.unknown": "Unknown",
-  "detail.unlocated": "Host not located",
-  "sw.chip.written": "{n} written",
-  "sw.chip.off": "{n} patches \xB7 not enabled",
-  "sw.saving": "Saving\u2026",
-  "sw.saved": "Saved. Press Apply to write to the host",
-  "sw.fail": "Save failed: {error}",
-  "sw.applyHint": "The switch only changes the plugin setting. Press Apply above and restart to reach the host.",
-  "steps.title": "Write flow",
-  "steps.1.t": "Press Apply",
-  "steps.1.d": "Writes the selected patches into host files, with a backup first.",
-  "steps.2.t": "Quit DSH yourself",
-  "steps.2.d": "You close and reopen it; this plugin never restarts the app.",
-  "steps.3.t": "Come back and check",
-  "steps.3.d": "Everything should be green. Pending again means a host upgrade overwrote it; apply once more.",
-  "steps.foot": '"Not for this host" is excluded from the denominator and from every failure count.',
-  "hint.applied": "Anchors replaced; effective after restart.",
-  "hint.pending": "Anchor still present; press Apply to write.",
-  "hint.disabled": "Its group switch is off; nothing written.",
-  "hint.na": "This host has no such component.",
-  "hint.skipped": "Target file is not part of this install.",
-  "hint.missing_file": "Target file is not part of this install.",
-  "hint.drifted": "Drifted: the host changed this code; the patch needs an update.",
-  "hint.unmatched": "No match: host version mismatch.",
-  "hint.partial": "Some targets matched, another existed but did not match.",
-  "hint.off": "Off.",
-  "metric.unverifiedShort": "{n} unverified",
-  "file.missing_file": "Missing preset file",
-  "file.unreadable": "Unreadable",
-  "file.unknown": "Cannot verify statically",
-  "hint.unknown": "Unknown state.",
-  "status.applied": "Applied",
-  "status.off": "Off",
-  "status.pending": "Pending",
-  "status.unmatched": "No match",
-  "status.partial": "Partial",
-  "status.partialDetail": " ({done}/{total} targets)",
-  "status.drifted": "Drifted",
-  "status.disabled": "Opt-in off",
-  "status.skipped": "Skipped",
-  "apply.hint": "Apply writes patches and hangs the current default prompt. A stale plugin default in the box is refreshed from the sealed slot; a separate save is unnecessary. Only a prompt you wrote yourself is kept from the box. Pending = original text still present. Skipped = not needed for this version or the component is not installed.",
-  "warn.noRoot": "Could not find this host\u2019s @deepseek-ai tree, so Apply will not patch anything. Fully quit and reopen this host, then Apply here. Desktop may live on any drive; folder names like DeepseekHarnessDesktop or DeepSeek Harness are fine.",
-  "warn.noRoot.desktop": "Official Harness keeps its code in app.asar. Apply unpacks it and restarts the app. If this page stays \u201Cnot found\u201D, fully quit the client, reopen it, then Apply again. Third-party DSH Desktop: just Apply.",
-  "unpack.restarting": "Patches are written. Click Restart and the client opens again by itself.",
-  "restart.fullQuit": "Restarting. The client will open again by itself.",
-  "warn.noInject": "Official mode always uses the default prompt. Red team uses only the active rule set; otherwise it uses the default prompt without the CTF section, then the red team steps. If both are empty you will be asked to add a prompt.",
   "need.prompt": "Both the prompt and the rule set are empty. Add a prompt, or enable a rule that has content.",
   "btn.restoreInject": "Reset default",
   "saved.restoreInject": "Default prompt restored",
-  skip: "Skipped",
-  unknown: "Unknown",
-  delete: "Delete",
-  "btn.apply": "Apply",
-  "btn.apply.busy": "Working\u2026",
-  "btn.revert": "Restore",
-  "btn.uninstall": "Uninstall",
-  "btn.uninstall.busy": "Uninstalling\u2026",
-  "uninstall.title": "Uninstall dsh-purge",
-  "uninstall.body": "Uninstall? This restores the original Harness and removes this plugin completely.",
-  "uninstall.confirm": "Uninstall",
-  "uninstall.cancel": "Cancel",
+  "delete": "Delete",
   "uninstall.applying": "Uninstalling and restoring\u2026",
-  "uninstall.done": "Uninstalled and restored. Restarting\u2026",
-  "uninstall.done.desktop": "Uninstalled and restored. Restarting the desktop app\u2026",
   "uninstall.fail": "Uninstall failed: {error}",
   "btn.checkUpdate": "Check update",
   "btn.checkUpdate.busy": "Checking\u2026",
   "btn.doUpdate": "Update",
   "btn.doUpdate.busy": "Updating\u2026",
-  "channel.title": "Channel",
-  "channel.stable": "Stable",
-  "channel.beta": "Beta",
   "channel.useStable": "Switch to stable",
   "channel.useBeta": "Switch to beta",
-  "channel.local": "This copy",
   "update.checking": "Checking for updates\u2026",
   "update.applying": "Updating\u2026",
   "update.switching": "Switching version\u2026",
@@ -9774,27 +9324,18 @@ var en = {
   "update.pinned": "Pinned at {version}; channel latest is {remote}",
   "update.done": "Updated to {version}.",
   "update.restarting": "Restored the old patches, wrote the new ones, and restarting\u2026",
-  "update.fullQuit": "Patches are written. Click Restart and the client opens again by itself.",
-  "restart.official.title": "Restart required",
   "restart.official.body": "Patches are written. Click Restart and the client opens again by itself.",
   "update.switched": "Switched to {version}.",
-  "update.autoDone": "Auto-updated to {version}.",
   "update.reloading": "Refreshing settings\u2026",
-  "update.dirty": "Update available; local edits were not overwritten.",
   "update.fail": "Update failed: {error}",
   "update.timeout": "Check timed out. Click Check update again.",
   "update.needRestart": "Update API is not loaded. Restart dsh, then check again.",
   "update.noBeta": "No beta build yet",
   "update.switch": "Switch to this version",
   "update.pick": "Select version",
-  "update.tip": "latest",
   "update.current": "current",
   "update.confirmSwitch": "Switch to {version}? You can switch back later. Uncommitted plugin edits will not be kept.",
   "update.confirmChannel": "Switch to {version}? The plugin will be reinstalled from that channel. Uncommitted plugin edits will not be kept.",
-  "metric.version": "Version",
-  "action.apply": "Apply",
-  "action.revert": "Restore",
-  "action.uninstall": "Uninstall",
   "ok.done": "Done",
   "err.action": "Failed: {error}",
   "err.status": "Read failed: {error}",
@@ -9805,23 +9346,16 @@ var en = {
   "btn.saveInject": "Save",
   "saved.override": "Saved",
   "rules.title": "Rule sets",
-  "rules.none": "None",
   "rules.reset": "Restore",
   "rules.reset.confirm": "Restore global instruction files? The rule library is kept.",
   "rules.empty": "No rules",
   "rules.pick": "Select a rule",
   "policy.title": "Workspace policy",
-  "policy.strict": "Strict",
-  "policy.fallback": "Fallback",
-  "policy.always": "Always on",
   "policy.hint": "Strict: always strip AGENTS.md / CLAUDE.md. Fallback: use workspace files only when the prompt box is empty. Always on: keep DSH default behavior.",
   "cwd.title": "Local rules (current folder)",
   "cwd.empty": "No AGENTS.md / CLAUDE.md in this folder",
   "cwd.rescan": "Rescan",
   "cwd.hint": "Checked files are injected only when the prompt box is empty. A non-empty prompt box always wins.",
-  "cwd.scope.cwd": "cwd",
-  "cwd.scope.ancestor": "ancestor",
-  "cwd.scope.root": "project root",
   "cwd.no.workspace": "DSH has not opened a workspace yet. Start a task in DSH first, then come back.",
   "pill.current": "On",
   "btn.use": "Enable",
@@ -9832,11 +9366,9 @@ var en = {
   "ph.alias.short": "Name",
   "btn.create": "New",
   "need.id": "id required",
-  "ph.content": "",
   "btn.saveRule": "Save",
   "skills.title": "Skills",
   "skills.hint": "After import, DSH calls it: type /name in chat to load now; the model calls the skill tool when the task matches description or whenToUse. Writing\u300C\u6FC0\u6D3B\u300Din the body does nothing.",
-  "skills.hint.desktop": "This desktop host\u2019s official skill catalog. Type /name in chat to load; the model calls the skill tool when the task matches the description.",
   "skills.empty": "No user skills",
   "btn.importZip": "Import zip",
   "btn.importFolder": "Import folder",
@@ -9852,167 +9384,19 @@ var en = {
   "skills.call.userOff": "/name disabled",
   "ph.skill.desc": "description (when to use)",
   "btn.saveSkill": "Save",
-  "need.skill.id": "id must be kebab-case, e.g. code-review",
   "confirm.delete.skill": "Delete {id} from official $DSH_HOME/skills? The host will drop it from the catalog.",
   "err.skills": "Read failed: {error}",
   "err.skills.needRestart": "Skill API is not loaded. Restart this host first.",
-  "btn.restart": "Restart",
-  "btn.restart.busy": "Restarting\u2026",
-  restarting: "Restarting\u2026",
-  "restarting.desktop": "Restarting the desktop app\u2026",
   "restart.timeout": "Timed out; refresh",
-  "restart.fail": "Failed: {error}",
-  "restart.notStarted": "Restart did not start. This client is still open, and it will not try again by itself.",
-  "restart.already": "This restart already started. It will not restart again.",
-  "restart.confirm": "Apply finished. Restart to take effect.",
-  "restart.confirm.desktop": "Apply finished. Restart the desktop app to take effect.",
-  "restart.ask.title": "Restart now?",
-  "restart.ask.body": "It is written. It takes effect in this client after a restart.",
-  "restart.now": "Restart now",
-  "restart.notNow": "Later",
-  "restart.asarSwap": "Patches are on disk. Quitting the desktop app and moving app.asar aside; it will reopen when done. If behavior is unchanged, fully quit Harness (including tray) and Apply again.",
-  "surface.web": "Web",
-  "surface.desktop": "Desktop",
-  "surface.gui": "GUI",
-  "surface.tui": "TUI",
   "restart.incomplete": "Apply did not complete. {detail}",
-  "restart.incomplete.patches": "{failed} item(s) failed (#{ids}); inspect the item details",
-  "restart.incomplete.flash": "Console-window suppression check failed ({entry})",
-  "restart.incomplete.host": "Target host writes are not confirmed; check the client, host version and target path",
-  "restart.incomplete.restore": "Configuration restoration did not complete; inspect diagnostics",
-  "restart.incomplete.runtime": "CLI runtime check or repair failed; inspect diagnostics",
-  "restart.incomplete.unknown": "The backend did not provide a specific cause; inspect the host version, item details and diagnostics",
-  "restart.later": "Later",
-  "group.prompt": "Prompt",
-  "group.code": "Code",
-  "group.engine": "Engine",
-  "group.tools": "Tools",
-  "group.compat": "0.1.5 compat",
-  "group.dsh20": "0.2.0",
-  "patch.1": "Global disclaimer \u2192 mandate",
-  "patch.2": "Replacement disclaimer \u2192 mandate",
-  "patch.3": "Scope disclaimer \u2192 mandate",
-  "patch.4": "Persona session mandate",
-  "patch.5": "Approval copy \u2192 full access",
-  "patch.6": "Sandbox deny \u2192 allow write",
-  "patch.7": "Sandbox default full access",
-  "patch.8": "Approval default never",
-  "patch.9": "Approval gate auto-grant",
-  "patch.10": "Approval config default never",
-  "patch.11": "never copy \u2192 auto-grant",
-  "patch.12": "ask copy \u2192 auto-grant",
-  "patch.13": "Escalation ladder exempt",
-  "patch.14": "Escalation unconditional grant",
-  "patch.15": "Sandbox confine passthrough",
-  "patch.16": "Filesystem fence off",
-  "patch.17": "Observation policy allow R/W",
-  "patch.18": "Repeat-call guard off",
-  "patch.19": "Tool-result pruner off",
-  "patch.21": "Restore plugin-raised bash wait",
-  "patch.22": "read cap raised",
-  "patch.23": "subagent depth 3 \u2192 10",
-  "patch.24": "preset fetch on",
-  "patch.25": "Strip official default identity (keep feature prompts)",
-  "patch.26": "minimal: strip identity, open inject",
-  "patch.28": "dsh-liangshen: keep dsh-purge / dshpg in phase-1",
-  "patch.70": "Minimal shell drops the no-network line",
-  "patch.71": "Liangshen drops the stock identity line",
-  "patch.29": "dsh-tool-web: untrusted framing \u2192 usable data",
-  "patch.30": "dsh-hooks-claude-code: deny\u2192allow",
-  "patch.31": "dsh-hooks-codex: deny\u2192allow",
-  "patch.32": "Web surface identity neutral",
-  "patch.33": "Shell denial prompt \u2192 executable",
-  "patch.34": "Sandbox hint neutralized",
-  "patch.35": "Escalation never-reject",
-  "patch.36": "FS escalation schema opened",
-  "patch.37": "Subagent scope lock neutralized",
-  "patch.38": "persona text\u2192prefix (0.1.2 presets)",
-  "patch.39": "session v0 plugin summary (mnemon)",
-  "patch.40": "Keep inject when a complete prompt is set",
-  "patch.42": "Settings legacy API",
-  "patch.43": "Strip identity from web presets",
-  "patch.45": "Official desktop update handoff",
-  "patch.46": "Official update script stays ASCII",
-  "patch.47": "OAuth no longer inserts Claude identity",
-  "patch.48": "Shell drops extra delete caution",
-  "patch.49": "OAuth no longer mimics claude-cli",
-  "patch.50": "Session references are not marked untrusted",
-  "patch.51": "Fresh session stays on full access",
-  "patch.52": "Session log upload off by default",
-  "patch.53": "Web prompt drops do-not-start",
-  "patch.54": "Deliverable prompt drops extra prohibition",
-  "patch.55": "Replace the first system prompt every step",
-  "patch.56": "Rewind hides only the cut range",
-  "patch.57": "developer role for openai/azure only, third-party gateways use system",
-  "patch.58": "Rewind markers stay off the model request",
-  "patch.59": "Official Auto Review no longer denies tools",
-  "patch.60": "Official run_code drops approval teaching",
-  "patch.61": "Official sandbox policy no longer teaches refusal",
-  "patch.62": "Fail-open without approval channel (user reject kept)",
-  "patch.63": "Plan mode no longer soft-blocks execution",
-  "patch.64": "Stop hook no longer steers fake user text",
-  "patch.65": "UserPromptSubmit deny no longer rejects turn",
-  "patch.66": "Empty system section no longer ends the turn as an internal error",
-  "patch.67": "A missing messages list no longer ends the turn",
-  "patch.68": "Missing content after rewind no longer ends the turn",
-  "patch.69": "deepseek-flash keeps the official in-history flag",
-  "patch.72": "Messages system field uses the current system prompt",
-  "patch.73": "Minimal preset drops stray mirror sentence",
-  "patch.74": "Hang default prompt before first assemble",
-  "patch.75": "Rewind resets completed todos to pending",
-  "patch.76": "Unrestricted preset: strip identity sentence",
-  "patch.77": "Rewind marker drops already-sent messages",
-  "patch.78": "Restore missing overlay from .bak backup",
-  "patch.80": "Restore official minimal tool plugins",
-  "patch.82": "Fallback DSH_PROFILE=desktop in main process",
-  "patch.83": "Don't fail on signal kill (no crash dialog)",
-  "patch.84": "Don't fail on code=0 clean exit (no stopped dialog)",
-  "status.na": "Not for this host",
-  "metric.sealed": "Official client found. Apply to unpack",
-  "metric.sealed.count": "Sealed",
-  "metric.lost": "Patches lost \u2014 Apply again",
-  "metric.lost.count": "Lost",
-  "status.unlocated": "Not located",
-  "metric.unlocated": "This install was not found yet",
   "rewind.settings": "Conversation appearance",
   "rewind.show": "Show the rewind button in the composer",
   "rewind.readAgain": "Try again",
-  "rewind.label": "Undo",
-  "rewind.aria": "Undo",
-  "rewind.busy": "Undoing\u2026",
-  "rewind.empty": "Nothing to undo",
-  "rewind.fail": "Undo failed: {error}",
-  "rewind.once": "Undo once",
-  "rewind.once.hint": "Put this round's message back in the box and drop only this round",
-  "rewind.round": "Undo last round",
-  "rewind.round.hint": "Put this round's message back in the box; subagents drop only this round",
-  "hooksDeny.title": "Hook interception",
-  "hooksDeny.bypass": "Bypass hook deny / ask (patches 30 / 31 / 64 / 65)",
-  "hooksDeny.hint": "When off, your own PreToolUse / UserPromptSubmit / Stop hook deny runs as the official host wrote it. The official ask branch is a no-op; turning this off will not show an approval dialog. Click Apply and restart to write the host files.",
-  "saved.hooksDeny": "Saved",
-  "continue.title": "Retry / Continue",
-  "continue.hint": "Failed requests auto-retry. After an abnormal stop or interrupt, use Continue or auto-resume. A manual stop never auto-continues. Counts reset after a completed turn.",
-  "continue.autoRetry": "Auto-retry on failure",
-  "continue.retryMax": "Retry count",
-  "continue.autoContinue": "Auto-continue after interrupt",
-  "continue.continueMax": "Continue count",
-  "continue.text": "Continue text",
-  "saved.continue": "Saved",
-  "continue.label": "Continue",
-  "continue.aria": "Continue after an abnormal stop",
-  "continue.busy": "Continuing\u2026",
-  "continue.ready": "Continue ({left} left)",
-  "continue.limit": "Continue limit reached",
-  "continue.fail": "Continue failed: {error}",
   "updch.open": "Update channel",
   "updch.title": "Update channel: proxy and GitHub token",
-  "updch.scope": "These settings apply only to this plugin's update check and download channel. They do not affect requests to any model provider and are never written into the host process environment. Leave blank to inherit the existing update proxy environment.",
   "updch.proxy": "Proxy URL",
   "updch.proxy.ph": "socks5://127.0.0.1:60808",
-  "updch.proxy.hint": "Accepts http://, https:// and socks5:// prefixes, e.g. http://127.0.0.1:7890. Leave blank to inherit the existing update proxy environment.",
   "updch.token": "GitHub token",
-  "updch.token.ph": "Optional: raises the GitHub API quota. Leave blank to keep it unchanged",
-  "updch.token.set": "A token is configured on this machine. The field always starts empty; saving it empty keeps the current token.",
   "updch.token.unset": "No token is configured on this machine. Leaving it blank keeps it unset.",
   "updch.token.clear": "Clear the saved token",
   "updch.save": "Save",
@@ -10292,639 +9676,6 @@ function RewindSetting() {
   );
 }
 
-// ../../lib/patch-state.mjs
-function patchNotApplicable(patch, status) {
-  return status === "na" || status === "off" || status === "disabled" || status === "not_needed" && patch?.id === 76 || status === "missing_file" && patch?.optional === true || status === "skipped" && patch?.settleWhenAbsent === true;
-}
-function patchStateCategory(patch, status) {
-  if (patchNotApplicable(patch, status)) return "inactive";
-  if (status === "applied" || status === "already") return "applied";
-  if (status === "pending") return "pending";
-  if (!status || ["unknown", "unreadable", "unlocated"].includes(status)) return "unknown";
-  return "broken";
-}
-function summarizePatchRows(rows) {
-  const out = {
-    all: 0,
-    total: 0,
-    applied: 0,
-    pending: 0,
-    broken: 0,
-    unknown: 0,
-    not_applicable: 0,
-    partial: 0,
-    missing_file: 0,
-    skipped: 0,
-    na: 0,
-    off: 0,
-    disabled: 0,
-    unmatched: 0,
-    drifted: 0
-  };
-  for (const row of rows || []) {
-    const status = row.status ?? row.st;
-    const category = patchStateCategory(row, status);
-    out.all++;
-    if (["partial", "missing_file", "skipped", "na", "off", "disabled", "unmatched", "drifted"].includes(status))
-      out[status]++;
-    if (category === "inactive") out.not_applicable++;
-    else {
-      out.total++;
-      out[category]++;
-    }
-  }
-  return out;
-}
-
-// src/components/patch-status.js
-function statusKind(st) {
-  if (st === "applied" || st === "already") return "ok";
-  if (st === "pending") return "wait";
-  if (st === "unmatched") return "bad";
-  if (st === "partial") return "bad";
-  if (st === "drifted") return "bad";
-  if (st === "disabled") return "muted";
-  if (st === "na") return "ok";
-  if (st === "missing_file" || st === "skipped" || st === "unlocated" || st === "off")
-    return "miss";
-  return "bad";
-}
-function statusLabel(st, t) {
-  if (st === "applied" || st === "already") return t("status.applied");
-  if (st === "off") return t("status.skipped");
-  if (st === "pending") return t("status.pending");
-  if (st === "unmatched") return t("status.unmatched");
-  if (st === "partial") return t("status.partial");
-  if (st === "drifted") return t("status.drifted");
-  if (st === "disabled") return t("status.disabled");
-  if (st === "skipped") return t("health.na");
-  if (st === "missing_file") return t("file.missing_file");
-  if (st === "unknown" || st === "unreadable") return t("file." + st);
-  if (st === "unlocated") return t("status.unlocated");
-  if (st === "na") return t("health.na");
-  return st || t("unknown");
-}
-var LAYER_GROUP = {
-  \u63D0\u793A\u8BCD: "prompt",
-  \u4EE3\u7801: "code",
-  \u5DE5\u5177: "tools",
-  "0.1.5 \u517C\u5BB9": "compat",
-  "0.2.0 \u517C\u5BB9": "dsh20"
-};
-var GROUP_ORDER = ["prompt", "code", "tools", "compat", "dsh20"];
-var PERMISSION_PATCH_IDS = [
-  6,
-  7,
-  8,
-  9,
-  10,
-  13,
-  14,
-  15,
-  16,
-  35,
-  51,
-  59,
-  60,
-  62
-];
-var CONTEXT_PATCH_IDS = [18, 19];
-var PERMISSION_SET = new Set(PERMISSION_PATCH_IDS);
-var CONTEXT_SET = new Set(CONTEXT_PATCH_IDS);
-function patchGroupOf(id) {
-  const n = Number(id);
-  if (PERMISSION_SET.has(n)) return "permission";
-  if (CONTEXT_SET.has(n)) return "context";
-  return "normal";
-}
-function patchEvidence(state) {
-  const empty = { kind: "unknown", rows: [], groups: [] };
-  if (!state?.ai_base || state.ok === false) return empty;
-  const validId = (id) => (typeof id === "number" || typeof id === "string" && /^\d+$/.test(id)) && Number.isSafeInteger(Number(id)) && Number(id) >= 0;
-  const status = (st) => typeof st === "string" && st ? st : "unknown";
-  const rows = Array.isArray(state.patch_rows) ? state.patch_rows : [];
-  const map = state.patch_status;
-  const source = rows.length ? rows : map && typeof map === "object" && !Array.isArray(map) ? Object.entries(map).map(([id, st]) => ({
-    id,
-    status: st,
-    name: state.patch_names?.[id]
-  })) : [];
-  if (source.length && source.every((p) => validId(p?.id)) && new Set(source.map((p) => Number(p.id))).size === source.length)
-    return {
-      kind: "detail",
-      groups: [],
-      rows: source.map((p) => ({
-        id: Number(p.id),
-        st: status(p.status),
-        layer: p.layer || "",
-        name: p.name || "",
-        optional: p.optional === true,
-        settleWhenAbsent: p.settleWhenAbsent === true
-      }))
-    };
-  const groups = Array.isArray(state.patches) ? state.patches.filter(
-    (p) => p && typeof p === "object" && !Array.isArray(p)
-  ) : [];
-  return groups.length ? { kind: "summary", rows: [], groups } : empty;
-}
-function isNaRow(row) {
-  return row.st !== "disabled" && row.st !== "off" && patchNotApplicable(row, row.st);
-}
-function patchGroupCounts(rows) {
-  const counts = summarizePatchRows(rows);
-  return {
-    applied: counts.applied,
-    pending: counts.pending + counts.broken + counts.unknown,
-    off: counts.disabled + counts.off,
-    na: counts.not_applicable - counts.disabled - counts.off,
-    total: counts.all,
-    denom: counts.total
-  };
-}
-function tallyPatches(rows) {
-  const counts = summarizePatchRows(rows);
-  return {
-    applied: counts.applied,
-    pending: counts.pending,
-    unmatched: counts.unmatched,
-    partial: counts.partial,
-    drifted: counts.drifted,
-    disabled: counts.disabled + counts.off,
-    skipped: counts.skipped,
-    unverified: counts.unknown + (rows || []).filter(
-      (row) => row.st === "missing_file" && !patchNotApplicable(row, row.st)
-    ).length,
-    total: counts.all
-  };
-}
-function Tile({ kind, label, value, title, text }) {
-  return h(
-    "div",
-    { className: "dshpp-tile is-" + kind },
-    h(
-      "div",
-      { className: "dshpp-tile-k" },
-      label,
-      h(HelpTip, { title, label }, text)
-    ),
-    h("div", { className: "dshpp-tile-v" }, String(value))
-  );
-}
-function PatchHealth({ state }) {
-  const t = useT();
-  if (!state || !state.ai_base) return null;
-  const evidence = patchEvidence(state);
-  if (evidence.kind !== "detail")
-    return h("p", { role: "status" }, t("evidence." + evidence.kind));
-  const counts = patchGroupCounts(evidence.rows);
-  const denom = Math.max(counts.denom, 1);
-  const pct = (n) => n / denom * 100;
-  const verdict = counts.pending ? t("health.verdict.pending", { n: counts.pending }) : t("health.verdict.ok");
-  return h(
-    "div",
-    { className: "dshpp-health" },
-    h(
-      "div",
-      { className: "dshpp-health-top" },
-      h(
-        "b",
-        { className: "dshpp-health-big" },
-        String(counts.applied),
-        h("small", null, " / " + counts.denom + " " + t("health.denomUnit"))
-      ),
-      h("span", { className: "dshpp-health-verdict" }, verdict)
-    ),
-    h(
-      "div",
-      { className: "dshpp-bar", "aria-hidden": "true" },
-      h("i", {
-        className: "is-ok",
-        style: { width: pct(counts.applied) + "%" }
-      }),
-      h("i", {
-        className: "is-wait",
-        style: { width: pct(counts.pending) + "%" }
-      }),
-      h("i", {
-        className: "is-off",
-        style: { width: pct(counts.off) + "%" }
-      })
-    ),
-    h(
-      "div",
-      { className: "dshpp-tiles" },
-      h(Tile, {
-        kind: "ok",
-        label: t("health.applied"),
-        value: counts.applied,
-        title: t("health.applied"),
-        text: t("health.hint.applied")
-      }),
-      h(Tile, {
-        kind: "wait",
-        label: t("health.pending"),
-        value: counts.pending,
-        title: t("health.pending"),
-        text: t("health.hint.pending")
-      }),
-      h(Tile, {
-        kind: "off",
-        label: t("health.off"),
-        value: counts.off,
-        title: t("health.off"),
-        text: t("health.hint.off")
-      }),
-      h(Tile, {
-        kind: "na",
-        label: t("health.na"),
-        value: counts.na,
-        title: t("health.na"),
-        text: t("health.hint.na")
-      })
-    )
-  );
-}
-function Switch({ on, busy, label, desc, hintTitle, hint, chip, onToggle }) {
-  const t = useT();
-  return h(
-    "div",
-    { className: "dshpp-sw" + (on ? " is-on" : "") },
-    h(
-      "div",
-      { className: "dshpp-sw-h" },
-      h(
-        "div",
-        { className: "dshpp-sw-t" },
-        label,
-        h(HelpTip, { title: hintTitle, label }, hint)
-      ),
-      h(
-        "button",
-        {
-          type: "button",
-          className: "dshpp-track" + (on ? " is-on" : ""),
-          role: "switch",
-          "aria-checked": on ? "true" : "false",
-          "aria-label": label,
-          disabled: busy,
-          onClick: onToggle
-        },
-        h("span", { className: "dshpp-knob" })
-      )
-    ),
-    h("p", { className: "dshpp-sw-d" }, desc),
-    h(
-      "div",
-      { className: "dshpp-sw-f" },
-      h("span", { className: "dshpp-chip" + (on ? " is-on" : "") }, chip),
-      busy ? h("span", { className: "dshpp-chip" }, t("sw.saving")) : null
-    )
-  );
-}
-function PatchGroupSwitches({ state, onSaved }) {
-  const t = useT();
-  const [flags, setFlags] = useState(null);
-  const [busy, setBusy] = useState("");
-  const [note, setNote] = useState(null);
-  useEffect(() => {
-    let alive = true;
-    apiJson("/dsh-purge/boost").then((d) => {
-      if (!alive || !d || !d.ok) return;
-      setFlags({
-        permissionPatches: d.permissionPatches !== false,
-        contextManagement: d.contextManagement === true
-      });
-    }).catch(() => {
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
-  const { kind, rows } = patchEvidence(state);
-  const permApplied = rows.filter(
-    (r) => patchGroupOf(r.id) === "permission" && r.st === "applied"
-  ).length;
-  const permPending = rows.filter(
-    (r) => patchGroupOf(r.id) === "permission" && r.st === "pending"
-  ).length;
-  const ctxApplied = rows.filter(
-    (r) => patchGroupOf(r.id) === "context" && r.st === "applied"
-  ).length;
-  const toggle = (key) => {
-    if (!flags || busy) return;
-    const next = !flags[key];
-    setBusy(key);
-    setNote(null);
-    apiJson("/dsh-purge/boost", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ [key]: next })
-    }).then((d) => {
-      if (!d || !d.ok) throw new Error(d && d.error || "save failed");
-      setFlags({
-        permissionPatches: d.permissionPatches !== false,
-        contextManagement: d.contextManagement === true
-      });
-      setNote({ kind: "ok", text: t("sw.saved") });
-      if (typeof onSaved === "function") onSaved();
-    }).catch(
-      (e) => setNote({ kind: "error", text: t("sw.fail", { error: String(e) }) })
-    ).then(() => setBusy(""));
-  };
-  const permOn = flags ? flags.permissionPatches : true;
-  const ctxOn = flags ? flags.contextManagement : false;
-  return h(
-    "div",
-    null,
-    h(
-      "div",
-      { className: "dshpp-switches" },
-      h(Switch, {
-        on: permOn,
-        busy: busy === "permissionPatches",
-        label: t("sw.permission"),
-        desc: t("sw.permission.desc"),
-        hintTitle: t("sw.permission"),
-        hint: t("sw.permission.hint"),
-        chip: kind !== "detail" ? t("evidence." + kind) : permOn ? t("sw.chip.on", {
-          n: PERMISSION_PATCH_IDS.length,
-          written: permApplied,
-          pending: permPending
-        }) : t("sw.chip.off", { n: PERMISSION_PATCH_IDS.length }),
-        onToggle: () => toggle("permissionPatches")
-      }),
-      h(Switch, {
-        on: ctxOn,
-        busy: busy === "contextManagement",
-        label: t("sw.context"),
-        desc: t("sw.context.desc"),
-        hintTitle: t("sw.context"),
-        hint: t("sw.context.hint"),
-        chip: kind !== "detail" ? t("evidence." + kind) : ctxOn ? t("sw.chip.on", {
-          n: CONTEXT_PATCH_IDS.length,
-          written: ctxApplied,
-          pending: CONTEXT_PATCH_IDS.length - ctxApplied
-        }) : t("sw.chip.off", { n: CONTEXT_PATCH_IDS.length }),
-        onToggle: () => toggle("contextManagement")
-      })
-    ),
-    note ? h(
-      "p",
-      {
-        className: "dshpp-sw-note" + (note.kind === "error" ? " is-bad" : ""),
-        role: "status"
-      },
-      note.text
-    ) : null,
-    h("p", { className: "dshpp-sw-hint" }, t("sw.applyHint"))
-  );
-}
-var FILTERS = ["all", "pending", "off", "na"];
-function PatchGroups({ state }) {
-  const t = useT();
-  const [open, setOpen] = useState({ code: true });
-  const [filter, setFilter] = useState("all");
-  if (state?.ok === false)
-    return h("p", { role: "status" }, t("groups.unreadable"));
-  if (!state)
-    return h("div", { className: "dshpp-skel", style: { height: 120 } });
-  const located = !!state.ai_base;
-  if (!located) return null;
-  const { kind, rows: allRows, groups } = patchEvidence(state);
-  if (kind === "unknown")
-    return h("p", { role: "status" }, t("evidence.unknown"));
-  if (kind === "summary")
-    return h(
-      "ul",
-      { "aria-label": t("evidence.summary") },
-      groups.map(
-        (g, i) => h(
-          "li",
-          { key: i },
-          [
-            g.layer,
-            g.name,
-            Array.isArray(g.ids) ? g.ids.map((id) => "#" + id).join("\u3001") : g.id != null ? "#" + g.id : ""
-          ].filter(Boolean).join(" \xB7 "),
-          "\uFF1A",
-          statusLabel(typeof g.status === "string" ? g.status : "unknown", t),
-          Array.isArray(g.members) && h(
-            "ul",
-            null,
-            g.members.filter((m) => m && typeof m.status === "string").map(
-              (m, j) => h(
-                "li",
-                { key: j },
-                "#" + m.id + "\uFF1A" + statusLabel(m.status, t)
-              )
-            )
-          )
-        )
-      )
-    );
-  const counts = patchGroupCounts(allRows);
-  const filterCount = {
-    all: counts.total,
-    pending: counts.pending,
-    off: counts.off,
-    na: counts.na
-  };
-  const kept = allRows.filter((row) => {
-    if (filter === "pending")
-      return ["pending", "unknown", "broken"].includes(
-        patchStateCategory(row, row.st)
-      );
-    if (filter === "off") return row.st === "disabled" || row.st === "off";
-    if (filter === "na") return isNaRow(row);
-    return true;
-  });
-  const grouped = /* @__PURE__ */ new Map();
-  for (const row of kept) {
-    const key = LAYER_GROUP[row.layer] || "code";
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(row);
-  }
-  return h(
-    "div",
-    null,
-    h(
-      "div",
-      { className: "dshpp-filter" },
-      FILTERS.map(
-        (f) => h(
-          "button",
-          {
-            key: f,
-            type: "button",
-            className: "dshpp-fbtn" + (filter === f ? " is-cur" : ""),
-            onClick: () => setFilter(f)
-          },
-          t("filter." + f),
-          h("span", { className: "dshpp-fbtn-n" }, String(filterCount[f]))
-        )
-      ),
-      h("span", { className: "dshpp-filter-hint" }, t("filter.hint"))
-    ),
-    GROUP_ORDER.filter((key) => grouped.has(key)).map((key) => {
-      const rows = grouped.get(key).slice().sort((a, b) => a.id - b.id);
-      const tally = tallyPatches(rows);
-      const groupCounts = patchGroupCounts(rows);
-      const notes = [];
-      if (tally.pending)
-        notes.push(t("metric.pendingShort", { n: tally.pending }));
-      if (tally.unmatched)
-        notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-      if (tally.partial)
-        notes.push(t("metric.partialShort", { n: tally.partial }));
-      if (tally.unverified)
-        notes.push(t("metric.unverifiedShort", { n: tally.unverified }));
-      if (tally.drifted)
-        notes.push(t("metric.driftedShort", { n: tally.drifted }));
-      if (tally.disabled)
-        notes.push(t("metric.disabledShort", { n: tally.disabled }));
-      const expanded = !!open[key];
-      return h(
-        "div",
-        { key, className: "dshpp-group" },
-        h(
-          "button",
-          {
-            type: "button",
-            className: "dshpp-group-h",
-            "aria-expanded": expanded ? "true" : "false",
-            onClick: () => setOpen((prev) => Object.assign({}, prev, { [key]: !prev[key] }))
-          },
-          h("span", { className: "dshpp-caret" }, expanded ? "\u25BE" : "\u25B8"),
-          h("strong", null, t("group." + key)),
-          h(
-            "span",
-            { className: "dshpp-count" },
-            groupCounts.applied + " / " + (groupCounts.denom || 0)
-          ),
-          h(
-            "span",
-            { className: "dshpp-group-chips" },
-            groupCounts.applied ? h(
-              "span",
-              { className: "dshpp-pill is-ok" },
-              String(groupCounts.applied)
-            ) : null,
-            groupCounts.pending ? h(
-              "span",
-              { className: "dshpp-pill is-wait" },
-              String(groupCounts.pending)
-            ) : null,
-            groupCounts.off ? h(
-              "span",
-              { className: "dshpp-pill is-muted" },
-              String(groupCounts.off)
-            ) : null,
-            groupCounts.na ? h(
-              "span",
-              { className: "dshpp-pill is-miss" },
-              String(groupCounts.na)
-            ) : null
-          )
-        ),
-        notes.length ? h("p", { className: "dshpp-group-notes" }, notes.join(" \xB7 ")) : null,
-        expanded ? h(
-          "table",
-          { className: "dshpp-table" },
-          h(
-            "thead",
-            null,
-            h(
-              "tr",
-              null,
-              h("th", null, "#"),
-              h("th", null, t("table.patch")),
-              h("th", null, t("table.status"))
-            )
-          ),
-          h(
-            "tbody",
-            null,
-            rows.map(
-              (r) => h(
-                "tr",
-                { key: r.id },
-                h("td", { className: "dshpp-id" }, "#" + r.id),
-                h(
-                  "td",
-                  null,
-                  (t("patch." + r.id) !== "patch." + r.id ? t("patch." + r.id) : r.name) || "patch." + r.id,
-                  // 样稿是两行：中文名 + 英文标识符。英文只在有独立名字时补一行。
-                  r.name && t("patch." + r.id) !== "patch." + r.id ? h("span", { className: "dshpp-row-en" }, r.name) : null,
-                  // 已应用的行不再重复解释原因：60 行同样的字只会把表撑长。
-                  r.st === "applied" || r.st === "already" ? null : h(
-                    "span",
-                    { className: "dshpp-row-note" },
-                    r.st === "missing_file" && !isNaRow(r) ? t("file.missing_file") : t("hint." + (r.st || "unknown"))
-                  )
-                ),
-                h(
-                  "td",
-                  null,
-                  r.st === "missing_file" && !isNaRow(r) ? h(Pill, {
-                    value: "unmatched",
-                    label: t("file.missing_file")
-                  }) : h(Pill, { value: r.st }),
-                  (r.id === 71 || !["applied", "already"].includes(r.st)) && (state.patch_files?.[r.id] || []).map(
-                    (file) => h(
-                      "div",
-                      {
-                        key: file.path,
-                        className: "dshpp-row-note",
-                        style: { overflowWrap: "anywhere" }
-                      },
-                      (["missing_file", "unreadable", "unknown"].includes(
-                        file.status
-                      ) ? t("file." + file.status) : statusLabel(file.status, t)) + " \xB7 " + file.path
-                    )
-                  ),
-                  r.st === "partial" ? h(
-                    "span",
-                    { className: "dshpp-sub" },
-                    t("status.partialDetail", {
-                      done: (state.patch_files?.[r.id] || []).filter(
-                        (f) => f.status === "applied"
-                      ).length,
-                      total: (state.patch_files?.[r.id] || []).length
-                    })
-                  ) : null
-                )
-              )
-            )
-          )
-        ) : null
-      );
-    }),
-    !grouped.size ? h("p", { className: "dshpp-filter-hint" }, t("filter.empty")) : null
-  );
-}
-function PatchApplySteps() {
-  const t = useT();
-  const step = (n, title, desc) => h(
-    "div",
-    { className: "dshpp-step" },
-    h("span", { className: "dshpp-step-no" }, String(n)),
-    h("div", null, h("b", null, title), h("span", null, desc))
-  );
-  return h(
-    "div",
-    { className: "dshpp-flow" },
-    h("h4", null, t("steps.title")),
-    h(
-      "div",
-      { className: "dshpp-steps" },
-      step(1, t("steps.1.t"), t("steps.1.d")),
-      step(2, t("steps.2.t"), t("steps.2.d")),
-      step(3, t("steps.3.t"), t("steps.3.d"))
-    ),
-    h("p", { className: "dshpp-flow-foot" }, t("steps.foot"))
-  );
-}
-
 // src/components/primitives.js
 function formatSize(bytes) {
   if (typeof bytes !== "number" || !isFinite(bytes) || bytes < 0) return "0 B";
@@ -10954,14 +9705,6 @@ function Btn(props) {
     "button",
     Object.assign({ type: type || "button", className: cls }, rest),
     children
-  );
-}
-function Pill({ value, label }) {
-  const t = useT();
-  return h(
-    "span",
-    { className: "dshpp-pill is-" + statusKind(value) },
-    label || statusLabel(value, t)
   );
 }
 function HelpTip({ title, children, label }) {
@@ -10994,258 +9737,6 @@ function HelpTip({ title, children, label }) {
       children ? h("span", null, children) : null
     ) : null
   );
-}
-
-// src/shared/apply-result.js
-function incompleteApplyDetail(result, t) {
-  const parts = [];
-  if (result.failed > 0) {
-    const ids = (Array.isArray(result.failed_items) ? result.failed_items : []).map((item) => item?.id).filter((id) => id != null).join(",");
-    parts.push(
-      t("restart.incomplete.patches", {
-        failed: String(result.failed),
-        ids: ids || "?"
-      })
-    );
-  }
-  if (result.cmd_flash?.ok === false)
-    parts.push(
-      t("restart.incomplete.flash", {
-        entry: String(result.cmd_flash.entry || "unknown")
-      })
-    );
-  if (result.host_written === false) parts.push(t("restart.incomplete.host"));
-  if (result.hook_restore_failed === true)
-    parts.push(t("restart.incomplete.restore"));
-  if (result.cli_repair?.ok === false)
-    parts.push(
-      t("restart.incomplete.runtime"),
-      ...runtimeRepairDetails(result.cli_repair)
-    );
-  return parts.length ? parts.join("\uFF1B") : t("restart.incomplete.unknown");
-}
-
-// src/components/advanced.js
-function HooksDenySection({ onSaved }) {
-  const t = useT();
-  const [cfg, setCfg] = useState(null);
-  const [notice, setNotice] = useState({ kind: "idle", text: "" });
-  const [busy, setBusy] = useState(false);
-  useEffect(() => {
-    apiJson("/dsh-purge/hooks-deny").then((d) => {
-      if (d && d.ok) setCfg({ hooksDenyBypass: d.hooksDenyBypass !== false });
-    }).catch(() => {
-    });
-  }, []);
-  const save = (hooksDenyBypass) => {
-    if (!cfg || busy) return;
-    setCfg({ hooksDenyBypass });
-    setBusy(true);
-    apiJson("/dsh-purge/hooks-deny", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ hooksDenyBypass })
-    }).then((d) => {
-      if (d && d.ok) {
-        setCfg({ hooksDenyBypass: d.hooksDenyBypass === true });
-        setNotice({ kind: "ok", text: t("saved.hooksDeny") });
-        if (typeof onSaved === "function") onSaved();
-      } else {
-        setNotice({
-          kind: "error",
-          text: t("err.save", { error: d && d.error || "" })
-        });
-      }
-    }).catch(
-      (e) => setNotice({ kind: "error", text: t("err.save", { error: e.message }) })
-    ).finally(() => setBusy(false));
-  };
-  if (!cfg) return null;
-  return h(
-    "div",
-    { className: "dshpp-cr", style: { marginTop: 12 } },
-    h(
-      "div",
-      { className: "dshpp-sub" },
-      h("h4", null, t("hooksDeny.title")),
-      noticeNode(notice)
-    ),
-    h(
-      "p",
-      {
-        className: "dshpp-hint",
-        style: { margin: "0 0 4px", color: "var(--dshpp-mute)", fontSize: 12 }
-      },
-      t("hooksDeny.hint")
-    ),
-    h(
-      "div",
-      { className: "dshpp-cr-row" },
-      h(
-        "label",
-        null,
-        h("input", {
-          type: "checkbox",
-          checked: cfg.hooksDenyBypass === true,
-          disabled: busy,
-          onChange: (e) => save(e.target.checked)
-        }),
-        t("hooksDeny.bypass")
-      )
-    )
-  );
-}
-
-// src/components/restart.js
-var rd2 = __toESM(require("react-dom"), 1);
-function RestartAsk(props) {
-  const node = h(
-    "div",
-    {
-      className: "dshpp-restart-mask",
-      "data-theme": props.theme === "dusk" ? "dusk" : "white",
-      role: "dialog",
-      "aria-modal": "true",
-      "aria-labelledby": "dshpp-restart-title",
-      onClick: (e) => {
-        if (e.target === e.currentTarget && props.onLater) props.onLater();
-      }
-    },
-    h(
-      "div",
-      { className: "dshpp-restart-card" },
-      h("h4", { id: "dshpp-restart-title" }, props.t("restart.ask.title")),
-      h("p", null, props.t("restart.ask.body")),
-      h(
-        "div",
-        { className: "dshpp-modal-ops" },
-        h(Btn, { onClick: props.onLater }, props.t("restart.notNow")),
-        h(
-          Btn,
-          { kind: "primary", onClick: props.onRestart },
-          props.t("restart.now")
-        )
-      )
-    )
-  );
-  try {
-    if (rd2 && typeof rd2.createPortal === "function" && typeof document !== "undefined" && document.body) {
-      return rd2.createPortal(node, document.body);
-    }
-  } catch {
-  }
-  return node;
-}
-function reopenAfterRestart() {
-  window.location.reload();
-}
-function waitForRestart(setNotice, setBusy, t) {
-  const started = Date.now();
-  let sawDown = false;
-  const ping = () => {
-    fetch(apiUrl("/dsh-purge/status"), {
-      cache: "no-store",
-      credentials: "same-origin"
-    }).then((r) => r.ok ? r.json() : Promise.reject()).then((d) => {
-      if (!sawDown) {
-        retry();
-        return;
-      }
-      if (d && d.ok && d.ready !== false) reopenAfterRestart();
-      else retry();
-    }).catch(() => {
-      sawDown = true;
-      retry();
-    });
-  };
-  const retry = () => {
-    if (Date.now() - started > 9e4) {
-      setNotice({ kind: "error", text: t("restart.timeout") });
-      setBusy(false);
-      return;
-    }
-    setTimeout(ping, 500);
-  };
-  setTimeout(ping, 800);
-}
-var restartOnce = false;
-function restartDsh(setNotice, setBusy, t, surface) {
-  if (restartOnce) return;
-  const surf = surface || clientGuessSurface() || "desktop";
-  const desktop = surf === "desktop" || clientGuessSurface() === "desktop";
-  restartOnce = true;
-  setBusy(true);
-  setNotice({ kind: "ok", text: hostText(t, "restarting", surf) });
-  const stop = (error) => {
-    restartOnce = false;
-    setNotice({
-      kind: "error",
-      text: error ? t("restart.fail", { error }) : t("restart.notStarted")
-    });
-    setBusy(false);
-  };
-  let sawDrop = false;
-  const watch = setTimeout(() => {
-    if (sawDrop) return;
-    stop("");
-  }, 25e3);
-  fetch(apiUrl("/dsh-purge/restart"), {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: "{}"
-  }).then((r) => r.json()).then((d) => {
-    if (!d.ok) throw new Error(d.error || "restart failed");
-    if (d.manualQuit) {
-      clearTimeout(watch);
-      restartOnce = false;
-      setBusy(false);
-      setNotice({ kind: "ok", text: d.note || t("restart.manualQuit") });
-      return;
-    }
-    const next = d && d.surface || surf;
-    const full = next === "desktop" || d && d.fullApp || desktop;
-    if (full && d.already) {
-      setNotice({ kind: "ok", text: hostText(t, "restarting", next) });
-      return;
-    }
-    if (full && d.restarting === false) {
-      clearTimeout(watch);
-      stop(d.error || "not started");
-      return;
-    }
-    setNotice({ kind: "ok", text: hostText(t, "restarting", next) });
-    if (full) return;
-    clearTimeout(watch);
-    restartOnce = false;
-    waitForRestart(setNotice, setBusy, t);
-  }).catch((e) => {
-    const msg = String(e && e.message || e || "");
-    const dropped = /failed to fetch|networkerror|load failed/i.test(msg) || e.name === "TypeError";
-    if (dropped && desktop) {
-      sawDrop = true;
-      clearTimeout(watch);
-      return;
-    }
-    clearTimeout(watch);
-    stop(msg || "restart failed");
-  });
-}
-function detectHostTheme() {
-  try {
-    if (typeof document !== "undefined") {
-      const root = document.documentElement;
-      if (document.body?.hasAttribute("data-ds-dark-theme") || root?.hasAttribute("data-ds-dark-theme"))
-        return "dusk";
-      const scheme = (root.style.colorScheme || getComputedStyle(root).colorScheme || getComputedStyle(root).getPropertyValue("color-scheme") || "").toLowerCase();
-      if (scheme.includes("dark")) return "dusk";
-      if (scheme.includes("light")) return "white";
-    }
-    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
-      return "dusk";
-    }
-  } catch {
-  }
-  return "white";
 }
 
 // src/shared/versions.js
@@ -11897,8 +10388,6 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const hostSurface = hostSurfaceOf(s);
   const desktopLikely = hostSurface === "desktop" || clientGuessSurface() === "desktop";
   const sealedReady = !located && desktopLikely && !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
-  const evidence = patchEvidence(s);
-  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = updateInfo && updateInfo.versions || [];
   const channelNow = updateInfo && updateInfo.channel || channel || "stable";
   const localVer = s && s.plugin_version || updateInfo && updateInfo.localVersion || "";
@@ -11996,179 +10485,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   return h(
     "section",
     { className: "dshpp-panel", "aria-label": t("purge.title") },
-    h(
-      "div",
-      { hidden: page !== "status" },
-      // 标题行：左侧页面名，右侧操作组 + 扫描时间（对齐样稿，不再用 hero 卡包一层）
-      h(
-        "div",
-        { className: "dshpp-status-head" },
-        h("h3", { className: "dshpp-status-title" }, t("status.title")),
-        h(
-          "div",
-          { className: "dshpp-status-ops" },
-          h(
-            Btn,
-            {
-              kind: "primary",
-              className: "dshpp-btn-apply",
-              disabled: patchBusy || uninstallBusy || !overrideLoaded,
-              onClick: () => doAction("apply", "action.apply")
-            },
-            patchBusy ? t("btn.apply.busy") : t("btn.apply") + (counts?.pending ? " " + counts.pending : "")
-          ),
-          h(
-            Btn,
-            {
-              kind: "danger",
-              disabled: patchBusy || uninstallBusy,
-              onClick: () => doAction("revert", "action.revert")
-            },
-            t("btn.revert")
-          ),
-          h(
-            Btn,
-            {
-              kind: "solid-danger",
-              disabled: patchBusy || uninstallBusy,
-              onClick: () => setAskUninstall(true)
-            },
-            uninstallBusy ? t("btn.uninstall.busy") : t("btn.uninstall")
-          ),
-          h(
-            "button",
-            {
-              type: "button",
-              className: "dshpp-scan",
-              onClick: loadAll,
-              disabled: patchBusy || uninstallBusy,
-              title: t("scan.hint")
-            },
-            scannedAt ? t("scan.recent", { time: scannedAt }) : t("scan.hint")
-          )
-        )
-      ),
-      !located ? h(
-        "p",
-        { className: "dshpp-status-note" },
-        sealedReady ? "\u5BBF\u4E3B\u8FD8\u6CA1\u89E3\u5F00\uFF1A\u70B9\u300C\u5E94\u7528\u300D" : t("metric.unlocated")
-      ) : null,
-      noticeNode(notice),
-      h(PatchHealth, { state: s }),
-      h(PatchGroupSwitches, { state: s, onSaved: loadAll }),
-      h(
-        "section",
-        { className: "dshpp-fold is-open" },
-        h(
-          "h4",
-          { className: "dshpp-fold-t" },
-          t("detail.title"),
-          h(
-            "span",
-            { className: "dshpp-fold-n" },
-            !s ? t("detail.reading") : s.ok === false ? t("detail.unknown") : s.ai_base ? counts ? `${counts.applied} / ${counts.denom}` : t("evidence." + evidence.kind) : t("detail.unlocated")
-          )
-        ),
-        h(PatchGroups, { state: s })
-      ),
-      h(PatchApplySteps, null),
-      h(
-        "details",
-        null,
-        h("summary", null, "\u9AD8\u7EA7\u9009\u9879"),
-        h(HooksDenySection, { onSaved: loadAll })
-      ),
-      askUninstall ? h(
-        "div",
-        {
-          className: "dshpp-modal-bg",
-          role: "dialog",
-          "aria-modal": "true",
-          "aria-labelledby": "dshpp-uninstall-title",
-          onClick: (e) => {
-            if (e.target === e.currentTarget && !uninstallBusy)
-              setAskUninstall(false);
-          }
-        },
-        h(
-          "div",
-          { className: "dshpp-modal" },
-          h("h4", { id: "dshpp-uninstall-title" }, t("uninstall.title")),
-          h("p", null, t("uninstall.body")),
-          h(
-            "div",
-            { className: "dshpp-modal-ops" },
-            h(
-              Btn,
-              {
-                disabled: uninstallBusy,
-                onClick: () => setAskUninstall(false)
-              },
-              t("uninstall.cancel")
-            ),
-            h(
-              Btn,
-              {
-                kind: "solid-danger",
-                disabled: uninstallBusy,
-                onClick: doUninstall
-              },
-              t("uninstall.confirm")
-            )
-          )
-        )
-      ) : null,
-      h(
-        "p",
-        {
-          className: "dshpp-hint",
-          style: {
-            margin: "8px 0 0",
-            color: "var(--dshpp-mute)",
-            fontSize: 12
-          }
-        },
-        t("apply.hint")
-      ),
-      s?.ok === true && !s.ai_base ? h(
-        "p",
-        {
-          className: "dshpp-hint",
-          style: {
-            margin: "8px 0 0",
-            color: "var(--dshpp-danger, #c44)",
-            fontSize: 12
-          }
-        },
-        hostText(t, "warn.noRoot", hostSurface)
-      ) : null,
-      s && s.ai_base && s.override_status === "missing" ? h(
-        "p",
-        {
-          className: "dshpp-hint",
-          style: {
-            margin: "8px 0 0",
-            color: "var(--dshpp-mute)",
-            fontSize: 12
-          }
-        },
-        t("warn.noInject")
-      ) : null,
-      askRestart ? h(RestartAsk, {
-        t,
-        theme: detectHostTheme(),
-        onLater: () => {
-          suppressRestartAsk.current = true;
-          setAskRestart(false);
-        },
-        onRestart: () => {
-          suppressRestartAsk.current = true;
-          setAskRestart(false);
-          restartDsh(setNotice, function() {
-          }, t, hostSurface);
-        }
-      }) : null
-    ),
+    // [v2.1.1] 状态页整体移除。
     h(
       "div",
       { hidden: page !== "prompt" },
@@ -12280,7 +10597,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
 }
 
 // src/state/session-context.js
-var import_react11 = require("react");
+var import_react8 = require("react");
 var host = null;
 var listeners2 = /* @__PURE__ */ new Set();
 function notify() {
@@ -12339,7 +10656,7 @@ function clientCurrentCwd() {
   }
 }
 function useCurrentCwd() {
-  return (0, import_react11.useSyncExternalStore)(subscribe, clientCurrentCwd, () => "");
+  return (0, import_react8.useSyncExternalStore)(subscribe, clientCurrentCwd, () => "");
 }
 
 // src/components/rules.js
@@ -13877,7 +12194,6 @@ function CommunityMaintenance({ localVersion = "" } = {}) {
 
 // src/components/page.js
 var TABS = [
-  ["status", "\u72B6\u6001", "\u5BBF\u4E3B\u517C\u5BB9\u3001\u8865\u4E01\u3001\u7834\u7532\u81EA\u68C0"],
   ["prompt", "\u63D0\u793A\u8BCD", "\u6CE8\u5165\u6B63\u6587\u4E0E\u7834\u7532\u5F3A\u5316\u6BB5"],
   ["rules", "\u89C4\u5219", "\u89C4\u5219\u96C6\u4E0E\u5DE5\u4F5C\u533A\u7B56\u7565"],
   ["skills", "\u6280\u80FD", "DSH \u6280\u80FD\u76EE\u5F55"],
@@ -13902,8 +12218,6 @@ function PurgeGlyph({ size = 18 } = {}) {
 }
 function StatusStrip({ info }) {
   const t = useT();
-  const evidence = patchEvidence(info);
-  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const compat = info?.compatibility || {};
   const level = compat.level || "";
   const ok = level === "qualified";
@@ -13941,8 +12255,7 @@ function StatusStrip({ info }) {
       h(
         "b",
         null,
-        counts ? `${counts.applied}/${counts.denom}` : t("evidence." + evidence.kind),
-        counts?.na > 0 ? ` \xB7 ${counts.na} \u6761\u672C\u673A\u4E0D\u9002\u7528` : ""
+        ""
       ),
       h(
         HelpTip,
@@ -13956,55 +12269,6 @@ function StatusStrip({ info }) {
       "\u63D2\u4EF6 ",
       h("b", null, info?.plugin_version || "2.1.1")
     )
-  );
-}
-function LayoutNotice({ info }) {
-  if (!info || !info.asar_still_sealed && !info.host_layout) return null;
-  if (info.host_layout?.family === "tauri") {
-    return h(
-      "p",
-      { className: "dshpp-note", role: "status" },
-      info.host_layout.note
-    );
-  }
-  const sealed = info.asar_still_sealed === true;
-  const note = info.host_layout?.note || "\u76EE\u6807\u78C1\u76D8\u4ECD\u6709 app.asar\uFF1B\u5F53\u524D\u8FDB\u7A0B\u52A0\u8F7D\u6765\u6E90\u5C1A\u672A\u786E\u8BA4\u3002";
-  const handoff = info.asar_handoff ? ` \u6362\u5305\u72B6\u6001\uFF1A${{ not_scheduled: "\u5C1A\u672A\u5E94\u7528\uFF1A\u70B9\u300C\u5E94\u7528\u300D\u540E\u624D\u4F1A\u5B89\u6392\u6362\u5305", archive_reappeared: "\u5F52\u6863\u518D\u6B21\u51FA\u73B0\uFF0C\u65E7\u6362\u5305\u8BB0\u5F55\u4E0D\u4EE3\u8868\u5F53\u524D\u5DF2\u5B8C\u6210", backup_missing: "\u539F\u5F52\u6863\u5907\u4EFD\u7F3A\u5931\uFF0C\u8BF7\u68C0\u67E5\u8BCA\u65AD", unknown_target: "\u76EE\u6807\u5B9E\u4F8B\u672A\u786E\u5B9A", unreadable: "\u6362\u5305\u8BB0\u5F55\u4E0D\u53EF\u8BFB\uFF0C\u8BF7\u68C0\u67E5\u8BCA\u65AD", starting: "\u52A9\u624B\u542F\u52A8\u4E2D\uFF08\u5C1A\u672A\u786E\u8BA4\u5C31\u7EEA\uFF09", ready: "\u52A9\u624B\u5DF2\u5C31\u7EEA", waiting_for_quit: "\u7B49\u5F85\u5B8C\u6574\u9000\u51FA\uFF08macOS \u2318Q / Windows \u7CFB\u7EDF\u6258\u76D8\uFF09", waiting_for_unlock: "\u7B49\u5F85\u5F52\u6863\u89E3\u9501", moving: "\u6B63\u5728\u4FDD\u7559\u539F\u5F52\u6863", complete: "\u6362\u5305\u5B8C\u6210\uFF0C\u8BF7\u624B\u52A8\u6253\u5F00 DSH", already_unsealed: "\u5F52\u6863\u5DF2\u79FB\u8D70\uFF0C\u8BF7\u624B\u52A8\u6253\u5F00 DSH", failed: "\u5931\u8D25\uFF0C\u8BF7\u67E5\u770B\u8BCA\u65AD\u5E76\u6309\u6062\u590D\u6587\u6863\u64CD\u4F5C", expired: "\u7B49\u5F85\u8D85\u65F6\uFF0C\u8BF7\u91CD\u65B0\u5E94\u7528\u6216\u6309\u6062\u590D\u6587\u6863\u64CD\u4F5C", helper_stopped: "\u52A9\u624B\u610F\u5916\u7ED3\u675F\uFF0C\u8BF7\u91CD\u65B0\u5E94\u7528\u6216\u6309\u6062\u590D\u6587\u6863\u64CD\u4F5C" }[info.asar_handoff.phase] || info.asar_handoff.phase}\u3002` : "";
-  const failure = info.asar_handoff?.error;
-  const detail = info.asar_handoff?.detail ? ` \u8BE6\u60C5\uFF1A${info.asar_handoff.detail}${failure?.win32_code != null ? `\uFF08Windows \u9519\u8BEF ${failure.win32_code}\uFF09` : ""}` : "";
-  const layout = info.host_layout;
-  if (info.ok !== false && info.surface === "web" && layout?.disk?.surface === "web" && layout.state === "unknown_runtime" && layout.process?.entry_layout === "unknown" && layout.process.matches_target === null && layout.disk.archive_exists === null && layout.disk.unpacked_exists === null && !info.desktop_exe && !info.desktop_install && !sealed && !layout.errors?.length && info.asar_handoff?.phase === "unknown_target" && !info.asar_handoff.error && !info.asar_handoff.detail) {
-    return h(
-      "details",
-      { className: "dshpp-layout-details" },
-      h("summary", null, "\u6362\u5305\u72B6\u6001\uFF1A\u4E0D\u9002\u7528\uFF08Web \u5BBF\u4E3B\uFF09"),
-      h(
-        "p",
-        { className: "dshpp-note" },
-        "Web \u670D\u52A1\u65E0\u9700\u684C\u9762\u5F52\u6863\u6362\u5305\u3002\u539F\u59CB\u8BCA\u65AD\uFF1A",
-        layout.state,
-        " / ",
-        info.asar_handoff.phase
-      )
-    );
-  }
-  const confirmed = info.host_layout?.state === "unpacked_entry" && info.host_layout?.process?.matches_target === true && info.host_layout?.disk?.archive_exists === false;
-  const diskNote = info.host_layout?.disk?.archive_exists === true ? " \u76EE\u6807\u78C1\u76D8\u4ECD\u6709 app.asar\u3002" : "";
-  if (sealed || !confirmed) {
-    return h(
-      "p",
-      { className: "dshpp-warn", role: "status" },
-      note,
-      diskNote,
-      handoff,
-      detail
-    );
-  }
-  return h(
-    "details",
-    { className: "dshpp-layout-details" },
-    h("summary", null, "\u2713 \u5DF2\u4ECE\u89E3\u5305\u76EE\u5F55\u542F\u52A8\uFF08\u6362\u5305\u5B8C\u6210\uFF09"),
-    h("p", { className: "dshpp-note" }, note, diskNote, handoff, detail)
   );
 }
 function VersionNotice({ info }) {
@@ -14025,7 +12289,7 @@ function VersionNotice({ info }) {
 }
 function PurgePage() {
   const t = useT();
-  const [tab, setTab] = useState("status");
+  const [tab, setTab] = useState("prompt");
   const [visited, setVisited] = useState({ status: true });
   const [info, setInfo] = useState(null);
   const select = (id) => {
@@ -14035,21 +12299,8 @@ function PurgePage() {
   const loadInfo = () => apiJson("/dsh-purge/status").then(setInfo).catch((error) => setInfo(unavailableStatus(error)));
   const mergeInfo = useCallback((s) => s && setInfo(s), []);
   useEffect(() => {
-    if (tab === "status") loadInfo();
+    if (tab === "prompt") loadInfo();
   }, [tab]);
-  useEffect(() => {
-    const phase = info?.asar_handoff?.phase;
-    if (![
-      "starting",
-      "ready",
-      "waiting_for_quit",
-      "waiting_for_unlock",
-      "moving"
-    ].includes(phase))
-      return;
-    const timer = setInterval(loadInfo, 2e3);
-    return () => clearInterval(timer);
-  }, [info?.asar_handoff?.phase]);
   const active = TABS.find((row) => row[0] === tab) || TABS[0];
   return h(
     "div",
@@ -14076,7 +12327,6 @@ function PurgePage() {
       )
     ),
     h(VersionNotice, { info }),
-    h(LayoutNotice, { info }),
     h(
       "nav",
       { className: "dshpp-page-tabs", role: "tablist" },
@@ -15044,7 +13294,7 @@ function installRewindUi(ctx) {
 }
 
 // src/components/welcome.js
-var rd3 = __toESM(require("react-dom"), 1);
+var rd2 = __toESM(require("react-dom"), 1);
 
 // src/styles/welcome.css
 var welcome_default = "/* The first-run dialog is rendered before any settings page. It must own its\n   styles and cannot depend on the optional drill vendor stylesheet. */\n.dshpp-welcome-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 2147483000;\n  display: grid;\n  place-items: center;\n  padding: 24px;\n  overflow: auto;\n  box-sizing: border-box;\n  background: rgb(0 0 0 / 35%);\n  color: var(--dsw-alias-label-primary, #171717);\n  font-family: inherit;\n  font-size: 14px;\n  line-height: 1.6;\n  text-align: left;\n}\n.dshpp-welcome-card {\n  width: min(600px, 100%);\n  max-height: calc(100dvh - 48px);\n  overflow: auto;\n  box-sizing: border-box;\n  padding: 24px;\n  border: 1px solid var(--dsw-alias-border-l1, #ddd);\n  border-radius: 16px;\n  background: var(--dsw-alias-bg-layer-1, #fff);\n  box-shadow: 0 16px 64px rgb(0 0 0 / 18%);\n}\n.dshpp-welcome-card h2 {\n  margin: 0 0 6px;\n  font: inherit;\n  font-size: 20px;\n  font-weight: 600;\n}\n.dshpp-welcome-card h3 {\n  margin: 16px 0 6px;\n  font: inherit;\n  font-weight: 600;\n}\n.dshpp-welcome-lead {\n  color: var(--dsw-alias-label-secondary, #666);\n}\n.dshpp-welcome-warn {\n  margin: 16px 0;\n  padding: 12px;\n  border-radius: 8px;\n  background: var(--dsw-alias-bg-layer-2, #f5f5f5);\n}\n.dshpp-welcome-legal p {\n  margin: 10px 0;\n}\n.dshpp-welcome-legal a {\n  color: var(--dsw-alias-label-brand, #436ee8);\n  overflow-wrap: anywhere;\n}\n.dshpp-welcome-check {\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.dshpp-welcome-check input {\n  flex: 0 0 auto;\n  width: 16px;\n  height: 16px;\n  margin: 4px 0 0;\n  accent-color: var(--dsw-alias-label-brand, #436ee8);\n}\n.dshpp-welcome-ops {\n  display: flex;\n  justify-content: flex-end;\n  margin-top: 20px;\n}\n.dshpp-welcome-ops button {\n  min-height: 36px;\n  padding: 8px 16px;\n  border: 0;\n  border-radius: 8px;\n  background: var(--dsw-alias-label-primary, #171717);\n  color: var(--dsw-alias-bg-base, #fff);\n  font: inherit;\n  cursor: pointer;\n}\n.dshpp-welcome-ops button:disabled {\n  opacity: 0.4;\n  cursor: default;\n}\n.dshpp-welcome-ops button:focus-visible,\n.dshpp-welcome-check input:focus-visible {\n  outline: 2px solid var(--dsw-alias-label-brand, #436ee8);\n  outline-offset: 3px;\n}\n@media (max-height: 600px) {\n  .dshpp-welcome-mask {\n    padding: 12px;\n  }\n  .dshpp-welcome-card {\n    max-height: calc(100dvh - 24px);\n    padding: 18px;\n  }\n}\n\n/* Phone WebViews can put native navigation over the top-left of the page.\n   Reserve its row; keep a single scroll region for long notice text. */\n@media (max-width: 600px) and (min-height: 500px) {\n  .dshpp-welcome-mask {\n    padding: max(76px, env(safe-area-inset-top)) 12px\n      max(20px, env(safe-area-inset-bottom));\n    grid-template: minmax(0, 1fr) / minmax(0, 1fr);\n  }\n  .dshpp-welcome-card {\n    display: grid;\n    grid-template-rows: auto minmax(0, 1fr) auto auto;\n    max-height: 100%;\n    padding: 16px;\n  }\n  .dshpp-welcome-copy {\n    overflow: auto;\n    overscroll-behavior: contain;\n  }\n  .dshpp-welcome-check,\n  .dshpp-welcome-ops {\n    margin-top: 10px;\n  }\n}\n";
@@ -15145,8 +13395,8 @@ function WelcomeNotice(props = {}) {
       )
     )
   );
-  if (rd3?.createPortal && typeof document !== "undefined" && document.body)
-    return rd3.createPortal(node, document.body);
+  if (rd2?.createPortal && typeof document !== "undefined" && document.body)
+    return rd2.createPortal(node, document.body);
   return node;
 }
 
