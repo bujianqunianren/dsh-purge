@@ -1,3 +1,8 @@
+# 2.0.2
+
+- 红队提示词定稿：出厂模板三处文本修正（规则 9 开头大写、规则 23 分号后空格、aircrack 拼写），重新加密内嵌。
+- presets/redteam/agent.cordis.yml 清理两行 YAML 多余的反斜杠转义（`subagent` 等），模型不再看到带反斜杠的残缺标记。
+- 红队模式确认不携带无限制模式人格段（两模式人格各自独立）。
 # 2.0.1
 
 - 出厂默认注入模板替换为用户提供的 2.0.1 版（Task Provider / Task Executor 身份；删除 Intercept 残句、Sandbox test directions、CTF、Routing 各段；成人/盗版两条改为联网检索口径；重新加密内嵌，往返逐字一致）。
