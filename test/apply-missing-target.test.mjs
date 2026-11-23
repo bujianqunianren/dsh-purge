@@ -1,34 +1,22 @@
-// #86: applyPatches() must not abort the whole run when one patch's target file
-// is absent. 1.6.58 added `detail[p.id].push({...})` to the missing-target
-// branch without declaring `detail`, so every host that lacks one of the 65
-// targets (hooks for Claude Code / Codex, LiangShen cache, …) died mid-apply
-// with `ReferenceError: detail is not defined` and the panel stayed at 4/65.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { ALL_PATCHES, applyPatches, patchStatus } from "../lib/core.js";
-import { NATIVE_QUEUE_GUARD, OLD_QUEUE_FALLBACK } from "../lib/steering.js";
 import { removeTreeNoFollowSync } from "../lib/remove-tree.js";
 
-// 一条真能打上的补丁（单宿主、两个目标文件都在 fixture 里），用它的 applied
+// 一条真能打上的补丁（单宿主、目标文件在 fixture 里），用它的 applied
 // 结果证明"前一条目标缺失"没有把后面的补丁连坐。
-const APPLIES = ALL_PATCHES.find((p) => p.id === 90);
-assert.ok(APPLIES, "补丁 90 必须存在于 ALL_PATCHES，否则下面全部断言失去意义");
-const fixtureSource = JSON.parse(
-  fs.readFileSync(new URL("./fixtures/steering-rc2.json", import.meta.url), "utf8"),
-);
-// fixtures 里的 controller 是"已打补丁"的样式，还原成宿主原文才是待打状态；
-// replace 未命中时会静默返回原文，那样测试会得到莫名其妙的 already，所以先断言。
-const RESTORED_CONTROLLER = fixtureSource.controller.replace(
-  NATIVE_QUEUE_GUARD,
-  OLD_QUEUE_FALLBACK,
-);
-assert.notEqual(
-  RESTORED_CONTROLLER,
-  fixtureSource.controller,
-  "fixture 里应含 NATIVE_QUEUE_GUARD，否则无法还原成待打补丁的宿主原文",
+// [v2] 载体由退役的 #90（RESTORE_NATIVE_STEERING）换成保留的 #74
+// （ASSEMBLE_BEFORE_PRESTEP，目标 dsh-agent-loop/lib/index.js）。
+const APPLIES = ALL_PATCHES.find((p) => p.id === 74);
+assert.ok(APPLIES, "补丁 74 必须存在于 ALL_PATCHES，否则下面全部断言失去意义");
+// #74 的第一处锚点原文；把它写进 fixture 的 loop 文件即可被它打上。
+const APPLIES_ANCHOR = APPLIES.replacements[0].pattern;
+assert.ok(
+  typeof APPLIES_ANCHOR === "string" && APPLIES_ANCHOR.length > 0,
+  "#74 锚点应为字符串",
 );
 
 function fixture({ withHostFiles = false }) {
@@ -40,13 +28,9 @@ function fixture({ withHostFiles = false }) {
   fs.mkdirSync(aiBase, { recursive: true });
   const targets = {};
   if (withHostFiles) {
-    targets.controller = path.join(aiBase, "dsh-api-session-controller", "lib", "index.js");
     targets.loop = path.join(aiBase, "dsh-agent-loop", "lib", "index.js");
-    for (const file of Object.values(targets)) {
-      fs.mkdirSync(path.dirname(file), { recursive: true });
-    }
-    fs.writeFileSync(targets.controller, RESTORED_CONTROLLER);
-    fs.writeFileSync(targets.loop, fixtureSource.agentMethods);
+    fs.mkdirSync(path.dirname(targets.loop), { recursive: true });
+    fs.writeFileSync(targets.loop, APPLIES_ANCHOR + "\n");
   }
   return { root, home, aiBase, targets, close: () => removeTreeNoFollowSync(root) };
 }
@@ -71,7 +55,7 @@ async function withFixture(options, fn) {
 
 /**
  * 取一条"目标文件在本 fixture 里全都不存在"的补丁，用 patchStatus 实证，
- * 而不是按 ALL_PATCHES 的顺序假定第一条就缺——#74/#87 这类补丁的目标恰好是
+ * 而不是按 ALL_PATCHES 的顺序假定第一条就缺——#87/#88 这类补丁的目标恰好是
  * fixture 里建出来的 agent-loop，靠顺序撞运气会在补丁重排后误判。
  */
 async function absentPatch(f) {
@@ -110,7 +94,7 @@ test("a missing target does not stop the patches that follow it", async () => {
     assert.equal(applied.patch_id, APPLIES.id);
     assert.equal(applied.status, "applied", "后面的补丁不能被前一条的缺失连坐");
     assert.ok(
-      (fs.readFileSync(f.targets.controller, "utf8")).includes(NATIVE_QUEUE_GUARD),
+      fs.readFileSync(f.targets.loop, "utf8").includes("__dshPurgePrepareAssemble"),
       "补丁内容必须真的写进磁盘",
     );
   });
@@ -120,9 +104,9 @@ test("re-applying after a missing target stays idempotent", async () => {
   await withFixture({ withHostFiles: true }, async (f) => {
     const absent = await absentPatch(f);
     await applyPatches(f.aiBase, [absent, APPLIES]);
-    const once = fs.readFileSync(f.targets.controller, "utf8");
+    const once = fs.readFileSync(f.targets.loop, "utf8");
     const report = await applyPatches(f.aiBase, [absent, APPLIES]);
     assert.equal(report[1].status, "already", "第二次应判 already，不重复写");
-    assert.equal(fs.readFileSync(f.targets.controller, "utf8"), once);
+    assert.equal(fs.readFileSync(f.targets.loop, "utf8"), once);
   });
 });

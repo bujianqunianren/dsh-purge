@@ -10,40 +10,11 @@ const patch = (id) => {
   return found;
 };
 
-const WEB_PROMPT = "const WEB_SURFACE_PROMPT = `You are interacting with the user through the DeepSeek Harness Web GUI whose URL the runtime context names. When the user refers to \"this page\", \"this GUI\", or \"this app\" without naming another target, they mean this GUI. The browser provides no implicit DOM, route, or screenshot context. The client-plugin HMR receiver is active, but client-plugin changes reload without a refresh only while \\`pnpm run dev:web\\` is also running from this same checkout to rebuild their bundles; verify that watcher before promising automatic updates. Every other change — the apps/web shell and plain packages — requires rebuilding the affected Web artifacts and verifying this existing URL after a page refresh. Starting another server does not update this GUI. The apps/web Vite entry builds the shell but is not a standalone application because only dsh web injects window.__DSH_BOOT__. Do not start a replacement server unless the user asks; if one is needed, use a managed background job and verify its exact URL.`;";
 
-const SYSTEM_PROMPT_ASSEMBLE = "\t\tconst transformed = await this.ctx.waterfall(scopeTarget(this, scope), \"system-prompt/assemble\", assembly, context, () => Promise.resolve(assembly));\n\t\tif (completeSection === void 0 && !runtimeContextSuppressed) return {\n\t\t\t...transformed,\n\t\t\ttools\n\t\t};\n\t\tconst requiredContexts = new Set([...contextByName.values()].filter((entry) => entry.required === true).map((entry) => entry.name));\n\t\treturn {\n\t\t\t...transformed,\n\t\t\ttools,\n\t\t\tsections: completeSection === void 0 ? transformed.sections : [completeSection],\n\t\t\tcontexts: runtimeContextSuppressed ? transformed.contexts.filter((entry) => requiredContexts.has(entry.name)) : transformed.contexts\n\t\t};\n";
 
 const CONVERSATION_APPEND = "\t\t\tappend(record) {\n\t\t\t\tconst event = record.event;\n\t\t\t\tif (this.inputs.has(event.seq)) return \"none\";\n\t\t\t\tif (this.revised.size > 0) this.revised.clear();\n\t\t\t\tthis.inputs.set(event.seq, record);\n";
 
-test("0.2.1 web-surface prompt: #32 neutralizes the product name, #53 drops identity and do-not-start", () => {
-  const branded = WEB_PROMPT;
-  assert.ok(branded.includes("DeepSeek Harness Web GUI"));
-  const after32 = applyReplacementsToText(branded, patch(32)).text;
-  assert.ok(!after32.includes("DeepSeek Harness Web GUI"));
-  assert.ok(after32.includes("the local web GUI whose URL the runtime context names"));
-  const after53 = applyReplacementsToText(after32, patch(53)).text;
-  assert.ok(after53.includes("Local web GUI: its URL is named in the runtime context."));
-  assert.ok(!after53.includes("Do not start a replacement server"));
-  // legacy paragraph text inside the same file must survive: it is used to match old sessions.
-  const legacy = 'suffix: "Do not start a replacement server unless the user asks; if one is needed, use a managed background job and verify its exact URL."';
-  const kept = applyReplacementsToText(legacy, patch(53)).text;
-  assert.equal(kept, legacy);
-  // idempotent
-  assert.equal(applyReplacementsToText(after53, patch(32)).changed, false);
-  assert.equal(applyReplacementsToText(after53, patch(53)).changed, false);
-});
 
-test("0.2.2 complete preset still carries the dsh-purge inject after assemble", () => {
-  const out = applyReplacementsToText(SYSTEM_PROMPT_ASSEMBLE, patch(40));
-  assert.equal(out.changed, true);
-  assert.ok(out.text.includes("const dshPurgeSections ="));
-  // complete 模式保留原 complete 段，并把注入段一并带上。
-  assert.ok(out.text.includes("[completeSection, ...dshPurgeSections]"));
-  assert.ok(out.text.includes("const requiredContexts = new Set("));
-  assert.ok(out.text.includes("requiredContexts.has(entry.name)"));
-  assert.equal(applyReplacementsToText(out.text, patch(40)).changed, false);
-});
 
 test("0.2.1 rewind marker drops sent messages on append", () => {
   const out = applyReplacementsToText(CONVERSATION_APPEND, patch(77));
@@ -54,19 +25,11 @@ test("0.2.1 rewind marker drops sent messages on append", () => {
   assert.equal(applyReplacementsToText(out.text, patch(77)).changed, false);
 });
 
-test("undo and chained patches declare their settle semantics", () => {
-  assert.equal(patch(80).settleWhenAbsent, true);
+test("chained patches declare their settle semantics", () => {
+  // [v2] 原 #80 的 settleWhenAbsent 声明随补丁退役；保留 #87→#88 的级联链断言。
   assert.equal(patch(88).chainedAfter, 87);
 });
 
-test("0.2.1 ask_user_question keeps the requested wait and caps only -1", () => {
-  const src = "\t\tasync execute(args, exec) {\n\t\t\tconst timeout = validateTimeout(args.timeout ?? defaultTimeout);\n\t\t\tvalidateQuestionIds(args.questions);";
-  const out = applyReplacementsToText(src, patch(89));
-  assert.equal(out.changed, true);
-  assert.ok(out.text.includes("args.timeout === -1 ? 300 : (args.timeout ?? defaultTimeout)"));
-  assert.ok(!out.text.includes("const timeout = 1;"));
-  assert.equal(applyReplacementsToText(out.text, patch(89)).changed, false);
-});
 
 // The responses path names its role variable `instructionRole`, not `role`.
 // Pinning the real host text keeps the #57 anchor from silently drifting to a
@@ -175,7 +138,7 @@ test("#57 covers both pi-ai paths that decide the developer role", () => {
 
 // Run the real rc.5 method fragments, with observable host-service boundaries.
 // Supplying a source directory additionally checks a pristine npm package.
-test("rc.5 keeps complete persona, selected tools and required contexts; first-step prepare runs before assemble", async () => {
+test("rc.5 first-step prepare runs before assemble and the complete persona stays intact", async () => {
   const fs = await import("node:fs/promises");
   const vm = await import("node:vm");
   const path = await import("node:path");
@@ -191,22 +154,10 @@ test("rc.5 keeps complete persona, selected tools and required contexts; first-s
     assert.ok(result.text.includes(part));
     return part;
   }
-  const tail = await patched(fixture.assembleTail, "dsh-system-prompt", 40);
+  // [v2] 原 #40（complete 预设保留注入）的 assembleTail 部分随补丁退役删除；
+  // 保留 #74 的首轮 prepare 顺序断言。
   const prepare = await patched(fixture.preStep, "dsh-agent-loop", 74);
-  const assemble = vm.runInNewContext('(async function(assembly, completeSection, runtimeContextSuppressed, contextByName) {' + tail + '})',
-    {scopeTarget: () => null, scope: null, context: {}});
-  const complete = {name:"user-persona", text:"User supplied text"};
-  const extra = {name:"dsh-purge-test", text:"User supplied supplement"};
-  const assembly = {sections:[{name:"other", text:"ordinary"}, complete, extra], tools:[{name:"read"}], contexts:[{name:"keep"}, {name:"drop"}]};
-  const ctx = {waterfall: async (_target, _event, original) => original};
-  const run = (persona, suppress) => assemble.call({ctx}, assembly, persona, suppress, new Map([["keep",{name:"keep",required:true}]]));
-  assert.equal(await run(undefined, false), assembly);
-  const result = await run(complete, true);
-  assert.deepEqual(Array.from(result.sections), [complete, extra]);
-  assert.deepEqual(Array.from(result.contexts), [assembly.contexts[0]]);
-  assert.equal(result.tools, assembly.tools);
-  ctx.waterfall = async () => { throw Error("provider failure"); };
-  await assert.rejects(run(complete, false), /provider failure/);
+  const assembly = {sections:[{name:"user-persona", text:"User supplied text"}], tools:[{name:"read"}], contexts:[]};
   const events = [];
   const method = vm.runInNewContext('({' + prepare + '}).preStep', {
     __dshPurgePrepareAssemble: () => events.push("prepare"),
@@ -215,22 +166,11 @@ test("rc.5 keeps complete persona, selected tools and required contexts; first-s
   const agent = {phase:{kind:"running",abort:new AbortController()}, inbox:{claim:()=>[]},
     loopCtx:{systemPrompt:{assemble:async()=>{events.push("assemble");return assembly;}}},
     dispatch:{waterfall:async(_event,_args,next)=>next()},runtimeContext:{project:()=>undefined}};
-  assert.equal((await method.call(agent,"next-turn",{turn:1})).assembly, assembly);
+  const decision = await method.call(agent, "next-turn", {turn:1});
+  assert.equal(decision.assembly, assembly);
   assert.deepEqual(events, ["prepare","assemble"]);
 });
 
-test("0.2.2-rc.3 sandbox escalation: #13 still replaces the coded errors", () => {
-  const rc3 = [
-    '\tif (!(WIDER_MODES[effectiveMode] ?? []).includes(mode)) throw new SandboxEscalationError(`sandbox escalation to "${mode}" is not strictly wider than this call\'s current "${effectiveMode}" mode`, "SANDBOX_ESCALATION_INVALID_ARGUMENT");',
-    '\tif (approval.approver === void 0) throw new SandboxEscalationError(`sandbox escalation to "${mode}" requires approval, but no approval service is composed`, "SANDBOX_ESCALATION_UNAVAILABLE");',
-    '\tif (approval.agent === void 0) throw new SandboxEscalationError(`sandbox escalation to "${mode}" requires approval, but the call has no agent to route it through`, "SANDBOX_ESCALATION_UNAVAILABLE");',
-  ].join("\n");
-  const out = applyReplacementsToText(rc3, patch(13));
-  assert.equal(out.changed, true);
-  assert.ok(out.text.includes("[dsh-purge] escalation bypass"));
-  assert.ok(!out.text.includes("SandboxEscalationError"));
-  assert.equal(applyReplacementsToText(out.text, patch(13)).changed, false);
-});
 
 test("0.2.2-rc.2 minified inspector client: #96 drops only the oversized tree frame", () => {
   const minified = 'if(!this.stateFits()){if(previous===void 0)this.state.delete(topic);else this.state.set(topic,previous);throw new Error(`inspector: source state exceeds the source-frame byte limit`)}this.enqueue(record)';

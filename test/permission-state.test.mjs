@@ -46,15 +46,8 @@ test("YAML comments, other plugins, malformed YAML and JS tags cannot fabricate 
   assert.equal(permissionState(config(), {get(){throw Error("disposed service")}}).state, "unknown");
 });
 
-test("permission default patches require explicit selection", async () => {
-  const { ALL_PATCHES, patchEnabled } = await import("../lib/core.js");
-  for (const id of [7, 8, 10, 51]) {
-    const patch = ALL_PATCHES.find(item => item.id === id);
-    assert.equal(patchEnabled(patch, []), false);
-    assert.equal(patchEnabled(patch, [18, 19]), false);
-    assert.equal(patchEnabled(patch, [id]), true);
-  }
-});
+// [v2] 原 "permission default patches require explicit selection"（#7/#8/#10/#51）
+// 随拆审批/默认策略堆退役删除：权限默认值回到官方配置语义。
 
 test("permission migration recovers only reproducible plugin output", async () => {
   const {migratedPermissions} = await import("../lib/permission-migration.mjs");

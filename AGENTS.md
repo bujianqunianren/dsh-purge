@@ -1,7 +1,7 @@
 # AGENTS.md — 给 AI agent 的 Purge 使用说明书
 
 > 写给**在 DSH 里干活的 agent**，不是营销文档。
-> 当前版本：**1.7.20** · 适配 DSH Desktop **0.2.2-rc.3**（0.2.2-rc.1 / rc.2 / rc.3 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 同样通过）
+> 当前版本：**2.0.0** · 适配 DSH Desktop **0.2.2-rc.3**（0.2.2-rc.1 / rc.2 / rc.3 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 同样通过）
 > 版本号由 `npm run check:docs` 与 `package.json` 校验，发版必须同步；历史版本与 PR 记录在 [maintenance-archive](docs/maintenance-archive.md)，不要再写回本文件。
 
 ---
@@ -18,17 +18,17 @@
 
 | 层 | 由谁提供 | 生效方式 | 你能怎么查 |
 | --- | --- | --- | --- |
-| **宿主补丁**（86 条） | 本插件写进 DSH 源码 | 点「应用」写入 → **退出重开**才加载 | `selfcheck` 看各层 `applied/required` |
+| **宿主补丁**（33 条，v2 只保留修复与便利类） | 本插件写进 DSH 源码 | 点「应用」写入 → **退出重开**才加载 | `selfcheck` 看各层 `applied/required` |
 | **提示词注入** | 插件运行时（每步重贴） | 仅 **unrestricted / redteam** 预设：`prompt-inject.md` 作为 `dsh-purge` section（模式白名单 `injectPresets`，默认不含 standard 等；读不出预设时按不注入处理） | 探针（§4）或 `selfcheck` 的「运行时提示词注入」 |
 | **破甲强化段** | 插件运行时 | 尾部 section（默认开，同受模式白名单限制） | `purge-community boost` |
-| **权限配置** | 宿主 profile 和会话自己的权限选择 | 新装默认沿用宿主策略，旧宿主可能保留先前写入的补丁 | `selfcheck` 的「当前 profile 的权限选择」 |
+| **权限配置** | 宿主 profile 和会话自己的权限选择 | **v2 起完全官方语义**：拆审批/拆沙箱补丁已退役，审批、沙箱、文件围栏与未装插件一致；unrestricted/redteam 需要的全权限走 DSH 官方配置 | `selfcheck` 的「当前 profile 的权限选择」 |
 | **agent 预设** | `unrestricted` 预设 | 新会话下拉里选 | 面板/预设下拉 |
 
-**关键结论**：宿主补丁与权限配置仍为全局；**提示词注入和强化段自 1.7.20 起默认仅在 unrestricted（无限制模式）与 redteam（红队模式）两个预设下生效**（模式白名单 `injectPresets`，可用宿主配置覆盖；`excludePresets` 继续作为叠加排除）。其余预设（standard/minimal/ptc/cordis/梁神/自造）不做任何运行时注入与提示词改写。白名单与排除都不等于撤销全局补丁。
+**关键结论**：v2 分类重组后，**宿主补丁只保留 33 条修复与便利类**（对任何模式都是纯收益）；审批、沙箱、文件围栏回到官方行为；**提示词注入、强化段、工作区前言强化（原 #1-#3，现由运行时改写器完成）仅在 unrestricted（无限制模式）与 redteam（红队模式）两个预设下生效**（模式白名单 `injectPresets`，可用宿主配置覆盖；`excludePresets` 继续作为叠加排除）。其余预设（standard/minimal/ptc/cordis/梁神/自造）不做任何运行时注入与提示词改写。
 
 ## 2. 生命周期：装 → 应用 → 重开
 
-装（官方插件界面/市场，或社区安装器备份迁移）→ 点「应用」（解包 host / 写 86 条补丁 / 建快照）→ 退出并重开 DSH（**补丁只有重启后才被加载**）→ `selfcheck` 全绿 = 可以开工。
+装（官方插件界面/市场，或社区安装器备份迁移）→ 点「应用」（解包 host / 写 33 条补丁 / 建快照）→ 退出并重开 DSH（**补丁只有重启后才被加载**）→ `selfcheck` 全绿 = 可以开工。
 **什么时候要再点一次「应用」**：DSH 官方更新后（`app.asar` 会重新出现，旧补丁全部失效）、插件自身升级后、新装带工具面/预设的插件后、模型开始推脱或工具突然被追问审批时。
 「应用」是幂等的：不确定就点它，然后退出重开。安装、应用、加载是三个不同阶段——安装不自动应用或重启，应用会备份并写盘，当前进程不热重载这些模块。
 
@@ -37,7 +37,7 @@
 | 命令 | 作用 | 退出码 |
 | --- | --- | --- |
 | `purge-community status` | 宿主路径、补丁计数 | 0 |
-| `purge-community selfcheck [--json\|--text]` | 25 层逐层证据 | **broken → 1**，pending/ok → 0 |
+| `purge-community selfcheck [--json\|--text]` | 18 层逐层证据 | **broken → 1**，pending/ok → 0 |
 | `purge-community host-status` | 只读磁盘布局与当前服务入口证据，不退出/换包/重启 | 0，须检查 state |
 | `purge-community diagnose [--json]` / `reanchor list\|show\|apply <id> [--index n] [--lines a-b] [--yes]\|clear <id>` | 锚点漂移诊断（含行号 + 片段）/ 半自动重锚 | 0 |
 | `purge-community probe [new]` / `audit [--limit n]` / `boost [on\|off]` / `preset [status\|install [--force]]` | 运行时探针 / 最近动作记录 / 强化段开关 / `unrestricted` 预设落盘 | 0 |
@@ -83,7 +83,7 @@ purge-community probe new
 | `$DSH_HOME/prompt-inject.md` | **用户的注入正文**，插件只读不改（除非用户点保存） |
 **不变量**：`prompt-inject.md`、规则集、其他插件配置，任何时候都不该被「应用」或「回滚」覆盖。
 
-## 7. 补丁表：86 条，怎么读、怎么加
+## 7. 补丁表：33 条（v2 分类重组后），怎么读、怎么加
 
 - 定义在 `lib/core.js` 的 `ALL_PATCHES`（`PATCHES` / `CODE_PATCHES` / `ENGINE_PATCHES` / `NEW_TOOL_PATCHES`）。
 - 每条 = `{id, name, layer, file, replacements:[{pattern, replace}], markers, optional?}`；`pattern` 是对宿主源码的**精确片段**（或正则），`markers` 用来判断"已应用"。
@@ -102,9 +102,9 @@ purge-community probe new
 
 | 组件 | 值 |
 | --- | --- |
-| 插件 | `dsh-purge-community` 1.7.20 |
+| 插件 | `dsh-purge-community` 2.0.0 |
 | 已验证宿主 | DSH Desktop 0.2.2-rc.3 / 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
-| 0.2.2-rc.3 | 官方 rc.3 隔离副本 86 条补丁 74 applied / 零漂移，二次应用幂等；真实 Host Loader 预设注册通过。Windows rc.3 未复测补丁。 |
+| 0.2.2-rc.3 | （历史记录，v1 口径）86 条补丁 74 applied / 零漂移；v2 分类重组后 33 条保留补丁需在该宿主重新验收。 |
 | 其它宿主 | 允许应用，但 `selfcheck` 会标"未验证"；先看 `diagnose` |
 | Node | ≥18（桌面版自带运行时即可）；**红队工具需 ≥22.5**（依赖 `node:sqlite`，低版本会在加载红队工具时失败） |
 

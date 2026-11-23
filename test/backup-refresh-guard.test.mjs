@@ -8,12 +8,13 @@ import os from "node:os";
 import path from "node:path";
 import { refreshStaleBaksForUpgrade, patchedTargetStillPatched } from "../lib/core.js";
 
-// #94 SKILL_BADGE_DESCRIPTION_NEUTRAL 的真实锚点与产物：
-const VENDOR = 'Add the official “powered by dsh” badge to documents, pull requests, merge requests, and other content produced with DeepSeek Harness.';
-const PATCHED = 'Add a small attribution badge to documents, pull requests, merge requests, and other content.';
+// [v2] 夹具由退役的 #94（SKILL_BADGE）换成保留的 #22（READ_CAPS_RAISED）
+// 的真实锚点与产物：目标包 dsh-tool-fs/lib/index.js。
+const VENDOR = "const READ_MAX_LINE_LENGTH = 2e3;";
+const PATCHED = "const READ_MAX_LINE_LENGTH = 1e4;";
 
-/** 造一个含 dsh-skill-badge 目标的宿主树。 */
-function fixture(pkg = "dsh-skill-badge") {
+/** 造一个含 dsh-tool-fs 目标的宿主树。 */
+function fixture(pkg = "dsh-tool-fs") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "purge-refresh-"));
   const file = path.join(root, pkg, "lib", "index.js");
   fs.mkdirSync(path.dirname(file), { recursive: true });

@@ -1,43 +1,56 @@
-// 破甲契约：这 25 条是"闸门"。任何人（包括后续优化）改动它们，
-// 指纹就会变，CI 直接红——要动必须先说明理由并更新这里的指纹。
-// 质量优化只能碰非闸门补丁（例如已移除的 #18/#19）。
+// [v2] 破甲契约重写：原"25 条闸门必须存在"契约随分类重组退役。
+// 双向契约：
+//   1) 拆审批 / 拆沙箱 / 拆护栏 / 摘牌类补丁（v1 的 25 门 + #18/#19）必须
+//      **不存在**于补丁表——任何人（包括后续优化）把它们加回来，CI 直接红；
+//   2) 33 条保留补丁（修复与便利条目）的 name+replacements 指纹锁定：
+//      无声改动任何一条，CI 直接红；要动必须说明理由并更新指纹。
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
-import { ALL_PATCHES, patchEnabled } from "../lib/core.js";
+import { ALL_PATCHES } from "../lib/core.js";
 
-const GATE_FINGERPRINTS = {
-  5: "13e205e4c8f319e3",
-  6: "5d03a6507943f586",
-  7: "2e490a6fd7e2a07e",
-  8: "004ed85a11810181",
-  9: "e1f2c1fa551e2fa0",
-  10: "1e1197b70cd4bcd9",
-  11: "f732bb54043fe3f6",
-  12: "e7e94c2c5d5d6e0f",
-  // 0.2.2-rc.3: add the identical bypass for SandboxEscalationError; the
-  // three checks and the replacement text are unchanged.
-  13: "439a5b6d85c9eecb",
-  14: "7aec29a1b4b82ddb",
-  15: "68bd19d2e61b65bb",
-  16: "9698a6c3b4e9e7ba",
-  // rc.5 has its own editIntent body instead of the shared edit/delete method.
-  17: "19bdb473d05f28c9",
-  30: "c844cddcc7933514",
-  31: "f80165c28dc19a5e",
-  34: "1ecd46f5b4067b0f",
-  35: "eab9ef59d3ca00b8",
-  36: "fd8e27dd7b1b21b3",
-  59: "fc2fc00d258210b1",
-  60: "9e13ac2da676e434",
-  // Accept the same native sentence after #93 has removed its branding.
-  61: "c175ed1d70acf41d",
-  63: "b92dd05efb4ba817",
+// v1 破甲闸门 + 上下文管理 + 自我纠错等退役 id：一条都不许回来。
+const RETIRED_GATE_IDS = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 25,
+  29, 30, 31, 32, 33, 34, 35, 36, 37, 40, 43, 46, 47, 48, 49, 50, 51, 53, 59,
+  60, 61, 62, 63, 64, 65, 69, 71, 73, 76, 80, 89, 90, 93, 94,
+];
+
+// v2 保留补丁指纹：修复与便利条目，改动前必须更新此表并说明理由。
+const RETAINED_FINGERPRINTS = {
+  70: "f9025f5742f1ae66",
+  91: "83155c877fe9ee35",
+  92: "fa120ef92980a34d",
+  22: "ff9bdc9986472ca5",
+  23: "023b133a0f4ca82a",
+  24: "72fe2acc2cfcbda5",
+  26: "9c17f401bad91397",
+  28: "681755a2ca9e332e",
+  38: "8dfcd4ce194d7dbd",
+  39: "97bf89a9513c47c8",
+  42: "6b2f698ed818eed7",
+  45: "41e2b2808a2d8c0c",
+  52: "822df85e08567534",
+  54: "ef96233a383fd647",
+  55: "a55a1c0da3a71c67",
+  74: "bc41b88d436f2e05",
   66: "a97a223234457fee",
-  // 1.6.74: correct the literal newline escape and migrate only its malformed
-  // output; the two existing message-length conditions are unchanged.
+  83: "a218fbb65d016ea0",
+  84: "b02de14e824ca609",
   67: "1cb9cbbaf23fb2d8",
   68: "2590e742617f1242",
+  72: "1dd090df0b8ac9fa",
+  56: "cc632c52e38c4b94",
+  77: "98bff43e714d7696",
+  75: "5a5f781b215bbe2d",
+  57: "84ab0f43e62f06ad",
+  58: "6f1f58df5f66e46a",
+  78: "92fb726698311697",
+  82: "858b9f2d3cf80043",
+  87: "d574b668971681ff",
+  88: "32dec594d819e66c",
+  95: "39e55a2036311a4b",
+  96: "66488cda9bf86c4b",
 };
 
 function fingerprint(patch) {
@@ -51,10 +64,20 @@ function fingerprint(patch) {
   return crypto.createHash("sha256").update(shape).digest("hex").slice(0, 16);
 }
 
-test("all 25 bypass gates exist with unchanged semantics", () => {
+test("retired bypass gates must not come back", () => {
   const byId = new Map(ALL_PATCHES.map((p) => [p.id, p]));
   const problems = [];
-  for (const [id, expected] of Object.entries(GATE_FINGERPRINTS)) {
+  for (const id of RETIRED_GATE_IDS) {
+    if (byId.has(id)) problems.push(`#${id} returned to the patch table`);
+  }
+  assert.deepEqual(problems, [], problems.join("; "));
+  assert.equal(ALL_PATCHES.length, 33, "v2 keeps exactly the 33 retained patches");
+});
+
+test("retained patches exist with unchanged semantics", () => {
+  const byId = new Map(ALL_PATCHES.map((p) => [p.id, p]));
+  const problems = [];
+  for (const [id, expected] of Object.entries(RETAINED_FINGERPRINTS)) {
     const patch = byId.get(Number(id));
     if (!patch) {
       problems.push(`#${id} missing`);
@@ -64,15 +87,4 @@ test("all 25 bypass gates exist with unchanged semantics", () => {
     if (actual !== expected) problems.push(`#${id} ${patch.name} changed (${expected} -> ${actual})`);
   }
   assert.deepEqual(problems, [], problems.join("; "));
-});
-
-test("quality-reducing patches stay opt-in and off by default", () => {
-  // #18/#19 关闭的是上下文保护（重复调用提醒、工具结果修剪），不是门禁。
-  // 它们以 disabledByDefault 形态存在：能显式打开，但默认绝不写入宿主。
-  for (const id of [18, 19]) {
-    const patch = ALL_PATCHES.find((p) => p.id === id);
-    assert.ok(patch, `#${id} should exist as an opt-in patch`);
-    assert.equal(patch.disabledByDefault, true, `#${id} must stay off by default`);
-    assert.equal(patchEnabled(patch, []), false, `#${id} must not apply without an explicit opt-in`);
-  }
 });

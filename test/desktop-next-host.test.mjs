@@ -270,11 +270,14 @@ test("补丁：写失败显式报错，原文与备份都可回滚，恢复后�
   process.env.DSH_HOME = home;
 
   const aiBase = path.join(TMP, "patch-host", "node_modules", "@deepseek-ai");
-  for (const pkg of ["dsh-agent-instructions", "dsh-agent-loop", "dsh-system-prompt"]) {
+  // [v2] 载体由退役的 #1 换成保留的 #22（READ_CAPS_RAISED，目标 dsh-tool-fs）。
+  // dsh-agent-instructions/lib 只是 isAiBase 认定宿主所需的标记目录，不写入。
+  fs.mkdirSync(path.join(aiBase, "dsh-agent-instructions", "lib"), { recursive: true });
+  for (const pkg of ["dsh-tool-fs"]) {
     write(path.join(aiBase, pkg, "package.json"), JSON.stringify({ name: pkg, version: "0.2.1-rc.2" }));
   }
-  const patch1 = core.ALL_PATCHES.find((p) => p.id === 1);
-  const target = path.join(aiBase, "dsh-agent-instructions", "lib", "index.js");
+  const patch1 = core.ALL_PATCHES.find((p) => p.id === 22);
+  const target = path.join(aiBase, "dsh-tool-fs", "lib", "index.js");
   const original = patch1.replacements[0].pattern + ";";
   write(target, original);
   process.env.DSH_BASE = aiBase;

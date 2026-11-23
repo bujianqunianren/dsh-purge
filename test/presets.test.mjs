@@ -21,10 +21,7 @@ test("the bundled preset is present and still matches the patch anchors", () => 
   // #24 flips preset fetch on; the anchor must exist or the patch silently skips.
   const fetchPatch = ALL_PATCHES.find((p) => p.id === 24);
   assert.equal(applyReplacementsToText(text, fetchPatch).changed, true, "#24 anchor");
-  // #76 is optional for this preset: it must not mangle a preset that never used
-  // the stock identity line.
-  const stripPatch = ALL_PATCHES.find((p) => p.id === 76);
-  assert.equal(applyReplacementsToText(text, stripPatch).changed, false, "#76 stays optional");
+  // [v2] 原 #76（自造 unrestricted 预设身份句剥离）随摘牌堆退役删除。
 });
 
 test("install is idempotent and never overwrites user edits without force", () => {

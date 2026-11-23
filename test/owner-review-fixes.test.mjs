@@ -269,8 +269,9 @@ test("写入失败用例不依赖 chmod：把目标换成目录，状态必须�
   process.env.DSH_HOME = home;
   try {
     const aiBase = seedHost(path.join(TMP, "w-host", "node_modules", "@deepseek-ai"));
-    const patch = core.ALL_PATCHES.find((p) => p.id === 1);
-    const target = path.join(aiBase, "dsh-agent-instructions", "lib", "index.js");
+    // [v2] 载体由退役的 #1 换成保留的 #22（READ_CAPS_RAISED，目标 dsh-tool-fs）。
+    const patch = core.ALL_PATCHES.find((p) => p.id === 22);
+    const target = path.join(aiBase, "dsh-tool-fs", "lib", "index.js");
     const original = patch.replacements[0].pattern + ";";
     write(target, original);
     // 注入失败：目标是文件时无法当作目录写入；换成同名目录即可跨平台制造写失败
