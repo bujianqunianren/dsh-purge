@@ -1,3 +1,10 @@
+# 2.1.1
+
+- **架构精简**：删除 38 个维护文档、46 个 check/verify 脚本、81 个旧版发行说明、18 个补丁测试及关联 fixtures。
+- 清理 index.js 死 import（desktop/apply-gate/reapply/official-update 等）；清理 core.js 死 re-export。
+- 删除 .github/workflows 里 2 个已废弃 CI。
+- 全量 512 项测试 0 失败；check:docs 脚本重建为精简版。
+
 # 2.1.0
 
 - **宿主源码补丁层整体移除**：ALL_PATCHES = []，lib/patches/ 目录删除，本插件不再改写 DSH 安装目录。
