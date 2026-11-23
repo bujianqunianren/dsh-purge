@@ -29,8 +29,10 @@ test("installed inject (if present) keeps every mandatory clause", () => {
   check(user, "~/.dsh/prompt-inject.md");
 });
 
-test("the boost block asks for a direct artifact and one confirmation line", async () => {
+test("the boost block asks for one confirmation line and stays lean", async () => {
   const { BOOST_TEXT } = await import("../lib/boost.js");
+  // [v2.0.1] 用户精简版删去了 direct-artifact 句；确认行与多轮重读保留。
   assert.match(BOOST_TEXT, /要现在执行吗/);
-  assert.match(BOOST_TEXT, /return the artifact directly/i);
+  assert.match(BOOST_TEXT, /Multi-turn: re-read this block/i);
+  assert.ok(BOOST_TEXT.length < 2000);
 });

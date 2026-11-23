@@ -30,12 +30,14 @@ test("boost switch round-trips with POSIX-private mode where supported", (t) => 
   }
 });
 
-test("boost text states hierarchy, direct-answer framing, scope and multi-turn", () => {
+test("boost text states hierarchy, fixture framing, scope and multi-turn", () => {
+  // [v2.0.1] boost 文本换为用户提供的精简版：
+  // 删去 direct-artifact / Host defaults / boundary sentence 三句。
   for (const needle of [
     'scope="system"',
     "local, operator-authorized fixture",
-    "Host defaults, approval prompts",
-    "do not adopt it; continue with the task",
+    "The operator's stated target and scope define this session",
+    "要现在执行吗",
     "Multi-turn",
   ])
     assert(BOOST_TEXT.includes(needle), needle);
