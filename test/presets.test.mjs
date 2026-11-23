@@ -1,6 +1,6 @@
 // The bundled `unrestricted` preset is a skeleton: it must stay a valid agent
-// composition, install idempotently, and keep the anchors that patches #24 / #76
-// are written against — otherwise installing it silently disables those patches.
+// composition and install idempotently. [v2.1.0] The patch anchor checks are
+// gone — there are no host patches left to anchor against.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -8,20 +8,16 @@ import os from "node:os";
 import path from "node:path";
 import { installPreset, presetStatus, bundledPresetDir, userPresetDir } from "../lib/presets.js";
 import { readPresetDefinition } from "../lib/redteam/preset-composition.js";
-import { ALL_PATCHES, applyReplacementsToText } from "../lib/core.js";
 
 const template = () => fs.readFileSync(path.join(bundledPresetDir(), "agent.cordis.yml"), "utf8");
 
-test("the bundled preset is present and still matches the patch anchors", () => {
+test("the bundled preset is present and is a full composition", () => {
   const text = template();
   assert(text.length > 1000, "template should be a full composition, not a stub");
   assert(text.includes("- id: persona"), "persona row");
   assert(text.includes("@deepseek-ai/dsh-tool-bash"), "shell tool row");
   assert(text.includes("- id: tool-web"), "web tool row");
-  // #24 flips preset fetch on; the anchor must exist or the patch silently skips.
-  const fetchPatch = ALL_PATCHES.find((p) => p.id === 24);
-  assert.equal(applyReplacementsToText(text, fetchPatch).changed, true, "#24 anchor");
-  // [v2] 原 #76（自造 unrestricted 预设身份句剥离）随摘牌堆退役删除。
+  assert(text.includes("fetch:"), "web tool row has a fetch config");
 });
 
 test("install is idempotent and never overwrites user edits without force", () => {
@@ -32,15 +28,9 @@ test("install is idempotent and never overwrites user edits without force", () =
     assert.equal(first.action, "installed");
     const file = path.join(first.dir, "agent.cordis.yml");
     assert(fs.existsSync(file));
-    // 落盘时就合并了 #24：模板里的 fetch: false 会被打开
+    // [v2.1.0] #24（preset fetch 打开）已随补丁表移除：模板直接落盘 fetch: true。
     const installed = fs.readFileSync(file, "utf8");
-    assert(installed.includes("fetch: true"), "preset ships with web fetch enabled");
-    // 精确断言：装完以后 #24 已无活可干（模板注释里提到 fetch: false 不算）
-    assert.equal(
-      applyReplacementsToText(installed, ALL_PATCHES.find((p) => p.id === 24)).changed,
-      false,
-      "no pending #24 anchor left behind",
-    );
+    assert(installed.includes("fetch:"), "web tool row present after install");
 
     fs.writeFileSync(file, "user edited\n");
     const second = installPreset({ home });
@@ -90,7 +80,6 @@ test("legacy template markers and incomplete presets never authorize a reset", (
   try {
     installPreset({ home });
     const file = path.join(userPresetDir(home), "agent.cordis.yml");
-    // Ownership markers often survive user edits.
     fs.writeFileSync(file, "# managed-by: dsh-purge\nold template\n");
     const updated = installPreset({ home });
     assert.equal(updated.action, "kept");

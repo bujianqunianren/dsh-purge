@@ -167,18 +167,8 @@ test('interleaved sessions and host fallback never share an allowlist decision',
   assert.equal(installHungPromptGlobal({})(),'','empty config without a preset context must not inject either');
 }));
 
-const patch=ALL_PATCHES.find(p=>p.id===87);
-for(const call of ['globalThis.__dshPurgeHungPrompt()', 'dshPurgeHungFn()']) for(const nl of ['\n','\r\n']) test(`old host migration ${call} ${JSON.stringify(nl)} is idempotent and executes with current agent`, () => isolated(() => {
-  const old=['// [dsh-purge-87] hang needle uses LF','const dshPurgeHungFn = globalThis.__dshPurgeHungPrompt;',`return ${call};`].join(nl);
-  const next=applyReplacementsToText(old,patch);
-  assert.equal(next.changed,true);assert.equal(applyReplacementsToText(next.text,patch).changed,false);
-  if(nl==='\r\n')assert(!/(?<!\r)\n/.test(next.text));
-  installHungPromptGlobal(config);
-  const run=new Function(next.text);
-  assert.equal(run.call(context('minimal').agent),'');
-  assert.equal(run.call(context('standard').agent),'');
-  assert(run.call(context('unrestricted').agent));
-}));
+// [v2.1.0] old host migration (#87/#88) tests removed with the host patch layer.
+// applyReplacementsToText / ALL_PATCHES references to patch #87 are gone.
 
 test('LLM request lookup uses the exact session ID and preserves allowlisted-session behavior', () => {
   const agents=new Map(['unrestricted','standard'].map(id=>{const a=context(id).agent;a.session.id=id;return [id,a]}));

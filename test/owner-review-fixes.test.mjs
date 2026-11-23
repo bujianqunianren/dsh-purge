@@ -258,38 +258,5 @@ test("resolveInstance：不可读的 DSH_BASE 给出具体错误，而不是「�
   assert.match(resolved.reason, /EIO/);
 });
 
-/* ---------------- 4. 写入失败注入（跨平台，不依赖 chmod） ---------------- */
+// [v2.1.0] 写入失败用例随宿主补丁层移除。
 
-test("写入失败用例不依赖 chmod：把目标换成目录，状态必须不是 applied", async () => {
-  const core = await import(pathToFileURL(PLUGIN + "/lib/core.js").href);
-  const home = path.join(TMP, "w-home");
-  write(path.join(home, "profiles", "desktop", "package.json"), JSON.stringify({ name: "dsh-profile-desktop" }));
-  const savedHome = process.env.DSH_HOME;
-  const savedBase = process.env.DSH_BASE;
-  process.env.DSH_HOME = home;
-  try {
-    const aiBase = seedHost(path.join(TMP, "w-host", "node_modules", "@deepseek-ai"));
-    // [v2] 载体由退役的 #1 换成保留的 #22（READ_CAPS_RAISED，目标 dsh-tool-fs）。
-    const patch = core.ALL_PATCHES.find((p) => p.id === 22);
-    const target = path.join(aiBase, "dsh-tool-fs", "lib", "index.js");
-    const original = patch.replacements[0].pattern + ";";
-    write(target, original);
-    // 注入失败：目标是文件时无法当作目录写入；换成同名目录即可跨平台制造写失败
-    fs.rmSync(target);
-    fs.mkdirSync(target);
-    process.env.DSH_BASE = aiBase;
-
-    let status = null;
-    try {
-      const run = await core.applyPatchesAllHosts([patch], {});
-      status = run.report[0].status;
-    } catch (error) {
-      status = "throw:" + (error.code || error.message);
-    }
-    assert.notEqual(status, "applied", "写入失败不得报 applied");
-    assert.equal(fs.statSync(target).isDirectory(), true, "失败时目标保持原状");
-  } finally {
-    if (savedHome === undefined) delete process.env.DSH_HOME; else process.env.DSH_HOME = savedHome;
-    if (savedBase === undefined) delete process.env.DSH_BASE; else process.env.DSH_BASE = savedBase;
-  }
-});

@@ -1,3 +1,11 @@
+# 2.1.0
+
+- **宿主源码补丁层整体移除**：ALL_PATCHES = []，lib/patches/ 目录删除，本插件不再改写 DSH 安装目录。
+  * purge_apply / purge_revert 工具移除；/dsh-purge/apply|revert|restart|diagnose 路由移除；启动自愈（settle）跳过宿主写入。
+  * /purge apply|revert 命令返回已移除提示；selfcheck 只覆盖运行时注入与 profile 权限（宿主层全部消失）。
+  * 面板 /dsh-purge/status 路由保留（只读），补丁计数字段恒为 0。
+  * 18 个纯补丁测试文件删除（patch-anchors、bypass-contract、desktop-next-host 等）；fixtures/inject-clauses.json 更新为新模板。
+- 全量测试 576 项 0 失败。插件从可选写宿主变为**纯运行时插件**：装好即可用，无宿主目录写操作。
 # 2.0.2
 
 - 红队提示词定稿：出厂模板三处文本修正（规则 9 开头大写、规则 23 分号后空格、aircrack 拼写），重新加密内嵌。

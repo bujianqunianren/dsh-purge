@@ -11,19 +11,7 @@ import { dirBackup, dirRestore } from "../lib/update-install.js";
 
 const tmp = (tag) => fs.mkdtempSync(path.join(os.tmpdir(), `purge ${tag} `));
 
-test("读取补丁状态失败时，自检不能报成全绿", () => {
-  // patchStatus 抛错后 selfCheck 传 status={} + statusError：每一层都必须是 unknown。
-  const failed = rollupLayers({}, true, { statusError: "patchStatus boom" });
-  assert(failed.every((l) => l.state === "unknown" && l.ok === false));
-  assert(failed.every((l) => l.broken.length === 0), "读不到状态不等于补丁损坏");
-  assert(failed[0].note.includes("patchStatus boom"));
-  assert.equal(failed[0].status_error, "patchStatus boom");
-
-  // 空状态表不能证明目标缺失：未返回的状态仍应未知。
-  assert(rollupLayers({}, true).every((l) => l.state === "unknown"));
-  // 未定位宿主仍是 unknown，不会被上面的错误分支吞掉。
-  assert(rollupLayers({}, false).every((l) => l.state === "unknown"));
-});
+// [v2.1.0] 补丁状态读取测试随宿主补丁层移除。
 
 test("预发布段按数字比较：rc.2 不比 rc.10 新", () => {
   assert.equal(versionIsNewer("0.2.1-rc.2", "0.2.1-rc.10"), false);
